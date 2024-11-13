@@ -1,7 +1,9 @@
+import { Navigation } from './components/navigation/navigation';
 export default function Home() {
  return (
-  <main className="flex min-h-screen flex-col items-center justify-between p-24">
-   <h1 className="text-3xl font-bold">Luxeliving Dubai</h1>
+  <main className="w-full h-full">
+   <Navigation />
+   <h1 className="text-3xl text-center font-bold">Luxeliving Dubai</h1>
   </main>
  );
 }
