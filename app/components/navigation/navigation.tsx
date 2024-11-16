@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 export const Navigation = () => {
   const [activeLink, setActiveLink] = useState<string>("/");
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   const handleLinkClick = (href: string) => {
     setActiveLink(href);
@@ -21,10 +22,24 @@ export const Navigation = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+      if (window.innerWidth >= 768) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <NavigationMenu className="relative h-[104px] xxs:px-3 md:px-5 lg:px-10 xl:px-[132px] lg:py-6 w-full border-b-[0.5px] border-white">
       <NavigationMenuItem className="w-full flex justify-between items-center">
-        {/* Desktop Menu */}
         <div className="hidden md:flex w-full justify-between items-center">
           <ul className="flex gap-3">
             <Link href="/">

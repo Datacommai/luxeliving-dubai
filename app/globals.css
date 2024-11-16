@@ -112,9 +112,4 @@
   body {
     @apply bg-background text-foreground;
   }
-  main {
-    background-image: url(/assets/images/home-bg.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
 }
