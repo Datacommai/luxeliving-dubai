@@ -41,7 +41,7 @@ export const Navigation = () => {
     <NavigationMenu className="relative h-[104px] xxs:px-3 md:px-5 lg:px-10 xl:px-[132px] lg:py-6 w-full border-b-[0.5px] border-white">
       <NavigationMenuItem className="w-full flex justify-between items-center">
         <div className="hidden md:flex w-full justify-between items-center">
-          <ul className="flex gap-3">
+          <ul className="flex gap-5">
             <Link href="/">
               <li
                 onClick={() => handleLinkClick("/")}
@@ -91,14 +91,13 @@ export const Navigation = () => {
             />
           </Link>
 
-          <Button className="text-lg font-bold px-10 py-4 bg-[#1E3747] h-[52px] w-[256px] hover:bg-[#2c526a]">
+          <Button className="text-lg capitalize font-bold px-10 py-4 bg-[#1E3747] h-[52px] w-[256px] hover:bg-[#2c526a]">
             Contact for booking
             <Image
               width={24}
               height={24}
               src="/assets/icons/call-icon.svg"
               alt="logo"
-              priority
               blurDataURL="blur"
               quality={100}
             />
