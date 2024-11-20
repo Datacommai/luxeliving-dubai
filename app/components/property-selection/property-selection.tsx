@@ -23,7 +23,7 @@ export const PropertySelection = () => {
   return (
     <Card className="mt-10 rounded-md w-5/6 justify-self-center md:min-h-[139px] xxs:grid xxs:grid-cols-2 sm:grid-cols-3 md:grid md:grid-cols-4 xxs:gap-4 lg:gap-1 lg:flex items-center justify-between xxs:p-4 md:p-6 shadow-md border-none">
       {/* First  Select */}
-      <span className="flex flex-col gap-4 text-[#333333]">
+      <span className="flex flex-col xxs:gap-2 sm:gap-4 text-[#333333]">
         <p className="font-medium">Property Type</p>
         <Select>
           <SelectTrigger className="drop-down-icon xxs:h-[48px] xxs:w-full lg:w-[150px] xl:w-[220px] border-[#434343] focus:ring-0 md:h-[56px] text-[#434343]">
@@ -41,7 +41,7 @@ export const PropertySelection = () => {
       </span>
 
       {/* Second Property Type Select */}
-      <span className="flex flex-col gap-4 text-[#333333]">
+      <span className="flex flex-col xxs:gap-2 sm:gap-4 text-[#333333]">
         <p className="font-medium">Developers</p>
         <Select>
           <SelectTrigger className="drop-down-icon xxs:h-[48px] xxs:w-full lg:w-[150px] xl:w-[220px] border-[#434343] focus:ring-0 md:h-[56px] text-[#434343]">
@@ -59,7 +59,7 @@ export const PropertySelection = () => {
       </span>
 
       {/* Third Property Type Select */}
-      <span className="flex flex-col gap-4 text-[#333333]">
+      <span className="flex flex-col xxs:gap-2 sm:gap-4 text-[#333333]">
         <p className="font-medium">City</p>
         <Select>
           <SelectTrigger className="drop-down-icon xxs:h-[48px] xxs:w-full lg:w-[150px] xl:w-[220px] border-[#434343] focus:ring-0 md:h-[56px] text-[#434343]">
@@ -77,7 +77,7 @@ export const PropertySelection = () => {
       </span>
 
       {/* Fourth Property Type Select */}
-      <span className="flex flex-col gap-4 text-[#333333]">
+      <span className="flex flex-col xxs:gap-2 sm:gap-4 text-[#333333]">
         <p className="font-medium">Lifestyle</p>
         <Select>
           <SelectTrigger className="drop-down-icon xxs:h-[48px] xxs:w-full lg:w-[150px] xl:w-[220px] border-[#434343] focus:ring-0 md:h-[56px] text-[#434343]">
