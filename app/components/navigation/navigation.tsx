@@ -97,7 +97,7 @@ export const Navigation = () => {
               width={24}
               height={24}
               src="/assets/icons/call-icon.svg"
-              alt="logo"
+              alt="contact icon"
               blurDataURL="blur"
               quality={100}
             />
@@ -197,8 +197,7 @@ export const Navigation = () => {
               width={16}
               height={16}
               src="/assets/icons/call-icon.svg"
-              alt="logo"
-              priority
+              alt="contact icon"
               blurDataURL="blur"
               quality={100}
             />
