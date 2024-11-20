@@ -1,0 +1,22 @@
+nav {
+  max-width: 100% !important;
+  margin: 0px !important;
+
+  display: flex !important;
+  justify-content: space-between !important ;
+  justify-items: center !important ;
+  min-width: 100% !important;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.58) -193.75%,
+    rgba(102, 102, 102, 0.58) 225.48%
+  );
+}
+
+.hamburger-menu-bg {
+  background: linear-gradient(
+    180deg,
+    rgba(171, 170, 170, 0.304) -193.75%,
+    rgba(141, 141, 141, 0.414) 225.48%
+  );
+}
