@@ -24,7 +24,6 @@ export const PropertySelection = () => {
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectLabel>Property Types</SelectLabel>
               <SelectItem className="capitalize" value="apple">
                 Single-Family Home
               </SelectItem>
@@ -51,7 +50,6 @@ export const PropertySelection = () => {
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectLabel className="capitalize">Groups</SelectLabel>
               <SelectItem className="capitalize" value="apple">
                 Emaar Properties
               </SelectItem>
@@ -84,7 +82,6 @@ export const PropertySelection = () => {
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectLabel className="capitalize">cities</SelectLabel>
               <SelectItem className="capitalize" value="apple">
                 Dubai
               </SelectItem>
@@ -102,7 +99,6 @@ export const PropertySelection = () => {
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectLabel className="capitalize">Lifestyle</SelectLabel>
               <SelectItem className="capitalize" value="apple">
                 Minimalist
               </SelectItem>
