@@ -5,7 +5,6 @@ import {
   SelectTrigger,
   SelectValue,
   SelectGroup,
-  SelectLabel,
 } from "@/components/ui/select";
 
 import { Card } from "@/components/ui/card";
