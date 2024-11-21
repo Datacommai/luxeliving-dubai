@@ -8,14 +8,7 @@ import {
   SelectLabel,
 } from "@/components/ui/select";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
@@ -31,9 +24,18 @@ export const PropertySelection = () => {
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectLabel>Fruits</SelectLabel>
+              <SelectLabel>Property Types</SelectLabel>
               <SelectItem className="capitalize" value="apple">
-                house
+                Single-Family Home
+              </SelectItem>
+              <SelectItem className="capitalize" value="apple">
+                Multi-Family Home
+              </SelectItem>
+              <SelectItem className="capitalize" value="apple">
+                Condominium
+              </SelectItem>
+              <SelectItem className="capitalize" value="apple">
+                Apartment
               </SelectItem>
             </SelectGroup>
           </SelectContent>
@@ -49,9 +51,24 @@ export const PropertySelection = () => {
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectLabel className="capitalize">Fruits</SelectLabel>
+              <SelectLabel className="capitalize">Groups</SelectLabel>
               <SelectItem className="capitalize" value="apple">
-                house
+                Emaar Properties
+              </SelectItem>
+              <SelectItem className="capitalize" value="apple">
+                Nakheel Properties
+              </SelectItem>
+              <SelectItem className="capitalize" value="apple">
+                Meraas
+              </SelectItem>
+              <SelectItem className="capitalize" value="apple">
+                Emaar Properties
+              </SelectItem>
+              <SelectItem className="capitalize" value="apple">
+                Select Group
+              </SelectItem>
+              <SelectItem className="capitalize" value="apple">
+                Azizi Developments
               </SelectItem>
             </SelectGroup>
           </SelectContent>
@@ -87,7 +104,16 @@ export const PropertySelection = () => {
             <SelectGroup>
               <SelectLabel className="capitalize">Lifestyle</SelectLabel>
               <SelectItem className="capitalize" value="apple">
-                Traditional
+                Minimalist
+              </SelectItem>
+              <SelectItem className="capitalize" value="apple">
+                Family-Oriented
+              </SelectItem>
+              <SelectItem className="capitalize" value="apple">
+                Luxury
+              </SelectItem>
+              <SelectItem className="capitalize" value="apple">
+                Urban
               </SelectItem>
             </SelectGroup>
           </SelectContent>
