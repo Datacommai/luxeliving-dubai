@@ -58,7 +58,6 @@ export const PropertySelection = () => {
               <SelectItem className="capitalize" value="Meraas">
                 Meraas
               </SelectItem>
-
               <SelectItem className="capitalize" value="Select Group">
                 Select Group
               </SelectItem>
