@@ -1,0 +1,71 @@
+'use client';
+import { PropertySelection } from '../property-selection/property-selection';
+import { IconButton } from '../buttons/icon-button';
+import { useEffect, useState } from 'react';
+
+export const HeroSection = () => {
+ const [isMobile, setIsMobile] = useState<boolean>(false);
+
+ const onPlayButtonClicked = () => {};
+
+ useEffect(() => {
+  const handleResize = () => {
+   setIsMobile(window.innerWidth < 768);
+  };
+
+  window.addEventListener('resize', handleResize);
+
+  handleResize();
+
+  return () => window.removeEventListener('resize', handleResize);
+ }, []);
+
+ return (
+  <section className="relative w-full">
+   <video className="w-full" preload="metadata" autoPlay muted loop>
+    <source src="/assets/videos/hero.mp4#t=0.001" type="video/mp4" />
+    Your browser does not support the video tag.
+   </video>
+   <div className="absolute xs:top-0 xxs:top-0 lg:top-1/4 flex items-center justify-around w-full pointer-events-none">
+    <h1 className="lg:text-7xl xs:text-2xl text-center drop-shadow-sm text-white font-bold pointer-events-auto">
+     All homes are for a lifetime. <br /> This one is once in a lifetime.
+    </h1>
+    <IconButton
+     icon="/assets/icons/play_circle_filled.svg"
+     description="play"
+     width={isMobile ? 80 : 120}
+     height={isMobile ? 80 : 120}
+     onClick={onPlayButtonClicked}
+    />
+    <section className="flex flex-col gap-3 items-center">
+     <div className="bg-white w-1 h-20 lg:block "></div>
+     <IconButton
+      icon="/assets/icons/fb-icon.svg"
+      description="facebook"
+      width={isMobile ? 40 : 50}
+      height={isMobile ? 40 : 50}
+      onClick={onPlayButtonClicked}
+     />
+     <IconButton
+      icon="/assets/icons/twitter-icon.svg"
+      description="twitter"
+      width={isMobile ? 50 : 60}
+      height={isMobile ? 50 : 60}
+      onClick={onPlayButtonClicked}
+     />
+     <IconButton
+      icon="/assets/icons/ig-icon.svg"
+      description="isntagram"
+      width={isMobile ? 50 : 60}
+      height={isMobile ? 50 : 60}
+      onClick={onPlayButtonClicked}
+     />
+     <div className="bg-white w-1 h-20 lg:block "></div>
+    </section>
+   </div>
+   <div>
+    <PropertySelection />
+   </div>
+  </section>
+ );
+};

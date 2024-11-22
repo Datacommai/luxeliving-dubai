@@ -1,13 +1,13 @@
 import { Navigation } from './components/navigation/navigation';
 import { TrustedSection } from './components/trusted-section/trusted-section';
 import { FeaturedHeader } from './components/featured-header/featured-header';
-import { PropertySelection } from './components/property-selection/property-selection';
+import { HeroSection } from './components/hero-section/hero-section';
 
 export default function Home() {
  return (
   <main className="flex flex-col justify-center items-center">
    <Navigation />
-   <PropertySelection />
+   <HeroSection />
    <FeaturedHeader />
    <TrustedSection />
   </main>
