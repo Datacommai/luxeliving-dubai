@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.drop-down-icon svg {
+  stroke: #371711 !important;
+  stroke-width: 4px;
+  opacity: 1;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;
