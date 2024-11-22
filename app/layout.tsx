@@ -1,34 +1,46 @@
-import type { Metadata } from 'next';
-import localFont from 'next/font/local';
-import './globals.css';
+import type { Metadata } from "next";
+import localFont from "next/font/local";
+import "./globals.css";
 
-const geistSans = localFont({
- src: './fonts/GeistVF.woff',
- variable: '--font-geist-sans',
- weight: '100 900',
-});
-const geistMono = localFont({
- src: './fonts/GeistMonoVF.woff',
- variable: '--font-geist-mono',
- weight: '100 900',
+const boska = localFont({
+  src: [
+    {
+      path: "./fonts/Boska-Light.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Boska-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Boska-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Boska-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+  ],
 });
 
 export const metadata: Metadata = {
- title: 'Luxeliving Dubai',
- description:
-  'Experience Luxury Living with Our Exclusive Property Selections. Discover Elegance, Sophisticated Design, and Unparalleled Amenities for the Discerning Buyer.',
+  title: "Luxeliving Dubai",
+  description:
+    "Experience Luxury Living with Our Exclusive Property Selections. Discover Elegance, Sophisticated Design, and Unparalleled Amenities for the Discerning Buyer.",
 };
 
 export default function RootLayout({
- children,
+  children,
 }: Readonly<{
- children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
- return (
-  <html lang="en">
-   <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-    {children}
-   </body>
-  </html>
- );
+  return (
+    <html lang="en">
+      <body className={boska.className}>{children}</body>
+    </html>
+  );
 }
