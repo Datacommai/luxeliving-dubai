@@ -1,10 +1,17 @@
 import { Navigation } from "./components/navigation/navigation";
 import { Footer } from "./components/footer/footer";
+import { TrustedSection } from "./components/trusted-section/trusted-section";
+import { FeaturedHeader } from "./components/featured-header/featured-header";
+import { PropertySelection } from "./components/property-selection/property-selection";
+
 export default function Home() {
   return (
-    <main>
+    <main className="flex flex-col justify-center items-center">
       <Navigation />
       <Footer />
+      <TrustedSection />
+      <FeaturedHeader />
+      <PropertySelection />
     </main>
   );
 }

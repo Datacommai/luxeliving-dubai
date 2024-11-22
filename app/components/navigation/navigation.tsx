@@ -38,7 +38,7 @@ export const Navigation = () => {
   }, []);
 
   return (
-    <NavigationMenu className="relative h-[104px] xxs:px-3 md:px-5 lg:px-10 xl:px-[132px] lg:py-6 w-full border-b-[0.5px] border-white">
+    <NavigationMenu className="relative h-[104px] xxs:px-3 md:px-5 lg:px-10 xl:px-[132px] xxs:py-4 lg:py-6 w-full border-b-[0.5px] border-white">
       <NavigationMenuItem className="w-full flex justify-between items-center">
         <div className="hidden md:flex w-full justify-between items-center">
           <ul className="flex gap-5">
