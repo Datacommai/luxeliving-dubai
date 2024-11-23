@@ -135,7 +135,7 @@ export const Navigation = () => {
 
    {/* Mobile Drawer (if menu is open) */}
    {isMenuOpen && (
-    <div className="absolute hamburger-menu-bg top-[65px] left-0 w-full h-[257px] bg-opacity-70 backdrop-blur-lg flex flex-col items-start p-5 space-y-5">
+    <div className="absolute hamburger-menu-bg top-[63px] left-0 w-full h-[257px] bg-opacity-70 backdrop-blur-lg flex flex-col items-start p-5 space-y-5">
      <ul className="flex flex-col gap-3 w-full">
       <Link href="/">
        <li
