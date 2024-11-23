@@ -3,8 +3,8 @@ import { featuredPropertiesMockData } from '@/lib/mocks/featured-properties-mock
 
 export const FeaturedPropertiesSection = () => {
  return (
-  <section className="flex justify-center items-center w-full max-h-[1000px] m-5">
-   <section className="w-[calc(100%-15%)] h-autogrid lg:gird-cols-3 lg:grid-rows-2 xs:grid-cols-1 xs:grid-rows-1 xxs:grid-cols-1 xxs:grid-rows-1">
+  <section className="w-full max-h-[1000px] m-5 flex justify-center items-center">
+   <section className="w-full max-w-7xl grid grid-cols-3 gap-2 justify-items-center items-center">
     {featuredPropertiesMockData.map((property, key) => (
      <FeaturedProperty
       key={key}
