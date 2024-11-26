@@ -31,6 +31,9 @@ export const metadata: Metadata = {
   title: "Luxeliving Dubai",
   description:
     "Experience Luxury Living with Our Exclusive Property Selections. Discover Elegance, Sophisticated Design, and Unparalleled Amenities for the Discerning Buyer.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
