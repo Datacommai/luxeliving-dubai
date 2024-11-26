@@ -30,7 +30,7 @@ export const BackForwardButton = () => {
       >
         {activeButton === "back" ? (
           <Image
-            className="rotate-180"
+            className="rotate-180 xxs:w-[7.5px] xxs:h-[13px] md:w-[11px] md:h-[18.5px]"
             width={11}
             height={18.5}
             src="/assets/icons/forward-icon.svg"
@@ -40,6 +40,7 @@ export const BackForwardButton = () => {
           />
         ) : (
           <Image
+            className="xxs:w-[7.5px] xxs:h-[13px] md:w-[11px] md:h-[18.5px]"
             width={11}
             height={18.5}
             src="/assets/icons/back-icon.svg"
@@ -62,6 +63,7 @@ export const BackForwardButton = () => {
       >
         {activeButton === "forward" ? (
           <Image
+            className="xxs:w-[7.5px] xxs:h-[13px] md:w-[11px] md:h-[18.5px]"
             width={11}
             height={18.5}
             src="/assets/icons/forward-icon.svg"
@@ -71,7 +73,7 @@ export const BackForwardButton = () => {
           />
         ) : (
           <Image
-            className="rotate-180"
+            className="rotate-180 xxs:w-[7.5px] xxs:h-[13px] md:w-[11px] md:h-[18.5px]"
             width={11}
             height={18.5}
             src="/assets/icons/back-icon.svg"
