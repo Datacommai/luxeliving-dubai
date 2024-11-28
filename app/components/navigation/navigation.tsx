@@ -51,7 +51,7 @@ export const Navigation = () => {
         Home
        </li>
       </Link>
-      <Link href="/">
+      <Link href="/about">
        <li
         onClick={() => handleLinkClick('/about')}
         className={`text-lg text-white ${
@@ -149,7 +149,7 @@ export const Navigation = () => {
         Home
        </li>
       </Link>
-      <Link href="/">
+      <Link href="/about">
        <li
         onClick={() => {
          handleLinkClick('/about');
