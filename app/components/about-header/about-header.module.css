@@ -1,0 +1,31 @@
+.section {
+  background-image: url("/assets/images/about-header-bg-min.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 20%;
+  opacity: 90%;
+}
+
+@media (min-width: 320px) and (max-width: 499px) {
+  .section {
+    background-position: center 30%;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 699px) {
+  .section {
+    background-position: center 23%;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1279px) {
+  .section {
+    background-position: center 20%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section {
+    background-position: center 16%;
+  }
+}
