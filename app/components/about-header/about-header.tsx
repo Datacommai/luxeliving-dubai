@@ -4,7 +4,7 @@ export const AboutHeader = () => {
   return (
     <section
       id="about-us-header"
-      className={`${styles.section} w-full xxs:min-h-[214px] md:min-h-[410px] text-center flex flex-col justify-center items-center`}
+      className={`${styles.section} w-full xxs:min-h-[214px] md:min-h-[410px] text-center flex flex-col xx:gap-2 md:gap-4 justify-center items-center`}
     >
       <h1
         className={`${styles} text-white xxs:text-3xl md:text-7xl font-bold text-center`}
