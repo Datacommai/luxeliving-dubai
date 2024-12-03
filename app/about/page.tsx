@@ -12,7 +12,6 @@ export default function About() {
       <Navigation />
       <AboutHeader />
       <AboutUsSection />
-      <AboutPurposeSection />
       <AboutExpertsSection />
       <AboutPurposeSection />
       <TrustedSection />
