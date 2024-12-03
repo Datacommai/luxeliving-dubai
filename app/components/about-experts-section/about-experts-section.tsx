@@ -4,7 +4,7 @@ import styles from "./about-experts-section.module.css";
 export const AboutExpertsSection = () => {
   return (
     <section
-      className={`w-full grid grid-cols-1  md:gap-14 justify-center text-center items-center xxs:py-8 xxs:px-4 xxs:gap-8 bg-[#EFEFEF] md:py-20 md:px-32 ${styles.section}`}
+      className={`w-full grid grid-cols-1  md:gap-14 justify-center text-center items-center xxs:py-8 xxs:px-4 xxs:gap-8 bg-[#EFEFEF] md:py-20 md:px-20 lg:px-32 ${styles.section}`}
     >
       <section
         className={`flex flex-col xxs:gap-2 md:gap-6 ${styles.titleContainer}`}
