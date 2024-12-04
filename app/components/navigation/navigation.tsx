@@ -10,12 +10,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 
 export const Navigation = () => {
- const [activeLink, setActiveLink] = useState<string>('/');
  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-
- const handleLinkClick = (href: string) => {
-  setActiveLink(href);
- };
 
  const toggleMenu = () => {
   setIsMenuOpen(!isMenuOpen);
@@ -35,42 +30,24 @@ export const Navigation = () => {
   <NavigationMenu className="relative h-[104px] xxs:px-3 md:px-5 lg:px-10 xl:px-[132px] xxs:py-4 lg:py-6 w-full border-b-[0.5px] border-white">
    <NavigationMenuItem className="w-full flex justify-between items-center">
     <div className="hidden md:flex w-full justify-between items-center">
-     <ul className="flex gap-5">
-      <Link href="/">
-       <li
-        onClick={() => handleLinkClick('/')}
-        className={`text-lg text-white ${
-         activeLink === '/' ? 'font-bold border-b-2 border-white' : ''
-        }`}>
-        Home
-       </li>
+     <section className="flex gap-5">
+      <Link href="/" className={`text-lg text-white`}>
+       Home
       </Link>
-      <Link href="/about">
-       <li
-        onClick={() => handleLinkClick('/about')}
-        className={`text-lg text-white ${
-         activeLink === '/about' ? 'font-bold border-b-2 border-white' : ''
-        }`}>
-        About
-       </li>
+      <Link href="/about" className={`text-lg text-white`}>
+       About
       </Link>
-      <Link href="/">
-       <li
-        onClick={() => handleLinkClick('/projects')}
-        className={`text-lg text-white ${
-         activeLink === '/projects' ? 'font-bold border-b-2 border-white' : ''
-        }`}>
-        Projects
-       </li>
+      <Link href="/" className={`text-lg text-white `}>
+       Projects
       </Link>
-     </ul>
+     </section>
 
      <Link href="/">
       <Image
        className="xxs:w-[120px] sm:w-[180px] sm:h-auto md:w-[220px] lg:h-[57px]"
        width={220}
        height={57}
-       src="/assets/images/logo.svg"
+       src="/assets/logo/luxeliving-logo.svg"
        alt="logo"
        priority
        blurDataURL="blur"
@@ -98,7 +75,7 @@ export const Navigation = () => {
        className="w-[120px] sm:w-[180px] h-auto"
        width={120}
        height={40}
-       src="/assets/images/logo.svg"
+       src="/assets/logo/luxeliving-logo.svg"
        alt="logo"
        priority
        blurDataURL="blur"
@@ -130,48 +107,17 @@ export const Navigation = () => {
    {/* Mobile Drawer (if menu is open) */}
    {isMenuOpen && (
     <div className="absolute hamburger-menu-bg top-[63px] left-0 w-full h-[257px] bg-opacity-70 backdrop-blur-lg flex flex-col items-start p-5 space-y-5">
-     <ul className="flex flex-col gap-3 w-full">
-      <Link href="/">
-       <li
-        onClick={() => {
-         handleLinkClick('/');
-         setIsMenuOpen(false);
-        }}
-        className={`text-lg text-white ${
-         activeLink === '/' ? 'font-bold border-b-2 border-white w-fit' : ''
-        }`}>
-        Home
-       </li>
+     <section className="flex flex-col gap-3 w-full">
+      <Link onClick={toggleMenu} href="/" className={`text-lg text-white`}>
+       Home
       </Link>
-      <Link href="/about">
-       <li
-        onClick={() => {
-         handleLinkClick('/about');
-         setIsMenuOpen(false);
-        }}
-        className={`text-lg text-white ${
-         activeLink === '/about'
-          ? 'font-bold border-b-2 border-white w-fit'
-          : ''
-        }`}>
-        About
-       </li>
+      <Link onClick={toggleMenu} href="/about" className={`text-lg text-white`}>
+       About
       </Link>
-      <Link href="/">
-       <li
-        onClick={() => {
-         handleLinkClick('/projects');
-         setIsMenuOpen(false);
-        }}
-        className={`text-lg text-white ${
-         activeLink === '/projects'
-          ? 'font-bold border-b-2 border-white w-fit'
-          : ''
-        }`}>
-        Projects
-       </li>
+      <Link onClick={toggleMenu} href="/" className={`text-lg text-white `}>
+       Projects
       </Link>
-     </ul>
+     </section>
 
      <Button className="text-sm font-bold px-10 py-3 bg-[#1E3747] h-[48px] w-[214px] hover:bg-[#2c526a]">
       Contact for booking

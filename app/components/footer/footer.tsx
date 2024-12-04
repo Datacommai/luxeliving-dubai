@@ -28,7 +28,7 @@ export const Footer = () => {
         className="xxs:w-[120px] mb-3 sm:w-[180px] sm:h-auto md:w-[220px] lg:h-[57px]"
         width={220}
         height={57}
-        src="/assets/images/logo.svg"
+        src="/assets/logo/luxeliving-logo.svg"
         alt="logo"
         priority
         blurDataURL="blur"
