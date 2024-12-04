@@ -15,11 +15,10 @@ export default function About() {
       <AboutHeader />
       <AboutUsSection />
       <AboutExpertsSection />
-      <AboutValuesSection />
       <AboutPurposeSection />
       <AboutTeamSection />
+      <AboutValuesSection />
       <TrustedSection />
-
       <Footer />
     </main>
   );
