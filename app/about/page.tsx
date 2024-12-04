@@ -7,7 +7,6 @@ import { AboutExpertsSection } from '../components/about-experts-section/about-e
 import { AboutPurposeSection } from '../components/about-purpose-section/about-purpose-section';
 import { AboutFeaturedDevelopmentSection } from '../components/about-featured-development-section/about-featured-development-section';
 import { AboutValuesSection } from '../components/about-values-section/about-values-section';
-import { AboutPurposeSection } from '../components/about-purpose-section/about-purpose-section';
 
 export default function About() {
  return (
