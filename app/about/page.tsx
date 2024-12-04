@@ -6,6 +6,8 @@ import { AboutUsSection } from '../components/about-us-section/about-us-section'
 import { AboutExpertsSection } from '../components/about-experts-section/about-experts-section';
 import { AboutPurposeSection } from '../components/about-purpose-section/about-purpose-section';
 import { AboutFeaturedDevelopmentSection } from '../components/about-featured-development-section/about-featured-development-section';
+import { AboutValuesSection } from '../components/about-values-section/about-values-section';
+import { AboutPurposeSection } from '../components/about-purpose-section/about-purpose-section';
 
 export default function About() {
  return (
@@ -16,6 +18,7 @@ export default function About() {
    <AboutExpertsSection />
    <AboutPurposeSection />
    <AboutFeaturedDevelopmentSection />
+   <AboutValuesSection />
    <TrustedSection />
    <Footer />
   </main>
