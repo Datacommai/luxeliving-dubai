@@ -5,6 +5,7 @@ import { AboutHeader } from "../components/about-header/about-header";
 import { AboutUsSection } from "../components/about-us-section/about-us-section";
 import { AboutTeamSection } from "../components/about-team-section/about-team-section";
 import { AboutExpertsSection } from "../components/about-experts-section/about-experts-section";
+import { AboutPurposeSection } from "../components/about-purpose-section/about-purpose-section";
 
 export default function About() {
   return (
@@ -12,9 +13,10 @@ export default function About() {
       <Navigation />
       <AboutHeader />
       <AboutUsSection />
-      <TrustedSection />
       <AboutExpertsSection />
       <AboutTeamSection />
+      <AboutPurposeSection />
+      <TrustedSection />
       <Footer />
     </main>
   );
