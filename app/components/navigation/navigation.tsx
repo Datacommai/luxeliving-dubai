@@ -12,7 +12,6 @@ import { Button } from '@/components/ui/button';
 export const Navigation = () => {
  const [activeLink, setActiveLink] = useState<string>('/');
  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
- const [isMobile, setIsMobile] = useState<boolean>(false);
 
  const handleLinkClick = (href: string) => {
   setActiveLink(href);
@@ -23,12 +22,7 @@ export const Navigation = () => {
  };
 
  useEffect(() => {
-  const handleResize = () => {
-   setIsMobile(window.innerWidth < 768);
-   if (window.innerWidth >= 768) {
-    setIsMenuOpen(false);
-   }
-  };
+  const handleResize = () => {};
 
   window.addEventListener('resize', handleResize);
 
