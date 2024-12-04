@@ -3,10 +3,10 @@ import { Navigation } from "../components/navigation/navigation";
 import { TrustedSection } from "../components/trusted-section/trusted-section";
 import { AboutHeader } from "../components/about-header/about-header";
 import { AboutUsSection } from "../components/about-us-section/about-us-section";
-import { AboutValuesSection } from "../components/about-values-section/about-values-section";
-import { AboutTeamSection } from "../components/about-team-section/about-team-section";
 import { AboutExpertsSection } from "../components/about-experts-section/about-experts-section";
+import { AboutValuesSection } from "../components/about-values-section/about-values-section";
 import { AboutPurposeSection } from "../components/about-purpose-section/about-purpose-section";
+import { AboutTeamSection } from "../components/about-team-section/about-team-section";
 
 export default function About() {
   return (
@@ -16,6 +16,7 @@ export default function About() {
       <AboutUsSection />
       <AboutExpertsSection />
       <AboutPurposeSection />
+      <AboutFeaturedDevelopmentSection />
       <AboutTeamSection />
       <AboutValuesSection />
       <TrustedSection />
