@@ -1,26 +1,27 @@
-import { Footer } from "../components/footer/footer";
-import { Navigation } from "../components/navigation/navigation";
-import { TrustedSection } from "../components/trusted-section/trusted-section";
-import { AboutHeader } from "../components/about-header/about-header";
-import { AboutUsSection } from "../components/about-us-section/about-us-section";
-import { AboutExpertsSection } from "../components/about-experts-section/about-experts-section";
-import { AboutValuesSection } from "../components/about-values-section/about-values-section";
-import { AboutPurposeSection } from "../components/about-purpose-section/about-purpose-section";
-import { AboutTeamSection } from "../components/about-team-section/about-team-section";
+import { Footer } from '../components/footer/footer';
+import { Navigation } from '../components/navigation/navigation';
+import { TrustedSection } from '../components/trusted-section/trusted-section';
+import { AboutHeader } from '../components/about-header/about-header';
+import { AboutUsSection } from '../components/about-us-section/about-us-section';
+import { AboutExpertsSection } from '../components/about-experts-section/about-experts-section';
+import { AboutValuesSection } from '../components/about-values-section/about-values-section';
+import { AboutPurposeSection } from '../components/about-purpose-section/about-purpose-section';
+import { AboutTeamSection } from '../components/about-team-section/about-team-section';
+import { AboutFeaturedDevelopmentSection } from '../components/about-featured-development-section/about-featured-development-section';
 
 export default function About() {
-  return (
-    <main className="flex flex-col justify-center items-center">
-      <Navigation />
-      <AboutHeader />
-      <AboutUsSection />
-      <AboutExpertsSection />
-      <AboutPurposeSection />
-      <AboutFeaturedDevelopmentSection />
-      <AboutTeamSection />
-      <AboutValuesSection />
-      <TrustedSection />
-      <Footer />
-    </main>
-  );
+ return (
+  <main className="flex flex-col justify-center items-center">
+   <Navigation />
+   <AboutHeader />
+   <AboutUsSection />
+   <AboutExpertsSection />
+   <AboutPurposeSection />
+   <AboutFeaturedDevelopmentSection />
+   <AboutTeamSection />
+   <AboutValuesSection />
+   <TrustedSection />
+   <Footer />
+  </main>
+ );
 }
