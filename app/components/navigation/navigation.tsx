@@ -16,7 +16,7 @@ type NavigationProps = {
 export const Navigation = (props: NavigationProps) => {
   const { hideLinks } = props;
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [, setIsMobile] = useState<boolean>(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -24,15 +24,15 @@ export const Navigation = (props: NavigationProps) => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // Detect mobile view based on width
+      setIsMobile(window.innerWidth < 768);
       if (window.innerWidth >= 768) {
-        setIsMenuOpen(false); // Close the menu when switching to desktop view
+        setIsMenuOpen(false);
       }
     };
 
     window.addEventListener("resize", handleResize);
 
-    handleResize(); // Initial check
+    handleResize();
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -40,7 +40,6 @@ export const Navigation = (props: NavigationProps) => {
   return (
     <NavigationMenu className="relative h-[104px] xxs:px-3 md:px-5 lg:px-10 xl:px-[132px] xxs:py-4 lg:py-6 w-full border-b-[0.5px] border-white">
       <NavigationMenuItem className="w-full flex justify-between items-center">
-        {/* Desktop Navigation */}
         <div className="hidden md:flex w-full justify-between items-center">
           {!hideLinks && (
             <section className="flex gap-5">
