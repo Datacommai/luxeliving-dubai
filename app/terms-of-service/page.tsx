@@ -1,5 +1,6 @@
 import { Footer } from "../components/footer/footer";
 import { Separator } from "@/components/ui/separator";
+import { Navigation } from "../components/navigation/navigation";
 
 import Link from "next/link";
 
@@ -13,9 +14,10 @@ export default function TermsOfUse() {
 
   return (
     <main className="h-full">
-      <section className="lg:px-20">
+      <Navigation hideLinks={true} />
+      <section className="lg:px-20 md:px-10 xxs:py-5 md:py-10 ">
         <section className="mx-12 my-2">
-          <h2 className="text-black mb-5 font-bold xs:text-xl md:text-2xl xs:leading-tight md:leading-tight">
+          <h2 className="text-black xxs:mb-5 lg:my-10 font-bold xs:text-xl md:text-2xl xs:leading-tight md:leading-tight">
             Terms of Use
           </h2>
           <p className="my-2 font-medium xs:text-sm md:text-lg">
