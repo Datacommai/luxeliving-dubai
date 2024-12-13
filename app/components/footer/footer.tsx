@@ -11,9 +11,9 @@ export const Footer = () => {
             <Link href="/">
               <li className="text-lg text-white">Home</li>
             </Link>
-            <Link href="/">
+            {/*  <Link href="/">
               <li className="text-lg text-white">Projects</li>
-            </Link>
+            </Link> */}
             <Link href="/about">
               <li className="text-lg text-white">About us</li>
             </Link>
