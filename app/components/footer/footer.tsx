@@ -118,7 +118,10 @@ export const Footer = () => {
           AZ00.Inc. All rights reserved.
         </p>
         <span className="flex gap-8">
-          <Link className=" xxs:text-xs md-text-base text-white" href="/">
+          <Link
+            className=" xxs:text-xs md-text-base text-white"
+            href="/terms-of-service"
+          >
             Terms of use
           </Link>
           <Link
