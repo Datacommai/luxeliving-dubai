@@ -1,5 +1,5 @@
 import { Footer } from "../components/footer/footer";
-import { Separator } from "@/components/ui/separator";
+
 import { Navigation } from "../components/navigation/navigation";
 
 import Link from "next/link";
@@ -17,67 +17,63 @@ export default function TermsOfUse() {
       <Navigation hideLinks={true} />
       <section className="lg:px-20 md:px-10 xxs:py-5 md:py-10 ">
         <section className="mx-12 my-2">
-          <h2 className="text-black xxs:mb-5 lg:my-10 font-bold xs:text-xl md:text-2xl xs:leading-tight md:leading-tight">
+          <h2 className="text-black xxs:mb-5 lg:my-10 font-bold xxs:text-xl md:text-2xl xxs:leading-tight md:leading-tight">
             Terms of Use
           </h2>
-          <p className="my-2 font-medium xs:text-sm md:text-lg">
+          <p className="my-2 font-medium xxs:text-sm md:text-lg">
             Legal Disclaimer
           </p>
-          <article className="my-5 xs:text-sm md:text-lg">
+          <article className="my-5 xxs:text-sm md:text-lg">
             These Terms and Conditions ("Terms") govern your access and use of
             LuxeLivingDubai's website ("Website"). By using this Website, you
             agree to comply with and be bound by these Terms. If you do not
             agree to these Terms, please do not use this Website
           </article>
         </section>
-        <Separator />
 
         <section className="mx-12 my-2">
-          <p className="my-2 font-medium xs:text-sm md:text-lg">
+          <p className="text-black font-medium xxs:text-xl md:text-2xl xxs:leading-tight md:leading-tight">
             1. Copyright Notice
           </p>
 
-          <article className="my-5 xs:text-sm md:text-lg">
+          <article className="my-5 xxs:text-sm md:text-lg">
             All content, including but not limited to text, images, graphics,
             layout, and design, is the property of [Your Business Name] and is
             protected under copyright laws. Unauthorized reproduction,
             distribution, or modification of any material on this Website is
             strictly prohibited.
           </article>
-          <p className="my-2 font-medium xs:text-sm md:text-lg">
+          <p className="my-2 mb-4 font-normal xxs:text-sm md:text-lg">
             Copyright &copy; LuxeLivingDubai {new Date().getFullYear()}, All
             Rights Reserved.
           </p>
         </section>
-        <Separator />
 
         <section className="mx-12 my-2">
-          <p className="my-2 font-medium xs:text-sm md:text-lg">
+          <p className="text-black font-medium xxs:text-xl md:text-2xl xxs:leading-tight md:leading-tight">
             2. Trademarks
           </p>
-          <article className="my-5 xs:text-sm md:text-lg">
+          <article className="my-5 xxs:text-sm md:text-lg">
             All trademarks, logos, and service marks displayed on this Website
             are the property of LuxeLivingDubai or its affiliates unless
             otherwise stated. Unauthorized use of these trademarks is
             prohibited.
           </article>
         </section>
-        <Separator />
 
         <section className="mx-12 my-2">
-          <p className="my-2 font-medium xs:text-sm md:text-lg">
+          <p className="text-black font-medium xxs:text-xl md:text-2xl xxs:leading-tight md:leading-tight">
             3. Acceptance of Terms
           </p>
-          <article className="my-5 xs:text-sm md:text-lg">
+          <article className="my-5 xxs:text-sm md:text-lg">
             By accessing this Website, you acknowledge and accept these Terms.
             Your continued use of this Website constitutes your agreement to
             these Terms and any future updates or modifications.
           </article>
         </section>
-        <Separator />
 
         <section className="mx-12 my-2">
-          <p className="my-2 font-medium xs:text-sm md:text-lg">
+          <p className="text-black font-medium xxs:text-xl md:text-2xl xxs:leading-tight md:leading-tight">
             4. Use of Information and Materials
           </p>
           <ol className="space-y-2 my-5 font-light">
@@ -97,21 +93,20 @@ export default function TermsOfUse() {
             </li>
           </ol>
         </section>
-        <Separator />
 
         <section className="mx-12 my-2">
-          <p className="my-2 font-medium xs:text-sm md:text-lg">
+          <p className="text-black font-medium xxs:text-xl md:text-2xl xxs:leading-tight md:leading-tight">
             5. No Warranty
           </p>
 
-          <article className="my-5 xs:text-sm md:text-lg">
+          <article className="my-5 xxs:text-sm md:text-lg">
             LuxeLivingDubai strives to ensure that the information provided on
             this Website is accurate and up-to-date. However, we make no
             guarantees or warranties, express or implied, regarding the
             accuracy, completeness, reliability, or availability of any content,
             services, or products provided.
             <br />
-            <span className="font-medium xs:text-sm md:text-lg">
+            <span className="font-medium xxs:text-sm md:text-lg">
               Disclaimer:{" "}
             </span>{" "}
             This Website should not be considered a substitute for professional
@@ -119,13 +114,12 @@ export default function TermsOfUse() {
             information provided at their own risk.
           </article>
         </section>
-        <Separator />
 
         <section className="mx-12 my-2">
-          <p className="my-2 font-medium xs:text-sm md:text-lg">
+          <p className="text-black font-medium xxs:text-xl md:text-2xl xxs:leading-tight md:leading-tight">
             6. Limitation of Liability
           </p>
-          <article className="my-5 xs:text-sm md:text-lg">
+          <article className="my-5 xxs:text-sm md:text-lg">
             Under no circumstances shall LuxeLivingDubai or its affiliates,
             employees, or directors be held liable for any direct, indirect,
             incidental, or consequential damages arising from:
@@ -139,19 +133,18 @@ export default function TermsOfUse() {
               - Computer viruses or technical failures impacting the Website.
             </li>
           </ol>
-          <article className="my-5 xs:text-sm md:text-lg">
+          <article className="my-5 xxs:text-sm md:text-lg">
             This limitation of liability applies to the fullest extent permitted
             by applicable law.
           </article>
         </section>
-        <Separator />
 
         <section className="mx-12 my-2">
-          <p className="my-2 font-medium xs:text-sm md:text-lg">
+          <p className="text-black font-medium xxs:text-xl md:text-2xl xxs:leading-tight md:leading-tight">
             7. User Submissions
           </p>
 
-          <article className="my-5 xs:text-sm md:text-lg">
+          <article className="my-5 xxs:text-sm md:text-lg">
             Any information submitted by users through this Website becomes the
             property of LuxeLivingDubai. By submitting content, you grant
             LuxeLivingDubai a non-exclusive, royalty-free, perpetual, and
@@ -159,46 +152,43 @@ export default function TermsOfUse() {
             for any purpose.
             <br />
             We will handle sensitive personal information in accordance with our{" "}
-            <span className="font-semibold xs:text-sm md:text-lg">
+            <span className="font-semibold xxs:text-sm md:text-lg">
               Privacy Policy
             </span>{" "}
             and applicable laws.
           </article>
         </section>
-        <Separator />
 
         <section className="mx-12 my-2">
-          <p className="my-2 font-medium xs:text-sm md:text-lg">
+          <p className="text-black font-medium xxs:text-xl md:text-2xl xxs:leading-tight md:leading-tight">
             8. Modifications to Terms
           </p>
 
-          <article className="my-5 xs:text-sm md:text-lg">
+          <article className="my-5 xxs:text-sm md:text-lg">
             LuxeLivingDubai reserves the right to modify, update, or replace
             these Terms at any time without prior notice. Users are encouraged
             to review these Terms regularly. Continued use of the Website
             constitutes acceptance of any changes.
           </article>
         </section>
-        <Separator />
 
         <section className="mx-12 my-2">
-          <p className="my-2 font-medium xs:text-sm md:text-lg">
+          <p className="text-black font-medium xxs:text-xl md:text-2xl xxs:leading-tight md:leading-tight">
             9. Governing Law and Jurisdiction
           </p>
 
-          <article className="my-5 xs:text-sm md:text-lg">
+          <article className="my-5 xxs:text-sm md:text-lg">
             These Terms are governed by the laws of the United Arab Emirates
             (UAE). Any disputes arising from the use of this Website shall be
             subject to the exclusive jurisdiction of the courts in Dubai.
           </article>
         </section>
-        <Separator />
 
         <section className="mx-12 my-8">
-          <p className="my-2 font-medium xs:text-sm md:text-lg">
+          <p className="text-black font-medium xxs:text-xl md:text-2xl xxs:leading-tight md:leading-tight">
             10. Contact Information
           </p>
-          <article className="my-5  xs:text-sm md:text-lg">
+          <article className="my-5 xxs:text-sm md:text-lg">
             If you have any questions or concerns about these Terms or the
             Website, please contact us at:
             <Link
@@ -211,7 +201,7 @@ export default function TermsOfUse() {
         </section>
 
         <section className="mx-12 my-4">
-          <p className="my-2 font-medium xs:text-sm md:text-lg">
+          <p className="my-2 font-medium xxs:text-sm md:text-lg">
             Last Updated: {formattedDate}
           </p>
         </section>
