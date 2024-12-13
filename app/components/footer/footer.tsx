@@ -124,7 +124,10 @@ export const Footer = () => {
           >
             Terms of use
           </Link>
-          <Link className=" xxs:text-xs md-text-base text-white" href="/">
+          <Link
+            className=" xxs:text-xs md-text-base text-white"
+            href="/privacy-policy"
+          >
             Privacy Policy
           </Link>
         </span>
