@@ -49,9 +49,9 @@ export const Navigation = (props: NavigationProps) => {
               <Link href="/about" className={`text-lg text-white`}>
                 About
               </Link>
-              <Link href="/" className={`text-lg text-white `}>
+              {/* <Link href="/" className={`text-lg text-white `}>
                 Projects
-              </Link>
+              </Link> */}
             </section>
           )}
 
@@ -149,13 +149,13 @@ export const Navigation = (props: NavigationProps) => {
             >
               About
             </Link>
-            <Link
+            {/*   <Link
               onClick={toggleMenu}
               href="/"
               className={`text-lg text-white `}
             >
               Projects
-            </Link>
+            </Link> */}
           </section>
 
           <Button className="text-sm font-bold px-10 py-3 bg-[#1E3747] h-[48px] w-[214px] hover:bg-[#2c526a]">
