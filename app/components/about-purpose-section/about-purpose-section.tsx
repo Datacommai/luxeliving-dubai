@@ -49,8 +49,8 @@ export const AboutPurposeSection = () => {
      <CardContent className="flex flex-col justify-center items-center lg:gap-4 gap-2 w-full h-fit">
       <CardDescription className="text-base text-[#616161] text-wrap text-clip">
        Our vision is to redefine real estate in Dubai by creating sustainable,
-       innovative, and luxurious living spaces that reflect the city's dynamic
-       growth and vibrant culture.
+       innovative, and luxurious living spaces that reflect the city&apos;s
+       dynamic growth and vibrant culture.
       </CardDescription>
       <CardFooter className="text-[#333333] text-balance tracking-widest text-center">
        <Link className="flex items-center gap-2" href="/">
