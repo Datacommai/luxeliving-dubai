@@ -1,24 +1,13 @@
 'use client';
 import { PropertySelection } from '../property-selection/property-selection';
 import { IconButton } from '../buttons/icon-button';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { openLink } from '@/lib/utils';
 
 export const HeroSection = () => {
  const [isMobile, setIsMobile] = useState<boolean>(false);
- const [isPaused, setIsPaused] = useState<boolean>(false);
- const videoRef = useRef(null);
 
  useEffect(() => {
-  if (videoRef.current) {
-   const videoElement = videoRef.current as HTMLVideoElement;
-   if (isPaused) {
-    videoElement.pause();
-   } else {
-    videoElement.play();
-   }
-  }
-
   const handleResize = () => {
    setIsMobile(window.innerWidth < 768);
   };
@@ -28,21 +17,18 @@ export const HeroSection = () => {
   handleResize();
 
   return () => window.removeEventListener('resize', handleResize);
- }, [isPaused]);
-
- const onPlayButtonClicked = () => {
-  setIsPaused(!isPaused);
- };
+ }, []);
 
  return (
   <section className="relative w-full">
    <video
-    ref={videoRef}
     className="w-full"
     preload="metadata"
+    playsInline
     autoPlay
     muted
-    loop>
+    loop
+    controls={false}>
     <source src="/assets/videos/hero.mp4#t=0.001" type="video/mp4" />
     Your browser does not support the video tag.
    </video>
@@ -52,19 +38,7 @@ export const HeroSection = () => {
     text-center drop-shadow-sm text-white font-bold pointer-events-auto">
      All homes are for a lifetime. <br /> This one is once in a lifetime.
     </h1>
-    <div className="lg:block lg:top-0 xxs:relative xs:relative xxs:bottom-0 xs:top-24">
-     <IconButton
-      icon={
-       !isPaused
-        ? '/assets/icons/play_circle_filled.svg'
-        : '/assets/icons/pause-icon.svg'
-      }
-      description="play"
-      width={isMobile ? 80 : 120}
-      height={isMobile ? 80 : 120}
-      onClick={onPlayButtonClicked}
-     />
-    </div>
+    <div className="lg:block lg:top-0 xxs:relative xs:relative xxs:bottom-0 xs:top-24"></div>
     <section className="lg:flex lg:flex-col xs:grid xs:grid-cols-1 xxs:grid xxs:grid-cols-1 gap-3 items-center">
      <div className="bg-white w-1 h-20 lg:block xs:hidden xxs:hidden"></div>
      {!isMobile && (
