@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Suspense, useEffect, useState } from "react";
 import { mockFetchPropertyAmenitiesData } from "@/lib/mock-server/mockFetchProperyAmenitiesData";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Separator } from "@/components/ui/separator";
 
 export default function PropertyAmenitiesWithDelay() {
   const [data, setData] = useState<PropertyAmenitiesProps[] | null>(null);
@@ -16,8 +15,6 @@ export default function PropertyAmenitiesWithDelay() {
       setLoading(false);
     });
   }, []);
-
-  if (!data && !loading) return null;
 
   return (
     <Suspense fallback={<PropertyAmenitiesSkeleton />}>
@@ -125,24 +122,19 @@ function PropertyAmenities({
             <div
               key={index}
               className={`
-              
-
-
-           
-            ${
-              index >= amenities.length - 1
-                ? "col-span-2 pl-5  border-l-[0px] border-b-[0px]"
-                : ""
-            }
-            ${index >= amenities.length - 4 ? " border-r-[0px]" : ""}
+          
+            ${index >= amenities.length - 4 ? " border-r-transparent " : ""}
             ${index >= amenities.length - 2 ? "border-l-[1px] -ml-[1px]" : ""}
             ${
               index >= amenities.length - 5
                 ? "border-r-[1px] border-b-[1px] xxs:p-6 md:p-8 border-[#C1C1C1]"
                 : ""
             }
-           
-          
+            ${
+              index >= amenities.length - 1
+                ? "col-span-2 pl-5  border-l-transparent border-b-transparent border-r-transparent border-b-[0px]"
+                : ""
+            }
           `}
             >
               <AmenityItem
