@@ -132,7 +132,7 @@ function AmenityItem({
 
   return (
     <div className="flex flex-col items-center text-center space-y-2">
-      <div className=" border-[1px] p-6 rounded-full  border-[#333333] border-solid">
+      <div className="border-[1px] xxs:p-4 lg:p-6 rounded-full  border-[#333333] border-solid">
         <Image
           className="xxs:w-6 xxs:h-6 lg:w-10 lg:h-10"
           width={40}
