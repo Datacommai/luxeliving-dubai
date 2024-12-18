@@ -4,7 +4,7 @@ import { Suspense, useEffect, useState } from "react";
 import { mockFetchPropertyHeroData } from "@/lib/mock-server/mockFetchProperyHeroData";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
-import { PrimaryButton } from "@/app/ui/primary-button";
+import { PrimaryButton } from "@/app/components/buttons/primary-button";
 
 // mock fetch with delay
 export default function PropertyListingHeroWithDelay() {
@@ -33,10 +33,10 @@ function PropertyHeroSkeleton() {
   return (
     <div className="w-full py-10 px-4 flex flex-col justify-center items-center">
       {/* Parent Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl items-center">
+      <div className="grid grid-cols-1 w-full lg:grid-cols-2 gap-8 max-w-7xl items-center">
         {/* Left Side - Image Skeleton */}
-        <div className="w-full xl:w-[632px] xl:h-[356px]">
-          <Skeleton className="h-[356px] w-full rounded-lg" />
+        <div className="w-full lg:w-[472px] lg:h-[326px] xl:w-[632px] xl:h-[356px]">
+          <Skeleton className="lg:h-[356px] xxs:h-[180px] md:h-[415px] w-full rounded-lg" />
         </div>
 
         {/* Right Side - Content Skeleton */}
@@ -52,15 +52,20 @@ function PropertyHeroSkeleton() {
           </div>
 
           {/* Button Skeleton */}
-          <Skeleton className="h-[48px] w-[214px] rounded-md" />
+          <Skeleton className="h-[48px] w-full lg:w-[214px] rounded-md" />
 
           {/* Details Grid Skeleton */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6">
+          <div className="grid grid-cols-3 pt-6 md: justify-center xxs:justify-center lg:justify-items-start xxs:justify-items-center items-center">
             {[1, 2, 3].map((_, index) => (
-              <div key={index} className="flex flex-col items-center space-y-2">
+              <div
+                key={index}
+                className="grid grid-cols-2 space-x-0 items-center w-fit gap-2 space-y-2"
+              >
                 <Skeleton className="h-10 w-10 rounded-full" />
-                <Skeleton className="h-4 w-[60%] rounded-md" />
-                <Skeleton className="h-3 w-[40%] rounded-md" />
+                <span className="flex w-full flex-col gap-2">
+                  <Skeleton className="h-4 w-10 rounded-md" />
+                  <Skeleton className="h-3 rounded-md" />
+                </span>
               </div>
             ))}
           </div>
@@ -68,7 +73,9 @@ function PropertyHeroSkeleton() {
       </div>
 
       {/* Sub Description Skeleton */}
-      <div className="my-12 w-[calc(100%-25%)]">
+      <div className="my-12 w-full grid grid-cols-1 items-start gap-3">
+        <Skeleton className="h-4 w-full rounded-md" />
+        <Skeleton className="h-4 w-full rounded-md" />
         <Skeleton className="h-4 w-full rounded-md" />
       </div>
 

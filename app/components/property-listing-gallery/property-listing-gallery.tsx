@@ -32,7 +32,10 @@ function PropertyGallerySkeleton({ count }: { count: number }) {
   return (
     <div className="w-full py-10 px-4 xxs:grid xxs:grid-cols-2 grid-flow-col md:flex flex gap-2 justify-center items-center">
       {Array.from({ length: count }).map((_, index) => (
-        <Skeleton key={index} className="h-[356px] w-full rounded-lg" />
+        <Skeleton
+          key={index}
+          className="lg:h-[356px] md:h-[217px] xxs:h-[139px] w-full rounded-lg"
+        />
       ))}
     </div>
   );
