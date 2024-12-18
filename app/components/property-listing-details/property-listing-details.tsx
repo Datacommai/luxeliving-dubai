@@ -139,20 +139,21 @@ function PropertyListingDetails(props: PropertyListingDetailsProps) {
         <div className="flex flex-col md:justify-center gap-4 xxs:order-4  lg:justify-between">
           <p className="text-gray-600 leading-relaxed">{descriptionTwo}</p>
           <span className="xxs:flex-col flex gap-3 w-full lg:flex-row ">
-            {bookShowingUrl && (
-              <Button
-                rel="noopener noreferrer"
-                className="text-sm font-semibold px-8 py-3 bg-[#1E3747] text-white lg:h-[52px] lg:w-[322px] xxs:h-[48px] xxs:w-full hover:bg-[#2c526a] rounded-md"
-              >
-                Download free PDF brochure
-              </Button>
-            )}
             {requestPricing && (
               <Button
                 rel="noopener noreferrer"
                 className="text-sm font-semibold px-8 py-3 text-[#1E3747] border-[#1E3747] border-[1px] lg:h-[52px] lg:w-[322px] xxs:h-[48px] xxs:w-full bg-transparent hover:bg-[#aebfca] rounded-md"
               >
                 Request Available Units & Prices
+              </Button>
+            )}
+
+            {bookShowingUrl && (
+              <Button
+                rel="noopener noreferrer"
+                className="text-sm font-semibold px-8 py-3 bg-[#1E3747] text-white lg:h-[52px] lg:w-[200px] xxs:h-[48px] xxs:w-full hover:bg-[#2c526a] rounded-md"
+              >
+                Book a Showing
               </Button>
             )}
           </span>
