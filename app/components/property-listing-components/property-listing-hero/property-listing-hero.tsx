@@ -185,7 +185,7 @@ function PropertyListingHero(props: PropertyListingHeroProps) {
       {pdfUrl && (
         <Button
           rel="noopener noreferrer"
-          className="text-sm font-semibold px-8 py-3 bg-[#1E3747] text-white h-[48px] w-[214px] hover:bg-[#2c526a] rounded-md"
+          className="text-sm font-semibold px-8 py-3 bg-[#1E3747] text-white lg:h-[52px] lg:w-[322px]  xxs:h-[48px] xxs:w-[266px] hover:bg-[#2c526a] rounded-md"
         >
           Download free PDF brochure
         </Button>

@@ -27,7 +27,6 @@ export default function PropertyListingGalleryWithDelay() {
   );
 }
 
-// Skeleton Component
 function PropertyGallerySkeleton({ count }: { count: number }) {
   return (
     <div className="w-full py-10 px-4 xxs:grid xxs:grid-cols-2 grid-flow-col md:flex flex gap-2 justify-center items-center">
@@ -48,6 +47,10 @@ export type PropertyListingGalleryProps = {
 
 // Main Gallery Component
 function PropertyListingGallery({ imageUrls }: PropertyListingGalleryProps) {
+  if (!imageUrls || imageUrls.length === 0) {
+    return <></>;
+  }
+
   return (
     <section className="w-full xxs:py-8 md:py-10 lg:py-14 flex flex-col justify-center items-center">
       <div className="grid grid-cols-2 md:grid-cols-3 xxs:gap-3 md:gap-6 justify-items-center items-center">
@@ -76,5 +79,3 @@ function PropertyListingGallery({ imageUrls }: PropertyListingGalleryProps) {
     </section>
   );
 }
-
-// Parent Component with Data Fetching
