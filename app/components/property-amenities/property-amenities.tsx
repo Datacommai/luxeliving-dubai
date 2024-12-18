@@ -70,12 +70,35 @@ function PropertyAmenities({
   if (!amenities || amenities.length === 0) return null;
 
   return (
-    <section className="w-full xxs:p-10 lg:py-20 px-4 lg:px-18 xl:px-32 flex flex-col justify-center bg-[#EFEFEF] items-center">
+    <section className="w-full xxs:p-10 lg:py-20 relative 2xl:px-56 lg:px-18 xl:px-40 flex flex-col justify-center bg-[#EFEFEF] items-center">
+      <svg
+        className="absolute xxs:hidden lg:block p-0 w-full"
+        width="1800"
+        height="418"
+        viewBox="0 0 1036 418"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M315.261 209.004V1.0044"
+          stroke="#C1C1C1"
+          strokeLinecap="round"
+        />
+        <path d="M735 209V1" stroke="#C1C1C1" strokeLinecap="round" />
+        <path d="M533 417V209" stroke="#C1C1C1" strokeLinecap="round" />
+        <path d="M1 209H1035" stroke="#C1C1C1" strokeLinecap="round" />
+      </svg>
       <div className="grid grid-cols-1 md:grid-cols-1 gap-10 w-full">
         {/* Large screens (lg and above): First row renders 0-3, second row renders 3-5 */}
-        <div className="hidden lg:grid lg:grid-cols-3 lg:gap-10 lg:w-full">
+        <div className="hidden lg:grid lg:grid-cols-3 lg:gap-10 lg:w-full relative">
+          {/* SVG Background */}
+
+          {/* Render Amenities Items */}
           {amenities.slice(0, 3).map((amenity, index) => (
-            <div key={index}>
+            <div
+              key={index}
+              className="relative flex flex-col items-center space-y-4 z-10"
+            >
               <AmenityItem
                 amenityIconUrl={amenity.icon}
                 amenityTitle={amenity.title}
@@ -83,7 +106,7 @@ function PropertyAmenities({
               />
             </div>
           ))}
-          <div className="lg:col-span-3 grid md:grid-cols-2 gap-10">
+          <div className="lg:col-span-3 mt-2 grid md:grid-cols-2 gap-10 z-10">
             {amenities.slice(3, 5).map((amenity, index) => (
               <div key={index}>
                 <AmenityItem
@@ -97,12 +120,29 @@ function PropertyAmenities({
         </div>
 
         {/* Extra small screens (xxs and below lg): Render all items 0-5 in a single column */}
-        <div className="lg:hidden grid grid-cols-2 gap-10">
+        <div className="lg:hidden grid grid-cols-2 ">
           {amenities.slice(0, 5).map((amenity, index) => (
             <div
               key={index}
               className={`
-            ${index >= amenities.length - 1 ? "col-span-2" : ""}
+              
+
+
+           
+            ${
+              index >= amenities.length - 1
+                ? "col-span-2 pl-5  border-l-[0px] border-b-[0px]"
+                : ""
+            }
+            ${index >= amenities.length - 4 ? " border-r-[0px]" : ""}
+            ${index >= amenities.length - 2 ? "border-l-[1px] -ml-[1px]" : ""}
+            ${
+              index >= amenities.length - 5
+                ? "border-r-[1px] border-b-[1px] xxs:p-6 md:p-8 border-[#C1C1C1]"
+                : ""
+            }
+           
+          
           `}
             >
               <AmenityItem
@@ -141,10 +181,10 @@ function AmenityItem({
           alt={amenityTitle || "Amenity"}
         />
       </div>
-      <span className="xxs:text-base lg:text-2xl font-medium text-gray-800">
+      <span className="xxs:text-base lg:text-2xl  font-medium text-gray-800">
         {amenityTitle}
       </span>
-      <span className="xxs:text-xs lg:text-lg text-gray-500">
+      <span className="xxs:text-xs lg:text-lg w-4/6 text-gray-500">
         {amenityDescription}
       </span>
     </div>
