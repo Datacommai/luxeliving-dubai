@@ -3,6 +3,7 @@ import PropertyListingHeroWithDelay from "../components/property-listing-compone
 import { FeatureEnabled } from "../feature-enabled/feature-enabled";
 import PropertyListingGalleryWithDelay from "../components/property-listing-gallery/property-listing-gallery";
 import PropertyListingDetailsWithDelay from "../components/property-listing-details/property-listing-details";
+import PropertyAmenitiesWithDelay from "../components/property-amenities/property-amenities";
 
 export default function MockPropertyListing() {
   return (
@@ -12,6 +13,7 @@ export default function MockPropertyListing() {
         <PropertyListingHeroWithDelay />
         <PropertyListingGalleryWithDelay />
         <PropertyListingDetailsWithDelay />
+        <PropertyAmenitiesWithDelay />
       </main>
     </FeatureEnabled>
   );
