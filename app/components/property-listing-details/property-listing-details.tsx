@@ -99,7 +99,7 @@ function PropertyListingDetails(props: PropertyListingDetailsProps) {
   } = props;
 
   return (
-    <section className="w-full 2xl:px-28 xxs:px-4 xxs:py-8 md:py-14 lg:py-20 md:px-10 lg:px-6 xl:px-16 flex flex-col justify-center items-center">
+    <section className="w-full xxs:gap-8 md:gap-10 2xl:px-28 xxs:px-4 xxs:py-8 md:py-14 lg:py-20 md:px-10 lg:px-6 xl:px-10 flex flex-col justify-center items-center">
       <section className="flex flex-col justify-center text-center xxs:gap-3 md:gap-6">
         <span
           className={`flex justify-center items-center xxs:gap-2 md:gap-6 ${styles.separatorContainer}`}
@@ -123,7 +123,7 @@ function PropertyListingDetails(props: PropertyListingDetailsProps) {
         </p>
       </section>
 
-      <section className="lg:grid xxs:flex flex-col lg:grid-cols-2 gap-4 mt-10">
+      <section className="lg:grid xxs:flex flex-col lg:grid-cols-2 xxs:gap-8 lg:gap-10 mt-10">
         <div className="w-full md:w-full md:h-full xl:w-[632px] xl:h-[356px] 2xl:w-full 2xl:h-full">
           <Image
             alt={title}
@@ -135,28 +135,34 @@ function PropertyListingDetails(props: PropertyListingDetailsProps) {
           />
         </div>
 
-        <p className="text-gray-600 leading-relaxed">{descriptionOne}</p>
-        <div className="flex flex-col md:justify-center gap-4 xxs:order-4  lg:justify-between">
-          <p className="text-gray-600 leading-relaxed">{descriptionTwo}</p>
-          <span className="xxs:flex-col flex gap-3 w-full lg:flex-row ">
-            {requestPricing && (
-              <Button
-                rel="noopener noreferrer"
-                className="text-sm font-semibold px-8 py-3 text-[#1E3747] border-[#1E3747] border-[1px] lg:h-[52px] lg:w-[322px] xxs:h-[48px] xxs:w-full bg-transparent hover:bg-[#aebfca] rounded-md"
-              >
-                Request Available Units & Prices
-              </Button>
-            )}
+        <p className="text-[#434343] xxs:text-sm md:text-xl leading-5">
+          {descriptionOne}
+        </p>
+        <div className="flex flex-col md:justify-center gap-8 xxs:order-4 lg:justify-between">
+          <p className="text-[#434343] xxs:text-sm md:text-xl leading-5">
+            {descriptionTwo}
+          </p>
+          <section className="flex justify-center xl:pl-14">
+            <span className="xxs:flex-col flex gap-6 lg:items-center lg:justify-items-center w-full lg:flex-row">
+              {requestPricing && (
+                <Button
+                  rel="noopener noreferrer"
+                  className="text-sm font-semibold px-8 py-3 text-[#1E3747] border-[#1E3747] border-[1px] lg:h-[52px] lg:w-[322px] xxs:h-[48px] xxs:w-full bg-transparent hover:bg-[#aebfca] rounded-md"
+                >
+                  Request Available Units & Prices
+                </Button>
+              )}
 
-            {bookShowingUrl && (
-              <Button
-                rel="noopener noreferrer"
-                className="text-sm font-semibold px-8 py-3 bg-[#1E3747] text-white lg:h-[52px] lg:w-[200px] xxs:h-[48px] xxs:w-full hover:bg-[#2c526a] rounded-md"
-              >
-                Book a Showing
-              </Button>
-            )}
-          </span>
+              {bookShowingUrl && (
+                <Button
+                  rel="noopener noreferrer"
+                  className="text-sm font-semibold px-8 py-3 bg-[#1E3747] text-white lg:h-[52px] lg:w-[200px] xxs:h-[48px] xxs:w-full hover:bg-[#2c526a] rounded-md"
+                >
+                  Book a Showing
+                </Button>
+              )}
+            </span>
+          </section>
         </div>
         <div className="w-full md:w-full md:h-full xl:w-[632px] lg:order-4 xl:h-[356px] 2xl:w-full 2xl:h-full">
           <Image
