@@ -44,6 +44,12 @@ bun dev
 
 ---
 
+### Server Components
+- Server components are made of client, server, and skeleton.
+- **Server component** feeds data from API to client component.
+- **Client component** only holds UI.
+- **Skeleton component** is displayed in `suspense component` while server fetching is ongoing.
+ 
 ## Deployment 
 - We are also utilizing [Firebase](https://firebase.google.com/), a comprehensive app development platform that simplifies backend integration and streamlines the development process. Firebase provides a suite of tools and services, including real-time databases, authentication, cloud functions, and hosting, enabling us to build scalable and secure applications efficiently. This platform allows for seamless synchronization of data and effortless integration across various services, fostering consistency and reliability throughout our application. By coupling Firebase with our design and development workflows, we ensure adaptability to evolving requirements while maintaining a robust and scalable infrastructure.
 
