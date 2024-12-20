@@ -17,7 +17,7 @@ export default function PropertyListingDetailsWithDelay() {
    setData(res as PropertyListingDetailsProps);
    setLoading(false);
   });
- }, [data]);
+ }, []);
 
  return (
   <Suspense fallback={<PropertyDetailsSkeleton />}>
