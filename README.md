@@ -29,7 +29,7 @@ bun dev
 
 - Every component inherits from [Shadn UI](https://ui.shadcn.com/)
 - Components should be generic and re-usable
-- Every component should have `types` and `enums
+- Every component should have `types` or `enums`
 
 ### Naming
 - We follow industry standard naming `my-component.tsx`
