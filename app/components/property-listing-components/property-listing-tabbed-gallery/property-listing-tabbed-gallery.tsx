@@ -9,7 +9,7 @@ import {
  DialogTrigger,
 } from '@/components/ui/dialog';
 import Image from 'next/image';
-import { CSSProperties, Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { mockFetchPropertyTabbedGalleryData } from '@/lib/mock-server/mockFetchPropertyTabbedGallery';
 
@@ -44,13 +44,52 @@ type PropertyListingTabbedGalleryProps = {
 };
 
 function PropertyListingTabbedGallerySkeleton() {
- return <Skeleton></Skeleton>;
+ return (
+  <section className="w-full h-fit my-[120px] flex flex-col items-center">
+   {/* Skeleton for title */}
+   <Skeleton className="my-4 h-8 lg:h-16 w-[60%] lg:w-[40%] rounded-md" />
+
+   {/* Skeleton for description */}
+   <Skeleton className="my-4 h-4 lg:h-6 w-[80%] lg:w-[60%] rounded-md" />
+
+   {/* Skeleton for buttons */}
+   <div className="my-6 w-full flex justify-center gap-4 lg:gap-10">
+    <Skeleton className="h-12 w-40 rounded-md" />
+    <Skeleton className="h-12 w-40 rounded-md" />
+   </div>
+
+   {/* Skeleton for desktop gallery */}
+   <div className="w-[80%] h-[860px] grid grid-cols-3 grid-rows-3 gap-4">
+    {/* Grid skeleton items */}
+    <Skeleton className="w-full h-full rounded-md" />
+    <Skeleton className="w-full h-full rounded-md" />
+    <Skeleton className="w-full h-full rounded-md row-span-2" />
+    <Skeleton className="w-full h-full rounded-md row-span-2" />
+    <Skeleton className="w-full h-full rounded-md" />
+    <Skeleton className="w-full h-full rounded-md col-start-2 row-start-3" />
+    <Skeleton className="w-full h-full rounded-md col-start-3 row-start-3" />
+   </div>
+  </section>
+ );
 }
 
 function PropertyListingTabbedGallery(
  props: PropertyListingTabbedGalleryProps
 ) {
  const { title, description, imageTabs } = props;
+ const [isMobile, setIsMobile] = useState(false);
+
+ useEffect(() => {
+  const handleResize = () => {
+   setIsMobile(window.innerWidth < 768);
+  };
+
+  handleResize();
+
+  window.addEventListener('resize', handleResize);
+
+  return () => window.removeEventListener('resize', handleResize);
+ }, []);
 
  return (
   <section className="w-full h-fit my-[120px] flex flex-col justify-center items-center">
@@ -63,7 +102,7 @@ function PropertyListingTabbedGallery(
       }}
      />
      <h2 className="uppercase xxs:text-xs sm:text-lg md:text-xl lg:text-2xl text-[#D1AF49] tracking-widest">
-      {title ?? 'Property Details'}
+      GALLERY
      </h2>
      <Separator
       className={`xxs:h-0.5 md:h-1 rounded xxs:w-[40px] md:w-[100px] `}
@@ -73,10 +112,11 @@ function PropertyListingTabbedGallery(
      />
     </span>
     <h2 className="my-4 text-lg lg:text-5xl font-bold text-[#212121] text-center">
-     {description ?? ' Explore Our Gallery of Exquisite Spaces'}
+     {title ?? ' Explore Our Gallery of Exquisite Spaces'}
     </h2>
     <p className="my-6 lg:text-2xl text-base font-normal text-center text-[#434343]">
-     Explore from a variety of living experiences that Dubai offers!
+     {description ??
+      'Explore from a variety of living experiences that Dubai offers!'}
     </p>
    </section>
    <section className="my-14 w-fit flex justify-center items-center gap-4 lg:gap-10">
@@ -94,7 +134,11 @@ function PropertyListingTabbedGallery(
     />
    </section>
 
-   <DesktopImageGallery imageTabs={imageTabs} />
+   {isMobile ? (
+    <MobileImageGallery imageTabs={imageTabs} />
+   ) : (
+    <DesktopImageGallery imageTabs={imageTabs} />
+   )}
   </section>
  );
 }
@@ -128,6 +172,35 @@ function DesktopImageGallery(props: PropertyListingTabbedGalleryProps) {
  );
 }
 
+function MobileImageGallery(props: PropertyListingTabbedGalleryProps) {
+ const { imageTabs } = props;
+ return (
+  <div className="justify-center items-center w-[80%] h-[1069px] grid grid-cols-2 grid-rows-5 gap-2">
+   <div className="w-full h-full col-span-2">
+    <ImageTab {...imageTabs[0]} styles="col-span-2" />
+   </div>
+   <div className="w-full h-full row-start-2">
+    <ImageTab {...imageTabs[1]} styles="row-start-2" />
+   </div>
+   <div className="w-full h-full row-start-2">
+    <ImageTab {...imageTabs[2]} styles="row-start-2" />
+   </div>
+   <div className="w-full h-full col-span-2">
+    <ImageTab {...imageTabs[3]} styles="col-span-2" />
+   </div>
+   <div className="w-full h-full row-start-4">
+    <ImageTab {...imageTabs[4]} styles="row-start-4" />
+   </div>
+   <div className="w-full h-full row-start-4">
+    <ImageTab {...imageTabs[5]} styles="row-start-4" />
+   </div>
+   <div className="w-full h-full col-span-2">
+    <ImageTab {...imageTabs[6]} styles="col-span-2" />
+   </div>
+  </div>
+ );
+}
+
 type ImageTabProps = {
  src: string;
  title: string;
@@ -138,6 +211,9 @@ type ImageTabProps = {
 function ImageTab(props: ImageTabProps) {
  const { src, alt, title, styles } = props;
 
+ const maxImageHeight: number = 100;
+ const maxDialogImageHeight: number = 1000;
+
  return (
   <Dialog>
    <DialogTrigger asChild>
@@ -145,8 +221,8 @@ function ImageTab(props: ImageTabProps) {
      className={`w-full h-full my-2 rounded-sm shadow-lg flex justify-center items-center object-cover ${styles}`}
      src={src}
      alt={alt}
-     width={100}
-     height={100}
+     width={maxImageHeight}
+     height={maxImageHeight}
     />
    </DialogTrigger>
    <DialogContent className="w-screen h-[calc(100vh / 2]">
@@ -154,7 +230,12 @@ function ImageTab(props: ImageTabProps) {
      <DialogTitle>{title}</DialogTitle>
     </DialogHeader>
     <div className="w-full h-full">
-     <Image src={src} alt={alt} width={1000} height={1000} />
+     <Image
+      src={src}
+      alt={alt}
+      width={maxDialogImageHeight}
+      height={maxDialogImageHeight}
+     />
     </div>
    </DialogContent>
   </Dialog>

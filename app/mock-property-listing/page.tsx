@@ -5,6 +5,7 @@ import PropertyListingGalleryWithDelay from '../components/property-listing-gall
 import PropertyListingDetailsWithDelay from '../components/property-listing-details/property-listing-details';
 import PropertyAmenitiesWithDelay from '../components/property-amenities/property-amenities';
 import { PropertyListingTabbedGalleryWithDelay } from '../components/property-listing-components/property-listing-tabbed-gallery/property-listing-tabbed-gallery';
+import { Footer } from '../components/footer/footer';
 
 export default function MockPropertyListing() {
  return (
@@ -16,6 +17,7 @@ export default function MockPropertyListing() {
     <PropertyAmenitiesWithDelay />
     <PropertyListingDetailsWithDelay />
     <PropertyListingTabbedGalleryWithDelay />
+    <Footer />
    </main>
   </FeatureEnabled>
  );
