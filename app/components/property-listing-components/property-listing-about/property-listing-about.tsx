@@ -96,7 +96,7 @@ function PropertyListingAbout({
 
       {/* Image Gallery */}
 
-      <div className="grid lg:grid-cols-3 xxs:grid-cols-2 xxs:gap-3 md:gap-6 justify-items-center items-center">
+      <div className="grid lg:grid-cols-3  xxs:grid-cols-2 xxs:gap-3 md:gap-6 justify-items-center items-center">
         {imageUrls.map((url, index) => (
           <div
             className={`${index === 0 ? "lg:col-span-3 xxs:col-span-2" : ""} ${
@@ -118,7 +118,7 @@ function PropertyListingAbout({
       </div>
 
       {/* Description */}
-      <section>
+      <section className="2xl:max-w-[1440px]">
         <p className="text-[#434343] xxs:text-sm md:text-xl leading-5">
           {description}
         </p>
