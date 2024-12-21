@@ -7,7 +7,7 @@ import PropertyAmenitiesWithDelay from "../components/property-listing-component
 import PropertyListingAboutWithDelay from "../components/property-listing-components/property-listing-about/property-listing-about";
 import { PropertyListingTabbedGalleryWithDelay } from "../components/property-listing-components/property-listing-tabbed-gallery/property-listing-tabbed-gallery";
 import { Footer } from "../components/footer/footer";
-import PropertyListingNearbyDestinationsWithDelay from "../components/property-listing-nearby-destinations/property-listing-nearby-destinations";
+import PropertyListingNearbyDestinationsWithDelay from "../components/property-listing-components/property-listing-nearby-destinations/property-listing-nearby-destinations";
 
 export default function MockPropertyListing() {
   return (
