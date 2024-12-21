@@ -1,5 +1,4 @@
 'use client';
-import { Separator } from '@radix-ui/react-separator';
 import { SecondaryButton } from '../../buttons/secondary-button';
 import {
  Dialog,
@@ -12,6 +11,7 @@ import Image from 'next/image';
 import { Suspense, useEffect, useState } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { mockFetchPropertyTabbedGalleryData } from '@/lib/mock-server/mockFetchPropertyTabbedGallery';
+import { SubHeader } from '../../sub-header/sub-header';
 
 export const PropertyListingTabbedGalleryWithDelay = () => {
  const [data, setData] = useState<PropertyListingTabbedGalleryProps>();
@@ -94,23 +94,7 @@ function PropertyListingTabbedGallery(
  return (
   <section className="w-full h-fit my-[120px] flex flex-col justify-center items-center">
    <section>
-    <span className={`flex justify-center items-center xxs:gap-2 md:gap-6 `}>
-     <Separator
-      className={`xxs:h-0.5 md:h-1 rounded rotate-180 xxs:w-[40px] md:w-[100px] `}
-      style={{
-       background: `linear-gradient(90deg, #d1af49 0%, rgba(102, 102, 102, 0) 100%)`,
-      }}
-     />
-     <h2 className="uppercase xxs:text-xs sm:text-lg md:text-xl lg:text-2xl text-[#D1AF49] tracking-widest">
-      GALLERY
-     </h2>
-     <Separator
-      className={`xxs:h-0.5 md:h-1 rounded xxs:w-[40px] md:w-[100px] `}
-      style={{
-       background: `linear-gradient(90deg, #d1af49 0%, rgba(102, 102, 102, 0) 100%)`,
-      }}
-     />
-    </span>
+    <SubHeader title="GALLERY" />
     <h2 className="my-4 text-lg lg:text-5xl font-bold text-[#212121] text-center">
      {title ?? ' Explore Our Gallery of Exquisite Spaces'}
     </h2>
