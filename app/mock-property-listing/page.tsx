@@ -5,6 +5,9 @@ import PropertyListingGalleryWithDelay from "../components/property-listing-comp
 import PropertyListingDetailsWithDelay from "../components/property-listing-components/property-listing-details/property-listing-details";
 import PropertyAmenitiesWithDelay from "../components/property-listing-components/property-listing-amenities/property-listing-amenities";
 import PropertyListingAboutWithDelay from "../components/property-listing-components/property-listing-about/property-listing-about";
+import { PropertyListingTabbedGalleryWithDelay } from "../components/property-listing-components/property-listing-tabbed-gallery/property-listing-tabbed-gallery";
+import { Footer } from "../components/footer/footer";
+import PropertyListingNearbyDestinationsWithDelay from "../components/property-listing-nearby-destinations/property-listing-nearby-destinations";
 
 export default function MockPropertyListing() {
   return (
@@ -15,7 +18,10 @@ export default function MockPropertyListing() {
         <PropertyListingGalleryWithDelay />
         <PropertyAmenitiesWithDelay />
         <PropertyListingDetailsWithDelay />
+        <PropertyListingNearbyDestinationsWithDelay />
         <PropertyListingAboutWithDelay />
+        <PropertyListingTabbedGalleryWithDelay />
+        <Footer />
       </main>
     </FeatureEnabled>
   );
