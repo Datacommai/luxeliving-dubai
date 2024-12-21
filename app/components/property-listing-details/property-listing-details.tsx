@@ -1,12 +1,11 @@
 'use client';
 
-import styles from './property-listing-details.module.css';
 import Image from 'next/image';
 import { Suspense, useEffect, useState } from 'react';
 import { mockFetchPropertyDetailsData } from '@/lib/mock-server/mockFetchProperyDetailsData';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
+import { SubHeader } from '../sub-header/sub-header';
 
 export default function PropertyListingDetailsWithDelay() {
  const [data, setData] = useState<PropertyListingDetailsProps>();
@@ -101,19 +100,7 @@ function PropertyListingDetails(props: PropertyListingDetailsProps) {
  return (
   <section className="w-full xxs:gap-8 md:gap-10 2xl:px-28 xxs:px-4 xxs:py-8 md:py-14 lg:py-20 md:px-10 lg:px-6 xl:px-10 flex flex-col justify-center items-center">
    <section className="flex flex-col justify-center text-center xxs:gap-3 md:gap-6">
-    <span
-     className={`flex justify-center items-center xxs:gap-2 md:gap-6 ${styles.separatorContainer}`}>
-     <Separator
-      className={`xxs:h-0.5 md:h-1 rounded rotate-180 xxs:w-[40px] md:w-[100px] ${styles.separator}`}
-     />
-     <h2 className="uppercase xxs:text-xs sm:text-lg md:text-xl lg:text-2xl text-[#D1AF49] tracking-widest">
-      Property Details
-     </h2>
-     <Separator
-      className={`xxs:h-0.5 md:h-1 rounded xxs:w-[40px] md:w-[100px] ${styles.separator}`}
-     />
-    </span>
-
+    <SubHeader title="Property Details" />
     <h1 className="xs:text-xl sm:text-3xl lg:text-5xl font-bold text-[#212121]">
      {title}
     </h1>
