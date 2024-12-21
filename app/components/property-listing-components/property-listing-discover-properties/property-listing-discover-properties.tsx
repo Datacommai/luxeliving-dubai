@@ -76,6 +76,11 @@ function PropertyListingDiscoverProperties(
  props: PropertyListingDiscoverPropertiesProps
 ) {
  const { propertyListings } = props;
+
+ const handleClick = (id: string) => {
+  console.log(id);
+ };
+
  return (
   <section className="w-full h-fit my-[120px] flex flex-col justify-center items-center">
    <section>
@@ -98,7 +103,7 @@ function PropertyListingDiscoverProperties(
       location={property.location}
       developer={property.developer}
       handover={property.handover}
-      // onClick={handlePropertyClick}
+      onClick={handleClick}
      />
     ))}
    </section>
