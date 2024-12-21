@@ -29,7 +29,7 @@ bun dev
 
 - Every component inherits from [Shadn UI](https://ui.shadcn.com/)
 - Components should be generic and re-usable
-- Every component should have `types` and `enums
+- Every component should have `types` or `enums`
 
 ### Naming
 - We follow industry standard naming `my-component.tsx`
@@ -44,6 +44,12 @@ bun dev
 
 ---
 
+### Server Components
+- Server components are made of client, server, and skeleton.
+- **Server component** feeds data from API to client component.
+- **Client component** only holds UI.
+- **Skeleton component** is displayed in `suspense component` while server fetching is ongoing.
+ 
 ## Deployment 
 - We are also utilizing [Firebase](https://firebase.google.com/), a comprehensive app development platform that simplifies backend integration and streamlines the development process. Firebase provides a suite of tools and services, including real-time databases, authentication, cloud functions, and hosting, enabling us to build scalable and secure applications efficiently. This platform allows for seamless synchronization of data and effortless integration across various services, fostering consistency and reliability throughout our application. By coupling Firebase with our design and development workflows, we ensure adaptability to evolving requirements while maintaining a robust and scalable infrastructure.
 
@@ -56,6 +62,8 @@ NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=''
 NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=''
 NEXT_PUBLIC_FIREBASE_APP_ID=''
 NEXT_PUBLIC_MEASUREMENT_ID=''
+
+NEXT_PUBLIC_FEATURE_FLAG_DEMO=true
 ```
 
 ### Build and deploy
