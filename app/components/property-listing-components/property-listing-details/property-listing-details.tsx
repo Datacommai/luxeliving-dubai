@@ -5,7 +5,7 @@ import { Suspense, useEffect, useState } from 'react';
 import { mockFetchPropertyDetailsData } from '@/lib/mock-server/mockFetchProperyDetailsData';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
-import { SubHeader } from '../sub-header/sub-header';
+import { SubHeader } from '../../sub-header/sub-header';
 
 export default function PropertyListingDetailsWithDelay() {
  const [data, setData] = useState<PropertyListingDetailsProps>();

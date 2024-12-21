@@ -1,11 +1,13 @@
 import { Navigation } from '../components/navigation/navigation';
 import PropertyListingHeroWithDelay from '../components/property-listing-components/property-listing-hero/property-listing-hero';
 import { FeatureEnabled } from '../feature-enabled/feature-enabled';
-import PropertyListingGalleryWithDelay from '../components/property-listing-gallery/property-listing-gallery';
-import PropertyListingDetailsWithDelay from '../components/property-listing-details/property-listing-details';
-import PropertyAmenitiesWithDelay from '../components/property-amenities/property-amenities';
+import PropertyListingGalleryWithDelay from '../components/property-listing-components/property-listing-gallery/property-listing-gallery';
+import PropertyListingDetailsWithDelay from '../components/property-listing-components/property-listing-details/property-listing-details';
+import PropertyAmenitiesWithDelay from '../components/property-listing-components/property-listing-amenities/property-listing-amenities';
+import PropertyListingAboutWithDelay from '../components/property-listing-components/property-listing-about/property-listing-about';
 import { PropertyListingTabbedGalleryWithDelay } from '../components/property-listing-components/property-listing-tabbed-gallery/property-listing-tabbed-gallery';
 import { Footer } from '../components/footer/footer';
+import PropertyListingNearbyDestinationsWithDelay from '../components/property-listing-components/property-listing-nearby-destinations/property-listing-nearby-destinations';
 import { PropertyListingFloorplanShowcaseWithDelay } from '../components/property-listing-components/property-listing-floorplan-showcase/property-listing-floorplan-showcase';
 
 export default function MockPropertyListing() {
@@ -17,6 +19,8 @@ export default function MockPropertyListing() {
     <PropertyListingGalleryWithDelay />
     <PropertyAmenitiesWithDelay />
     <PropertyListingDetailsWithDelay />
+    <PropertyListingNearbyDestinationsWithDelay />
+    <PropertyListingAboutWithDelay />
     <PropertyListingTabbedGalleryWithDelay />
     <PropertyListingFloorplanShowcaseWithDelay />
     <Footer />
