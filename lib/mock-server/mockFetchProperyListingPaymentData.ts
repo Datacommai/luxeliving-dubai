@@ -2,7 +2,7 @@ export const mockFetchPropertyListingPaymentData = (delay: number) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({
-        title: "Explore Our Gallery of Exquisite Spaces",
+        title: "70/30 Payment Plan from Ellington Properties",
         paymentPercentages: [
           {
             percantage: "20%",
