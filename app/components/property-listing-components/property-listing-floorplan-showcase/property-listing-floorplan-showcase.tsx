@@ -13,6 +13,7 @@ import Image from 'next/image';
 import { PrimaryButton } from '../../buttons/primary-button';
 import { Suspense, useEffect, useState } from 'react';
 import { mockFetchPropertyFloorplansData } from '@/lib/mock-server/mockFetchPropertyFloorplans';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export const PropertyListingFloorplanShowcaseWithDelay = () => {
  const [data, setData] = useState<PropertyListingFloorplanShowcaseProps>();
@@ -45,15 +46,50 @@ export type PropertyListingFloorplanShowcaseProps = {
 };
 
 function PropertyListingFloorplanSkeleton() {
- return <div>loading</div>;
-}
+ return (
+  <section className="w-[80%] h-[800px] inline-block">
+   {/* SubHeader Skeleton */}
+   <Skeleton className="h-6 w-40 mx-auto mb-6" />
 
+   {/* Title Skeleton */}
+   <Skeleton className="h-10 w-[60%] mx-auto mb-4" />
+
+   {/* Description Skeleton */}
+   <Skeleton className="h-6 w-[75%] mx-auto mb-6" />
+   <Skeleton className="h-6 w-[50%] mx-auto mb-8" />
+
+   {/* Floorplan Grid Skeleton */}
+   <div className="grid grid-cols-3 gap-6">
+    <Skeleton className="h-60 rounded-md" />
+    <Skeleton className="h-60 rounded-md" />
+    <Skeleton className="h-60 rounded-md" />
+    <Skeleton className="h-60 rounded-md" />
+    <Skeleton className="h-60 rounded-md" />
+    <Skeleton className="h-60 rounded-md" />
+   </div>
+  </section>
+ );
+}
 function PropertyListingFloorplanShowcase(
  props: PropertyListingFloorplanShowcaseProps
 ) {
  const { title, description, floorplans } = props;
+ const [isMobile, setIsMobile] = useState(false);
+
+ useEffect(() => {
+  const handleResize = () => {
+   setIsMobile(window.innerWidth < 768);
+  };
+
+  handleResize();
+
+  window.addEventListener('resize', handleResize);
+
+  return () => window.removeEventListener('resize', handleResize);
+ }, []);
+
  return (
-  <section className="w-[80%]">
+  <section className="w-[80%] h-[800px] inline-block">
    <SubHeader title="Layouts" />
    <h2 className="my-4 text-lg lg:text-5xl font-bold text-[#212121] text-center">
     {title ?? ' Explore Our Gallery of Exquisite Spaces'}
@@ -62,7 +98,11 @@ function PropertyListingFloorplanShowcase(
     {description ??
      'Explore from a variety of living experiences that Dubai offers!'}
    </p>
-   <DesktopFloorplanShowcase floorplans={floorplans} />
+   {isMobile ? (
+    <MobileFloorplanShowcase floorplans={floorplans} />
+   ) : (
+    <DesktopFloorplanShowcase floorplans={floorplans} />
+   )}
   </section>
  );
 }
@@ -82,8 +122,8 @@ function DesktopFloorplanShowcase(props: FloorPlanProps) {
  const { floorplans } = props;
  const [selectedFloorplan, setSelectedFloorplan] = useState<string>('');
 
- const secondaryButtonWidth = 270;
- const secondaryButtonHeight = 54;
+ const secondaryButtonWidth: number = 270;
+ const secondaryButtonHeight: number = 72;
 
  useEffect(() => {
   setSelectedFloorplan(floorplans[0].title);
@@ -114,9 +154,10 @@ function DesktopFloorplanShowcase(props: FloorPlanProps) {
  const getSelectedFloorplan = () => {
   return floorplans.find((f) => f.title === selectedFloorplan);
  };
+
  return (
-  <section className="w-full h-fit flex justify-center items-start gap-6">
-   <section className="flex flex-col gap-6 my-8">
+  <section className="w-full h-fit flex justify-evenly items-start gap-6">
+   <section className="flex flex-col gap-6 my-8 h-[400px] overflow-y-scroll">
     {floorplans.map((floorplan) => (
      <SecondaryButton
       key={floorplan.title}
@@ -167,6 +208,111 @@ function DesktopFloorplanShowcase(props: FloorPlanProps) {
       <PrimaryButton
        text="Download Brochure"
        width={250}
+       height={52}
+       variant="default"
+       style="outlined"
+       onClick={handleDownloadBrochure}
+      />
+     </CardFooter>
+    </Card>
+   </section>
+  </section>
+ );
+}
+
+function MobileFloorplanShowcase(props: FloorPlanProps) {
+ const { floorplans } = props;
+ const [selectedFloorplan, setSelectedFloorplan] = useState<string>('');
+
+ const secondaryButtonWidth = 200;
+ const secondaryButtonHeight = 48;
+
+ useEffect(() => {
+  setSelectedFloorplan(floorplans[0].title);
+ }, []);
+
+ const handleFloorplanClick = (selectedFloorplan: string) => {
+  setSelectedFloorplan(selectedFloorplan);
+ };
+
+ const handleDownloadBrochure = () => {
+  const brochure = getSelectedFloorplan()?.brochurePDFUrl;
+
+  if (!brochure) {
+   alert('No brochure available');
+  }
+  // todo: download brochure
+ };
+
+ const handleOpenAllFloorplans = () => {
+  const fullFloorplan = getSelectedFloorplan()?.fullFloorplanPDFUrl;
+
+  if (!fullFloorplan) {
+   alert('No full floorplan available');
+  }
+  // todo: open all floorplans
+ };
+
+ const getSelectedFloorplan = () => {
+  return floorplans.find((f) => f.title === selectedFloorplan);
+ };
+
+ return (
+  <section className="w-full">
+   <section className="grid grid-cols-2 gap-2 justify-center items-center h-[112px] overflow-y-scroll">
+    {floorplans.map((floorplan) => (
+     <div key={floorplan.title} className="flex justify-center w-full">
+      <SecondaryButton
+       key={floorplan.title}
+       title={floorplan.title}
+       width={secondaryButtonWidth}
+       height={secondaryButtonHeight}
+       variant={`${
+        getSelectedFloorplan()?.title === floorplan.title.toString()
+         ? 'filled'
+         : 'outlined'
+       }`}
+       onClick={() => handleFloorplanClick(floorplan.title)}
+      />
+     </div>
+    ))}
+   </section>
+
+   <section className="flex justify-center items-center gap-4 w-fit">
+    <Card className="border-none shadow-none">
+     <CardHeader>
+      <Suspense fallback={<PropertyListingFloorplanSkeleton />}>
+       <Image
+        src={`${getSelectedFloorplan()?.imageURL}`}
+        alt={getSelectedFloorplan()?.title || 'Floorplan Image'}
+        priority
+        quality={1000}
+        width={1000}
+        height={100}
+        unoptimized
+       />
+      </Suspense>
+     </CardHeader>
+     <CardContent>
+      <CardTitle className="font-medium text-2xl">
+       {getSelectedFloorplan()?.title}
+      </CardTitle>
+      <CardDescription className="text-[#434343] text-base font-light my-4">
+       {getSelectedFloorplan()?.sqft} sqft
+      </CardDescription>
+     </CardContent>
+     <CardFooter className="gap-4 flex flex-col w-full justify-center items-center">
+      <PrimaryButton
+       rightIcon="/assets/icons/right-arrow.svg"
+       iconSize={8}
+       width={300}
+       height={52}
+       text="Open All Floor Plans"
+       onClick={handleOpenAllFloorplans}
+      />
+      <PrimaryButton
+       text="Download Brochure"
+       width={300}
        height={52}
        variant="default"
        style="outlined"

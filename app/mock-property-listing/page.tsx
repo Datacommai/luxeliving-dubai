@@ -9,11 +9,12 @@ import { PropertyListingTabbedGalleryWithDelay } from '../components/property-li
 import { Footer } from '../components/footer/footer';
 import PropertyListingNearbyDestinationsWithDelay from '../components/property-listing-components/property-listing-nearby-destinations/property-listing-nearby-destinations';
 import { PropertyListingFloorplanShowcaseWithDelay } from '../components/property-listing-components/property-listing-floorplan-showcase/property-listing-floorplan-showcase';
+import { TrustedSection } from '../components/trusted-section/trusted-section';
 
 export default function MockPropertyListing() {
  return (
   <FeatureEnabled featureFlag="DEMO_FEATURE">
-   <main className="flex flex-col justify-center items-center">
+   <main className="flex flex-col justify-center items-center w-full h-full">
     <Navigation />
     <PropertyListingHeroWithDelay />
     <PropertyListingGalleryWithDelay />
@@ -23,6 +24,7 @@ export default function MockPropertyListing() {
     <PropertyListingAboutWithDelay />
     <PropertyListingTabbedGalleryWithDelay />
     <PropertyListingFloorplanShowcaseWithDelay />
+    <TrustedSection />
     <Footer />
    </main>
   </FeatureEnabled>

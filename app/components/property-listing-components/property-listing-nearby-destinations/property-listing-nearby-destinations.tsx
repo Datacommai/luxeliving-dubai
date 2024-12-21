@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { Suspense, useEffect, useState } from 'react';
 import { mockFetchPropertyNearbyDestinationsData } from '@/lib/mock-server/mockFetchProperyNearbyDestinationsData';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Separator } from '@/components/ui/separator';
 import { SubHeader } from '../../sub-header/sub-header';
 
 export default function PropertyListingNearbyDestinationsWithDelay() {
