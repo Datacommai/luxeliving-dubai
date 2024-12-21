@@ -10,6 +10,7 @@ import { Footer } from '../components/footer/footer';
 import PropertyListingNearbyDestinationsWithDelay from '../components/property-listing-components/property-listing-nearby-destinations/property-listing-nearby-destinations';
 import { PropertyListingFloorplanShowcaseWithDelay } from '../components/property-listing-components/property-listing-floorplan-showcase/property-listing-floorplan-showcase';
 import { TrustedSection } from '../components/trusted-section/trusted-section';
+import { PropertyListingDiscoverPropertiesWithDelay } from '../components/property-listing-components/property-listing-discover-properties/property-listing-discover-properties';
 
 export default function MockPropertyListing() {
  return (
@@ -24,6 +25,7 @@ export default function MockPropertyListing() {
     <PropertyListingAboutWithDelay />
     <PropertyListingTabbedGalleryWithDelay />
     <PropertyListingFloorplanShowcaseWithDelay />
+    <PropertyListingDiscoverPropertiesWithDelay />
     <TrustedSection />
     <Footer />
    </main>
