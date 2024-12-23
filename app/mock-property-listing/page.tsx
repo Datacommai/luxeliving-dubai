@@ -12,6 +12,7 @@ import { PropertyListingFloorplanShowcaseWithDelay } from "../components/propert
 import { TrustedSection } from "../components/trusted-section/trusted-section";
 import { PropertyListingDiscoverPropertiesWithDelay } from "../components/property-listing-components/property-listing-discover-properties/property-listing-discover-properties";
 import PropertyListingPaymentWithDelay from "../components/property-listing-components/property-listing-payment/property-listing-payment";
+import PropertyListingFaqWithDelay from "../components/property-listing-components/property-listing-faq/property-listing-faq";
 
 export default function MockPropertyListing() {
   return (
@@ -28,6 +29,7 @@ export default function MockPropertyListing() {
         <PropertyListingFloorplanShowcaseWithDelay />
         <PropertyListingPaymentWithDelay />
         <PropertyListingDiscoverPropertiesWithDelay />
+        <PropertyListingFaqWithDelay />
         <TrustedSection />
         <Footer />
       </main>

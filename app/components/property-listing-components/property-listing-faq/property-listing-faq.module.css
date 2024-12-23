@@ -1,0 +1,16 @@
+.separator {
+  background: linear-gradient(90deg, #d1af49 0%, rgba(102, 102, 102, 0) 100%);
+}
+
+.accordionTrigger {
+  text-decoration: none !important;
+}
+
+.accordionTrigger:hover {
+  text-decoration: none !important;
+}
+
+/* Remove the border bottom if needed */
+.accordionItem {
+  border-bottom: none;
+}
