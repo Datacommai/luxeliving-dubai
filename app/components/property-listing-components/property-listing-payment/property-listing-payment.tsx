@@ -59,7 +59,7 @@ function PropertyListingPayment(props: PropertyListingPaymentProps) {
   const { title, paymentPercentages } = props;
 
   return (
-    <section className="w-full flex flex-col justify-center items-center bg-[#EAC863] md:py-20 lg:px-32 xxs:py-5 md:px-16 md:gap-14 xxs:px-8 xxs:gap-4">
+    <section className="w-full flex flex-col justify-center items-center bg-[#EAC863] md:py-20 lg:px-32 xxs:py-5 md:gap-14 xxs:px-8 xxs:gap-4">
       <h1 className="font-bold xxs:text-sm md:text-5xl text-[#212121] mb-6">
         {title}
       </h1>
@@ -67,7 +67,7 @@ function PropertyListingPayment(props: PropertyListingPaymentProps) {
         {paymentPercentages.map((paymentPercentage, index) => (
           <div
             key={index}
-            className="flex flex-col items-center md:gap-2 xxs:gap-1"
+            className="grid items-center md:gap-2 xl:gap-3 xxs:gap-1"
           >
             <h2 className="lg:text-8xl md:text-6xl xxs:text-2xl font-bold text-[#1E3747]">
               {paymentPercentage.percantage}
