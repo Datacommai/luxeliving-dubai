@@ -29,8 +29,8 @@ export default function MockPropertyListing() {
         <PropertyListingFloorplanShowcaseWithDelay />
         <PropertyListingPaymentWithDelay />
         <PropertyListingDiscoverPropertiesWithDelay />
-        <TrustedSection />
         <PropertyListingContactWithDelay />
+        <TrustedSection />
         <Footer />
       </main>
     </FeatureEnabled>
