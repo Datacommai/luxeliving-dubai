@@ -1,11 +1,12 @@
 "use client";
 import styles from "./property-listing-faq.module.css";
 import { useEffect, useState } from "react";
-import { mockFetchPropertyFaqData } from "@/lib/mock-server/mockFetchProperyFaqData";
+import { mockFetchPropertyFaqData } from "@/lib/mock-server/mockFetchPropertyFaqData";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Separator } from "@/components/ui/separator";
 import { getRandomMockServerDelay } from "@/lib/utils";
 import { PrimaryButton } from "../../buttons/primary-button";
+import { SubHeader } from "../../sub-header/sub-header";
 import {
   Accordion,
   AccordionContent,
@@ -47,14 +48,29 @@ function PropertyFaqSkeleton({ count }: { count: number }) {
         </span>
       </section>
 
-      <div className="grid lg:grid-cols-3 xxs:grid-cols-1 sm:grid-cols-2 gap-4 mt-10 w-full px-4">
-        {Array.from({ length: count }).map((_, index) => (
-          <Skeleton
-            key={index}
-            className="w-full h-[200px] rounded-lg shadow-md"
-          />
-        ))}
+      {/* FAQ Grid Skeleton */}
+      <div className="w-full mt-10">
+        <div className="grid lg:grid-cols-2 xxs:grid-cols-1 sm:grid-cols-2 xxs:gap-4 lg:gap-14 items-start">
+          {Array.from({ length: count }).map((_, index) => (
+            <div
+              key={index}
+              className="shadow-md bg-white rounded-[6px] p-6 flex flex-col gap-4"
+            >
+              <Skeleton className="h-8 w-full" />
+              <Skeleton className="h-24 w-full" />
+            </div>
+          ))}
+        </div>
       </div>
+
+      {/* Contact Section Skeleton */}
+      <section className="lg:flex xxs:hidden xxs:flex-col lg:flex-row justify-between items-center w-full mt-8 gap-6">
+        <span className="flex flex-col gap-4">
+          <Skeleton className="h-12 w-[300px]" />
+          <Skeleton className="h-6 w-[400px]" />
+        </span>
+        <Skeleton className="h-[52px] w-[260px]" />
+      </section>
     </section>
   );
 }
@@ -78,19 +94,7 @@ function PropertyListingFaq({ contactEmail, faqs }: PropertyListingFaqProps) {
     <section className="w-full xxs:gap-8 md:gap-10 2xl:px-28 xxs:px-4 xxs:py-8 md:py-14 lg:py-20 md:px-10 lg:px-6 xl:px-10 flex flex-col justify-center items-center">
       {/* Header Section */}
       <section className="flex flex-col justify-center text-center xxs:gap-3 md:gap-6">
-        <div
-          className={`flex justify-center items-center xxs:gap-2 md:gap-6 ${styles.separatorContainer}`}
-        >
-          <Separator
-            className={`xxs:h-0.5 md:h-1 rounded rotate-180 xxs:w-[40px] md:w-[100px] ${styles.separator}`}
-          />
-          <h2 className="uppercase xxs:text-xs sm:text-lg md:text-xl lg:text-2xl text-[#D1AF49] tracking-widest">
-            FAQ
-          </h2>
-          <Separator
-            className={`xxs:h-0.5 md:h-1 rounded xxs:w-[40px] md:w-[100px] ${styles.separator}`}
-          />
-        </div>
+        <SubHeader title="FAQ" />
         <h1 className="xs:text-xl sm:text-3xl lg:text-5xl capitalize font-bold text-[#212121]">
           Frequently Asked Questions & Answers
         </h1>
@@ -100,39 +104,31 @@ function PropertyListingFaq({ contactEmail, faqs }: PropertyListingFaqProps) {
       </section>
 
       {/* FAQ Grid */}
-      {/* FAQ Grid */}
       <div className="w-full">
-        {/* Create rows of 2 FAQs */}
-        {Array.from({ length: Math.ceil(faqs.length / 2) }).map(
-          (_, rowIndex) => (
-            <div
-              key={rowIndex}
-              className="grid lg:grid-cols-2 xxs:grid-cols-1 sm:grid-cols-2 xxs:gap-4 lg:gap-14 mb-4"
-            >
-              {faqs.slice(rowIndex * 2, rowIndex * 2 + 2).map((faq, index) => (
-                <Accordion key={rowIndex * 2 + index} type="single" collapsible>
-                  <AccordionItem
-                    className="shadow-md bg-white rounded-[6px] p-6"
-                    value="item-1"
-                  >
-                    <AccordionTrigger
-                      className={`text-[#333333] xss:text-base md:text-lg lg:text-2xl font-medium ${styles.accordionTrigger}`}
-                    >
-                      {faq.question}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-[#858585] xss:text-xs md:text-base lg:text-xl">
-                      {faq.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              ))}
-            </div>
-          )
-        )}
+        <Accordion type="single" collapsible className="w-full">
+          <div className="grid lg:grid-cols-2 xxs:grid-cols-1 sm:grid-cols-2 xxs:gap-4 lg:gap-14 items-start">
+            {faqs.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+                className="shadow-md bg-white rounded-[6px] p-6 h-fit"
+              >
+                <AccordionTrigger
+                  className={`text-[#333333] xss:text-base md:text-lg lg:text-2xl font-medium ${styles.accordionTrigger}`}
+                >
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-[#858585] xss:text-xs md:text-base lg:text-xl">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </div>
+        </Accordion>
       </div>
 
       {/* Contact Section */}
-      <section className="flex xxs:flex-col lg:flex-row justify-between items-center w-full mt-8 gap-6">
+      <section className="lg:flex xxs:hidden xxs:flex-col lg:flex-row justify-between items-center w-full mt-8 gap-6">
         <span className="flex flex-col gap-4">
           <h2 className="lg:text-5xl xxs:text-2xl font-bold text-[#1E3747]">
             Still have Questions?
@@ -143,6 +139,8 @@ function PropertyListingFaq({ contactEmail, faqs }: PropertyListingFaqProps) {
           </p>
         </span>
         <PrimaryButton
+          style="filled"
+          classname="tex-xl"
           rightIcon="/assets/icons/right-arrow.svg"
           iconSize={8}
           width={260}

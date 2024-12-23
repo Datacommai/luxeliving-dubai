@@ -10,7 +10,7 @@ export async function mockFetchPropertyFaqData(delay: number) {
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s",
           },
           {
-            question: " How much does a property in Art Bay cost??",
+            question: " How much does a property in Art Bay cost?",
             answer:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s",
           },
@@ -30,7 +30,7 @@ export async function mockFetchPropertyFaqData(delay: number) {
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s",
           },
           {
-            question: "What are the available amenities in Art Bay??",
+            question: "What are the available amenities in Art Bay?",
             answer:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s",
           },
