@@ -8,6 +8,9 @@ import PropertyListingAboutWithDelay from "../components/property-listing-compon
 import { PropertyListingTabbedGalleryWithDelay } from "../components/property-listing-components/property-listing-tabbed-gallery/property-listing-tabbed-gallery";
 import { Footer } from "../components/footer/footer";
 import PropertyListingNearbyDestinationsWithDelay from "../components/property-listing-components/property-listing-nearby-destinations/property-listing-nearby-destinations";
+import { PropertyListingFloorplanShowcaseWithDelay } from "../components/property-listing-components/property-listing-floorplan-showcase/property-listing-floorplan-showcase";
+import { TrustedSection } from "../components/trusted-section/trusted-section";
+import { PropertyListingDiscoverPropertiesWithDelay } from "../components/property-listing-components/property-listing-discover-properties/property-listing-discover-properties";
 import PropertyListingPaymentWithDelay from "../components/property-listing-components/property-listing-payment/property-listing-payment";
 
 export default function MockPropertyListing() {
@@ -22,7 +25,10 @@ export default function MockPropertyListing() {
         <PropertyListingNearbyDestinationsWithDelay />
         <PropertyListingAboutWithDelay />
         <PropertyListingTabbedGalleryWithDelay />
+        <PropertyListingFloorplanShowcaseWithDelay />
+        <PropertyListingDiscoverPropertiesWithDelay />
         <PropertyListingPaymentWithDelay />
+        <TrustedSection />
         <Footer />
       </main>
     </FeatureEnabled>
