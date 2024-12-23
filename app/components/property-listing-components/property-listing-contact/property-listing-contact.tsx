@@ -60,11 +60,11 @@ function PropertyListingContact(props: PropertyListingContactProps) {
   const { profileurl, fullname, jobTitle, phone, address } = props;
 
   return (
-    <section className="w-full flex flex-col justify-start  xxs:items-center lg:items-start bg-[#EAC863] md:py-20 md:px-12 lg:px-20 2xl:px-32 xxs:py-5 md:gap-14 xxs:px-4 xxs:gap-4">
+    <section className="w-full flex flex-col justify-start xxs:items-center lg:items-start bg-[#EAC863] md:py-20 md:px-12 lg:px-20 2xl:px-32 xxs:py-10 md:gap-14 xxs:px-4 xxs:gap-4">
       <h1 className="font-bold xxs:text-xl xxs:text-center md:text-3xl lg:text-5xl text-[#333333] mb-6">
         Our Expert Will Help You Buy The Best Property in Dubai
       </h1>
-      <section className="flex w-full justify-between xxs:gap-3 md:gap-5 lg:gap-10">
+      <section className="flex md:flex-row xxs:flex-col w-full items-center justify-between xxs:gap-8 md:gap-5 lg:gap-10">
         <section className="flex lg:gap-8 items-center">
           {/* avatar for large screens */}
           <Avatar className=" xxs:hidden lg:block rounded-full xxs:w-11 xxs:h-11 lg:w-[216px] lg:h-[216px]">
@@ -72,7 +72,7 @@ function PropertyListingContact(props: PropertyListingContactProps) {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
 
-          <section className="grid grid-cols-1 h-fit gap-6">
+          <section className="grid grid-cols-1 h-fit xxs:w-[328px] xxs:gap-3 lg:gap-6">
             <span className="xxs:flex xxs:items-center lg:items-start gap-2 lg:flex lg:flex-col">
               {/* avatar for xxs screens */}
               <Avatar className="rounded-full lg:hidden xxs:w-11 xxs:h-11 lg:w-[216px] lg:h-[216px]">
