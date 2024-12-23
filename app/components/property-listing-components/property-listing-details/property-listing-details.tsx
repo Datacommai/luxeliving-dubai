@@ -6,13 +6,14 @@ import { mockFetchPropertyDetailsData } from '@/lib/mock-server/mockFetchPropery
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import { SubHeader } from '../../sub-header/sub-header';
+import { getRandomMockServerDelay } from '@/lib/utils';
 
 export default function PropertyListingDetailsWithDelay() {
  const [data, setData] = useState<PropertyListingDetailsProps>();
  const [loading, setLoading] = useState(true);
 
  useEffect(() => {
-  mockFetchPropertyDetailsData(1000).then((res) => {
+  mockFetchPropertyDetailsData(getRandomMockServerDelay()).then((res) => {
    setData(res as PropertyListingDetailsProps);
    setLoading(false);
   });

@@ -5,16 +5,19 @@ import { Suspense, useEffect, useState } from 'react';
 import { mockFetchPropertyNearbyDestinationsData } from '@/lib/mock-server/mockFetchProperyNearbyDestinationsData';
 import { Skeleton } from '@/components/ui/skeleton';
 import { SubHeader } from '../../sub-header/sub-header';
+import { getRandomMockServerDelay } from '@/lib/utils';
 
 export default function PropertyListingNearbyDestinationsWithDelay() {
  const [data, setData] = useState<PropertyListingNearbyDestinationsProps>();
  const [loading, setLoading] = useState(true);
 
  useEffect(() => {
-  mockFetchPropertyNearbyDestinationsData(1000).then((res) => {
-   setData(res as PropertyListingNearbyDestinationsProps);
-   setLoading(false);
-  });
+  mockFetchPropertyNearbyDestinationsData(getRandomMockServerDelay()).then(
+   (res) => {
+    setData(res as PropertyListingNearbyDestinationsProps);
+    setLoading(false);
+   }
+  );
  }, []);
 
  return (

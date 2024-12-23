@@ -7,13 +7,14 @@ import {
 } from '../../discover-property/discover-property';
 import { mockFetchDiscoverProperties } from '@/lib/mock-server/mockFetchDiscoverProperties';
 import { Skeleton } from '@/components/ui/skeleton';
+import { getRandomMockServerDelay } from '@/lib/utils';
 
 export const PropertyListingDiscoverPropertiesWithDelay = () => {
  const [data, setData] = useState<PropertyListingDiscoverPropertiesProps>();
  const [loading, setLoading] = useState(true);
 
  useEffect(() => {
-  mockFetchDiscoverProperties(1000).then((res) => {
+  mockFetchDiscoverProperties(getRandomMockServerDelay()).then((res) => {
    setData(res as PropertyListingDiscoverPropertiesProps);
    setLoading(false);
   });

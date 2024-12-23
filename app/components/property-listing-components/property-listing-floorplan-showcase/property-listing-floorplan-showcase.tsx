@@ -14,13 +14,14 @@ import { PrimaryButton } from '../../buttons/primary-button';
 import { Suspense, useEffect, useState } from 'react';
 import { mockFetchPropertyFloorplansData } from '@/lib/mock-server/mockFetchPropertyFloorplans';
 import { Skeleton } from '@/components/ui/skeleton';
+import { getRandomMockServerDelay } from '@/lib/utils';
 
 export const PropertyListingFloorplanShowcaseWithDelay = () => {
  const [data, setData] = useState<PropertyListingFloorplanShowcaseProps>();
  const [loading, setLoading] = useState(true);
 
  useEffect(() => {
-  mockFetchPropertyFloorplansData(1000).then((res) => {
+  mockFetchPropertyFloorplansData(getRandomMockServerDelay()).then((res) => {
    setData(res as PropertyListingFloorplanShowcaseProps);
    setLoading(false);
   });

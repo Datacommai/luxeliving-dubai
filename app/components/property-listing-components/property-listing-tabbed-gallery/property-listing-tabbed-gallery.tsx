@@ -12,13 +12,14 @@ import { Suspense, useEffect, useState } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { mockFetchPropertyTabbedGalleryData } from '@/lib/mock-server/mockFetchPropertyTabbedGallery';
 import { SubHeader } from '../../sub-header/sub-header';
+import { getRandomMockServerDelay } from '@/lib/utils';
 
 export const PropertyListingTabbedGalleryWithDelay = () => {
  const [data, setData] = useState<PropertyListingTabbedGalleryProps>();
  const [loading, setLoading] = useState(true);
 
  useEffect(() => {
-  mockFetchPropertyTabbedGalleryData(1000).then((res) => {
+  mockFetchPropertyTabbedGalleryData(getRandomMockServerDelay()).then((res) => {
    setData(res as PropertyListingTabbedGalleryProps);
    setLoading(false);
   });
