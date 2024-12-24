@@ -60,7 +60,7 @@ function PropertyListingContact(props: PropertyListingContactProps) {
   const { profileurl, fullname, jobTitle, phone, address } = props;
 
   return (
-    <section className="w-full flex flex-col justify-start xxs:items-center lg:items-start bg-[#EAC863] md:py-20 md:px-12 lg:px-20 2xl:px-32 xxs:py-10 md:gap-14 xxs:px-4 xxs:gap-4">
+    <section className="w-full flex flex-col justify-start  xxs:items-center lg:items-start bg-[#EAC863] md:py-20 md:px-12 lg:px-20 2xl:px-32 xxs:py-10 md:gap-14 xxs:px-4 xxs:gap-4">
       <h1 className="font-bold xxs:text-xl xxs:text-center md:text-3xl lg:text-5xl text-[#333333] mb-6">
         Our Expert Will Help You Buy The Best Property in Dubai
       </h1>
@@ -77,7 +77,7 @@ function PropertyListingContact(props: PropertyListingContactProps) {
               {/* avatar for xxs screens */}
               <Avatar className="rounded-full lg:hidden xxs:w-11 xxs:h-11 lg:w-[216px] lg:h-[216px]">
                 <AvatarImage src={profileurl} alt={fullname} />
-                <AvatarFallback>CN</AvatarFallback>
+                <AvatarFallback>{fullname}</AvatarFallback>
               </Avatar>
               <span className="flex flex-col xxs:gap-0 lg:gap-3">
                 <h2 className="xxs:text-base font-bold text-[#222222] lg:text-4xl">
@@ -97,11 +97,12 @@ function PropertyListingContact(props: PropertyListingContactProps) {
               />
               <p className="md:text-xl text-[#333333] xxs:text-sm">{phone}</p>
             </span>
-            <span className="flex items-center h-fit gap-2">
+            <span className="flex items-start h-fit gap-2">
               <Image
                 width={16}
                 height={16}
                 src="/assets/icons/location-pin-icon.svg"
+                className="md:mt-1.5"
                 alt="Location Icon"
               />
               <p className="md:text-xl text-[#333333] xxs:text-sm">{address}</p>
@@ -113,14 +114,14 @@ function PropertyListingContact(props: PropertyListingContactProps) {
           <Input
             type="text"
             className="bg-transparent border-[0px] border-b-black border-b-[1px] rounded-none border-[#333333] shadow-none w-full text-lg placeholder:text-[#858585] focus-visible:ring-0 focus:ring-0 focus:outline-none"
-            placeholder="Full Name"
+            placeholder="Full Name *"
           />
           <Input
             type="tel"
             className="bg-transparent border-[0px] border-b-black border-b-[1px] rounded-none border-[#333333] shadow-none w-full text-lg placeholder:text-[#858585] focus-visible:ring-0 focus:ring-0 focus:outline-none"
-            placeholder="Telephone Number"
+            placeholder="Telephone Number *"
           />
-          <Button className="text-sm font-semibold px-8 py-3 bg-[#1E3747] text-white lg:h-[52px] w-full xxs:h-[48px] hover:bg-[#2c526a] rounded-md">
+          <Button className="xxs:text-sm font-bold md:text-lg px-8 py-3 bg-[#1E3747] text-white lg:h-[52px] w-full xxs:h-[48px] hover:bg-[#2c526a] rounded-md">
             Request A Free Call
           </Button>
         </section>
