@@ -6,15 +6,21 @@ import { mockFetchPropertyGalleryData } from "@/lib/mock-server/mockFetchPropert
 import { Skeleton } from "@/components/ui/skeleton";
 import { getRandomMockServerDelay } from "@/lib/utils";
 
-export default function PropertyListingGalleryWithDelay() {
+export default function PropertyListingGalleryServerComponent({
+  useMockData,
+}: {
+  useMockData: boolean;
+}) {
   const [data, setData] = useState<PropertyListingGalleryProps>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    mockFetchPropertyGalleryData(getRandomMockServerDelay()).then((res) => {
-      setData(res as PropertyListingGalleryProps);
-      setLoading(false);
-    });
+    if (useMockData) {
+      mockFetchPropertyGalleryData(getRandomMockServerDelay()).then((res) => {
+        setData(res as PropertyListingGalleryProps);
+        setLoading(false);
+      });
+    }
   }, []);
 
   return (

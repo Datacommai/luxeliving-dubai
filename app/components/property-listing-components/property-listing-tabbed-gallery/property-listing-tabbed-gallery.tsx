@@ -14,17 +14,23 @@ import { mockFetchPropertyTabbedGalleryData } from "@/lib/mock-server/mockFetchP
 import { SubHeader } from "../../sub-header/sub-header";
 import { getRandomMockServerDelay } from "@/lib/utils";
 
-export const PropertyListingTabbedGalleryWithDelay = () => {
+export const PropertyListingTabbedGalleryServerComponent = ({
+  useMockData,
+}: {
+  useMockData: boolean;
+}) => {
   const [data, setData] = useState<PropertyListingTabbedGalleryProps>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    mockFetchPropertyTabbedGalleryData(getRandomMockServerDelay()).then(
-      (res) => {
-        setData(res as PropertyListingTabbedGalleryProps);
-        setLoading(false);
-      }
-    );
+    if (useMockData) {
+      mockFetchPropertyTabbedGalleryData(getRandomMockServerDelay()).then(
+        (res) => {
+          setData(res as PropertyListingTabbedGalleryProps);
+          setLoading(false);
+        }
+      );
+    }
   }, [data]);
 
   return (

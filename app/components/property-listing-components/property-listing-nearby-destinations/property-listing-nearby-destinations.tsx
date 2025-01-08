@@ -7,17 +7,23 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { SubHeader } from "../../sub-header/sub-header";
 import { getRandomMockServerDelay } from "@/lib/utils";
 
-export default function PropertyListingNearbyDestinationsWithDelay() {
+export default function PropertyListingNearbyDestinationsServerComponent({
+  useMockData,
+}: {
+  useMockData: boolean;
+}) {
   const [data, setData] = useState<PropertyListingNearbyDestinationsProps>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    mockFetchPropertyNearbyDestinationsData(getRandomMockServerDelay()).then(
-      (res) => {
-        setData(res as PropertyListingNearbyDestinationsProps);
-        setLoading(false);
-      }
-    );
+    if (useMockData) {
+      mockFetchPropertyNearbyDestinationsData(getRandomMockServerDelay()).then(
+        (res) => {
+          setData(res as PropertyListingNearbyDestinationsProps);
+          setLoading(false);
+        }
+      );
+    }
   }, []);
 
   return (

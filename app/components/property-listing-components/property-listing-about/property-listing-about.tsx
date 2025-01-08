@@ -7,15 +7,21 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Separator } from "@/components/ui/separator";
 import { getRandomMockServerDelay } from "@/lib/utils";
 
-export default function PropertyListingAboutWithDelay() {
+export default function PropertyListingAboutServerComponent({
+  useMockData,
+}: {
+  useMockData: boolean;
+}) {
   const [data, setData] = useState<PropertyListingAboutProps | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    mockFetchPropertyAboutData(getRandomMockServerDelay()).then((res) => {
-      setData(res as PropertyListingAboutProps);
-      setLoading(false);
-    });
+    if (useMockData) {
+      mockFetchPropertyAboutData(getRandomMockServerDelay()).then((res) => {
+        setData(res as PropertyListingAboutProps);
+        setLoading(false);
+      });
+    }
   }, []);
 
   return loading ? (
