@@ -7,6 +7,7 @@ import {
  CardTitle,
 } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import { createRouteId } from '@/lib/utils';
 import Image from 'next/image';
 
 export type FeaturedPropertyProps = {
@@ -22,7 +23,7 @@ export type FeaturedPropertyProps = {
 
 export const FeaturedProperty = (props: FeaturedPropertyProps) => {
  const { title, description, price, image, beds, baths, sqft, onClick } = props;
- const routeId = title.split(' ').join('-');
+ const routeId = createRouteId(title);
 
  return (
   <Card

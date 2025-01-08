@@ -37,7 +37,6 @@ export const getProperties = async () => {
 };
 
 export const getProperty = async (id: string) => {
- console.log(id);
  try {
   const db = getFirestore();
   const docRef = await getDocs(collection(db, PROPERTY_DB_ID));
