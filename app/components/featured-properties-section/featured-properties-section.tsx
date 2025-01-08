@@ -21,7 +21,8 @@ function FeaturedPorpetiesSection() {
  const router = useRouter();
 
  const handlePropertyClick = (id: string) => {
-  router.push(id);
+  console.log(id);
+  router.push('/properties/' + id);
  };
 
  useEffect(() => {

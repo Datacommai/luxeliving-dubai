@@ -2,6 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import { PropertyType } from '@/types';
+import { PROPERTY_DB_ID } from './types';
 
 const firebaseConfig = {
  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -24,7 +25,7 @@ export const initializeAnalytics = () => {
 export const getProperties = async () => {
  try {
   const db = getFirestore();
-  const querySnapshot = await getDocs(collection(db, 'properties'));
+  const querySnapshot = await getDocs(collection(db, PROPERTY_DB_ID));
   const data = querySnapshot.docs.map((doc) => ({
    ...doc.data(),
   })) as PropertyType[];
@@ -36,9 +37,10 @@ export const getProperties = async () => {
 };
 
 export const getProperty = async (id: string) => {
+ console.log(id);
  try {
   const db = getFirestore();
-  const docRef = await getDocs(collection(db, 'properties'));
+  const docRef = await getDocs(collection(db, PROPERTY_DB_ID));
   const data = docRef.docs.map((doc) => ({
    ...doc.data(),
   })) as PropertyType[];

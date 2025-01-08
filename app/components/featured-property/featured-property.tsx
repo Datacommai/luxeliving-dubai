@@ -22,10 +22,11 @@ export type FeaturedPropertyProps = {
 
 export const FeaturedProperty = (props: FeaturedPropertyProps) => {
  const { title, description, price, image, beds, baths, sqft, onClick } = props;
+ const routeId = title.split(' ').join('-');
+
  return (
   <Card
-   // TODO: this is just for demo, remove later
-   onClick={() => onClick?.(title)}
+   onClick={() => onClick?.(routeId)}
    className="border-none shadow-none p-0 m-0"
    style={{
     width: '365px',
@@ -76,7 +77,7 @@ export const FeaturedProperty = (props: FeaturedPropertyProps) => {
      </li>
      <li className="flex gap-2">
       <Image width={20} height={20} src="/assets/icons/sqft.svg" alt="sqft" />
-      <p>${sqft === 0 ? '-' : sqft} sqft</p>
+      <p>{sqft === 0 ? '-' : sqft} sqft</p>
      </li>
     </ul>
    </CardContent>
