@@ -13,3 +13,11 @@ export function getRandomMockServerDelay() {
  const maxDelay: number = 2500;
  return Math.floor(Math.random() * maxDelay);
 }
+
+export const extractRouteId = (id: string) => {
+ return id.split('-').join(' ');
+};
+
+export const createRouteId = (id: string) => {
+ return id.split(' ').join('-');
+};
