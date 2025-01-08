@@ -6,15 +6,21 @@ import { mockFetchPropertyAmenitiesData } from "@/lib/mock-server/mockFetchPrope
 import { Skeleton } from "@/components/ui/skeleton";
 import { getRandomMockServerDelay } from "@/lib/utils";
 
-export default function PropertyAmenitiesWithDelay() {
+export default function PropertyAmenitiesServerComponent({
+  useMockData,
+}: {
+  useMockData: boolean;
+}) {
   const [data, setData] = useState<PropertyAmenitiesProps[] | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    mockFetchPropertyAmenitiesData(getRandomMockServerDelay()).then((res) => {
-      setData(res as PropertyAmenitiesProps[]);
-      setLoading(false);
-    });
+    if (useMockData) {
+      mockFetchPropertyAmenitiesData(getRandomMockServerDelay()).then((res) => {
+        setData(res as PropertyAmenitiesProps[]);
+        setLoading(false);
+      });
+    }
   }, []);
 
   return (

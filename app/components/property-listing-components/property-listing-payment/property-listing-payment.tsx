@@ -3,15 +3,21 @@ import { Suspense, useEffect, useState } from "react";
 import { mockFetchPropertyListingPaymentData } from "@/lib/mock-server/mockFetchProperyListingPaymentData";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export default function PropertyListingPaymentWithDelay() {
+export default function PropertyListingPaymentServerComponent({
+  useMockData,
+}: {
+  useMockData: boolean;
+}) {
   const [data, setData] = useState<PropertyListingPaymentProps>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    mockFetchPropertyListingPaymentData(1000).then((res) => {
-      setData(res as PropertyListingPaymentProps);
-      setLoading(false);
-    });
+    if (useMockData) {
+      mockFetchPropertyListingPaymentData(1000).then((res) => {
+        setData(res as PropertyListingPaymentProps);
+        setLoading(false);
+      });
+    }
   }, []);
 
   return (

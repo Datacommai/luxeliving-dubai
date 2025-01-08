@@ -7,15 +7,21 @@ import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-export default function PropertyListingContactWithDelay() {
+export default function PropertyListingContactServerComponent({
+  useMockData,
+}: {
+  useMockData: boolean;
+}) {
   const [data, setData] = useState<PropertyListingContactProps>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    mockFetchPropertyContactData(1000).then((res) => {
-      setData(res as PropertyListingContactProps);
-      setLoading(false);
-    });
+    if (useMockData) {
+      mockFetchPropertyContactData(1000).then((res) => {
+        setData(res as PropertyListingContactProps);
+        setLoading(false);
+      });
+    }
   }, []);
 
   return (

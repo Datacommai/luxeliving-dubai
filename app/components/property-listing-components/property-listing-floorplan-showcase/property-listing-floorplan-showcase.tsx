@@ -16,15 +16,23 @@ import { mockFetchPropertyFloorplansData } from "@/lib/mock-server/mockFetchProp
 import { Skeleton } from "@/components/ui/skeleton";
 import { getRandomMockServerDelay } from "@/lib/utils";
 
-export const PropertyListingFloorplanShowcaseWithDelay = () => {
+export const PropertyListingFloorplanShowcaseServerComponent = ({
+  useMockData,
+}: {
+  useMockData: boolean;
+}) => {
   const [data, setData] = useState<PropertyListingFloorplanShowcaseProps>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    mockFetchPropertyFloorplansData(getRandomMockServerDelay()).then((res) => {
-      setData(res as PropertyListingFloorplanShowcaseProps);
-      setLoading(false);
-    });
+    if (useMockData) {
+      mockFetchPropertyFloorplansData(getRandomMockServerDelay()).then(
+        (res) => {
+          setData(res as PropertyListingFloorplanShowcaseProps);
+          setLoading(false);
+        }
+      );
+    }
   }, [data]);
 
   return (
@@ -90,7 +98,7 @@ function PropertyListingFloorplanShowcase(
   }, [floorplans]);
 
   return (
-    <section className="w-[80%] h-[800px] inline-block">
+    <section className="flex flex-col items-center 2xl:px-28 xxs:px-4 xxs:py-8 md:py-14 lg:py-20 md:px-10 lg:px-6 xl:px-16">
       <SubHeader title="Layouts" />
       <h2 className="my-4 text-lg lg:text-5xl font-bold text-[#212121] text-center">
         {title ?? " Explore Our Gallery of Exquisite Spaces"}
