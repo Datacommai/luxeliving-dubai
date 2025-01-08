@@ -7,6 +7,7 @@ import {
  CardTitle,
 } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import { createRouteId } from '@/lib/utils';
 import Image from 'next/image';
 
 export type FeaturedPropertyProps = {
@@ -22,10 +23,11 @@ export type FeaturedPropertyProps = {
 
 export const FeaturedProperty = (props: FeaturedPropertyProps) => {
  const { title, description, price, image, beds, baths, sqft, onClick } = props;
+ const routeId = createRouteId(title);
+
  return (
   <Card
-   // TODO: this is just for demo, remove later
-   onClick={() => onClick?.('mock-property-listing')}
+   onClick={() => onClick?.(routeId)}
    className="border-none shadow-none p-0 m-0"
    style={{
     width: '365px',
@@ -63,7 +65,7 @@ export const FeaturedProperty = (props: FeaturedPropertyProps) => {
     <ul className="flex justify-between items-center">
      <li className="flex gap-2">
       <Image width={20} height={20} src="/assets/icons/bed.svg" alt="beds" />
-      <p>{beds} beds</p>
+      <p>{beds === 0 ? '-' : beds} beds</p>
      </li>
      <li className="flex gap-2">
       <Image
@@ -72,11 +74,11 @@ export const FeaturedProperty = (props: FeaturedPropertyProps) => {
        src="/assets/icons/bath-tub.svg"
        alt="baths"
       />
-      <p>{baths} baths</p>
+      <p>{baths === 0 ? '-' : baths} baths</p>
      </li>
      <li className="flex gap-2">
       <Image width={20} height={20} src="/assets/icons/sqft.svg" alt="sqft" />
-      <p>${sqft} sqft</p>
+      <p>{sqft === 0 ? '-' : sqft} sqft</p>
      </li>
     </ul>
    </CardContent>
