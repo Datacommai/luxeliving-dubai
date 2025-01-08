@@ -36,6 +36,20 @@ export const getProperties = async () => {
  }
 };
 
+export const fetchAllPropertyIds = async () => {
+ try {
+  const db = getFirestore();
+  const querySnapshot = await getDocs(collection(db, PROPERTY_DB_ID));
+  const data = querySnapshot.docs.map((doc) => ({
+   ...doc.data(),
+  })) as PropertyType[];
+
+  return data.map((property) => property.name);
+ } catch (error) {
+  console.error('Error getting user data:', (error as Error).message);
+ }
+};
+
 export const getProperty = async (id: string) => {
  try {
   const db = getFirestore();
