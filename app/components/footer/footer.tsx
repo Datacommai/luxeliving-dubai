@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
-import { mockContact } from "@/lib/contacts/mockContacts";
+import { contacts } from "@/lib/contacts/contacts";
 
 export const Footer = () => {
   return (
@@ -40,12 +40,12 @@ export const Footer = () => {
               AZOO Co., Ltd.
             </h2>
             <p className="text-white xxs:text-xs md:text-2xl">
-              {mockContact.address} <br />
-              {mockContact.city}, United States
+              {contacts.address} <br />
+              {contacts.city}, United States
             </p>
           </div>
           <ul className="flex justify-center items-center gap-7">
-            <Link href={mockContact.socials.facebook} target="_blank">
+            <Link href={contacts.socials.facebook} target="_blank">
               <li>
                 <Image
                   className="md:w-8 md:h-8 xxs:w-5 xxs:h-5"
@@ -58,7 +58,7 @@ export const Footer = () => {
                 />
               </li>
             </Link>
-            <Link href={mockContact.socials.youtube}>
+            <Link href={contacts.socials.youtube}>
               <li>
                 <Image
                   className="md:w-8 md:h-8 xxs:w-5 xxs:h-5"
@@ -71,7 +71,7 @@ export const Footer = () => {
                 />
               </li>
             </Link>
-            <Link href={mockContact.socials.linkedin} target="_blank">
+            <Link href={contacts.socials.linkedin} target="_blank">
               <li>
                 <Image
                   className="md:w-8 md:h-8 xxs:w-5 xxs:h-5"
@@ -84,7 +84,7 @@ export const Footer = () => {
                 />
               </li>
             </Link>
-            <Link href={mockContact.socials.instagram} target="_blank">
+            <Link href={contacts.socials.instagram} target="_blank">
               <li>
                 <Image
                   className="md:w-8 md:h-8 xxs:w-5 xxs:h-5"
@@ -97,7 +97,7 @@ export const Footer = () => {
                 />
               </li>
             </Link>
-            <Link href={mockContact.socials.x} target="_blank">
+            <Link href={contacts.socials.x} target="_blank">
               <li>
                 <Image
                   className="md:w-8 md:h-8 xxs:w-5 xxs:h-5"

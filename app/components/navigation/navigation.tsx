@@ -9,7 +9,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
-import { mockContact } from "@/lib/contacts/mockContacts";
+import { contacts } from "@/lib/contacts/contacts";
 
 type NavigationProps = {
   hideLinks?: boolean;
@@ -82,8 +82,8 @@ export const Navigation = (props: NavigationProps) => {
           </Link>
 
           <Link
-            href={`tel:${mockContact.tel}`}
-            aria-label={`Call ${mockContact.fullname}`}
+            href={`tel:${contacts.tel}`}
+            aria-label={`Call ${contacts.fullname}`}
           >
             <Button className="text-lg capitalize font-bold px-10 py-4 bg-[#1E3747] h-[52px] w-[256px] hover:bg-[#2c526a]">
               Contact for booking
@@ -137,8 +137,8 @@ export const Navigation = (props: NavigationProps) => {
 
       {hideLinks && (
         <Link
-          href={`tel:${mockContact.tel}`}
-          aria-label={`Call ${mockContact.fullname}`}
+          href={`tel:${contacts.tel}`}
+          aria-label={`Call ${contacts.fullname}`}
         >
           <Button className="text-sm md:hidden xxs:px-6 font-bold px-10 py-3 bg-[#1E3747] h-[48px] w-[214px] hover:bg-[#2c526a]">
             Contact for booking
@@ -186,8 +186,8 @@ export const Navigation = (props: NavigationProps) => {
           </section>
 
           <Link
-            href={`tel:${mockContact.tel}`}
-            aria-label={`Call ${mockContact.fullname}`}
+            href={`tel:${contacts.tel}`}
+            aria-label={`Call ${contacts.fullname}`}
           >
             <Button className="text-sm font-bold px-10 py-3 bg-[#1E3747] h-[48px] w-[214px] hover:bg-[#2c526a] flex items-center justify-between">
               Contact for booking

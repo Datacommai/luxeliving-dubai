@@ -3,7 +3,7 @@ import { PropertySelection } from "../property-selection/property-selection";
 import { IconButton } from "../buttons/icon-button";
 import { useEffect, useState } from "react";
 import { openLink } from "@/lib/utils";
-import { mockContact } from "@/lib/contacts/mockContacts";
+import { contacts } from "@/lib/contacts/contacts";
 
 export const HeroSection = () => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -51,21 +51,21 @@ export const HeroSection = () => {
                 description="facebook"
                 width={isMobile ? 40 : 50}
                 height={isMobile ? 40 : 50}
-                onClick={() => openLink(mockContact.socials.facebook)}
+                onClick={() => openLink(contacts.socials.facebook)}
               />
               <IconButton
                 icon="/assets/icons/twitter-icon.svg"
                 description="twitter"
                 width={isMobile ? 50 : 60}
                 height={isMobile ? 50 : 60}
-                onClick={() => openLink(mockContact.socials.x)}
+                onClick={() => openLink(contacts.socials.x)}
               />
               <IconButton
                 icon="/assets/icons/ig-icon.svg"
                 description="isntagram"
                 width={isMobile ? 50 : 60}
                 height={isMobile ? 50 : 60}
-                onClick={() => openLink(mockContact.socials.instagram)}
+                onClick={() => openLink(contacts.socials.instagram)}
               />
             </>
           )}

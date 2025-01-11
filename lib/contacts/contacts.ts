@@ -1,6 +1,6 @@
 import { ContactsType } from "./types";
 
-export const mockContact: ContactsType = {
+export const contacts: ContactsType = {
   fullname: "AZOO Co., Ltd",
   tel: 1234567890,
   email: "johndoe@example.com",
