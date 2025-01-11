@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
+import { contacts } from "@/lib/contacts/contacts";
 
 export const Footer = () => {
   return (
@@ -39,12 +40,12 @@ export const Footer = () => {
               AZOO Co., Ltd.
             </h2>
             <p className="text-white xxs:text-xs md:text-2xl">
-              Main Street, Apartment 4B, Cityville, <br />
-              State 54321, United States
+              {contacts.address} <br />
+              {contacts.city}, United States
             </p>
           </div>
           <ul className="flex justify-center items-center gap-7">
-            <Link href="/">
+            <Link href={contacts.socials.facebook} target="_blank">
               <li>
                 <Image
                   className="md:w-8 md:h-8 xxs:w-5 xxs:h-5"
@@ -57,7 +58,7 @@ export const Footer = () => {
                 />
               </li>
             </Link>
-            <Link href="/">
+            <Link href={contacts.socials.youtube}>
               <li>
                 <Image
                   className="md:w-8 md:h-8 xxs:w-5 xxs:h-5"
@@ -70,7 +71,7 @@ export const Footer = () => {
                 />
               </li>
             </Link>
-            <Link href="/">
+            <Link href={contacts.socials.linkedin} target="_blank">
               <li>
                 <Image
                   className="md:w-8 md:h-8 xxs:w-5 xxs:h-5"
@@ -83,7 +84,7 @@ export const Footer = () => {
                 />
               </li>
             </Link>
-            <Link href="/">
+            <Link href={contacts.socials.instagram} target="_blank">
               <li>
                 <Image
                   className="md:w-8 md:h-8 xxs:w-5 xxs:h-5"
@@ -96,7 +97,7 @@ export const Footer = () => {
                 />
               </li>
             </Link>
-            <Link href="/">
+            <Link href={contacts.socials.x} target="_blank">
               <li>
                 <Image
                   className="md:w-8 md:h-8 xxs:w-5 xxs:h-5"
