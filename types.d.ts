@@ -23,11 +23,14 @@ export type PropertyType = {
  propertySqFt: string[];
  propertyPrice: string[];
  location: string;
- facelities: string[];
+ facilities: string[];
  contactInfo: {
   fullname: string;
   telephone: string;
   email: string;
   whatsapp: string;
+ };
+ media: {
+  propertyImages: string[];
  };
 };
