@@ -26,7 +26,6 @@ export default function PropertyListingHeroServerComponent({
   } else {
    getProperty(queryId)
     .then((res) => {
-     console.log(res);
      setData({
       title: res?.name || '',
       description: res?.summaryDescription || '',

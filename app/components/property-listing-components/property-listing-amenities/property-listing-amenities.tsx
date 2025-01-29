@@ -28,6 +28,7 @@ export default function PropertyAmenitiesServerComponent({
    getProperty(queryId)
     .then((res) => {
      const { facilities } = res as PropertyType;
+
      const amenities = Object.values(facilities).map((amenity) => {
       return {
        icon: '/assets/featured-properties-temp/club.svg',
