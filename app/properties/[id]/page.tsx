@@ -24,7 +24,19 @@ export async function generateMetadata({
   openGraph: {
    title: `Properties | ${id}`,
    description: data?.summaryDescription,
-   keywords: ['properties', 'property', 'Dubai', 'real estate'],
+   keywords: [
+    data.name,
+    'Dubai Luxury Real Estate',
+    'Villas for Sale in Palm Jebel Ali',
+    'Luxury Homes for Sale in Dubai',
+    'High-End Properties in Nad Al Sheba Gardens',
+    'Townhouses for Sale in Villanova, Dubai',
+    'Dubai Real Estate for Canadian Investors',
+    'Premium Villas with Private Lagoons in Dubai',
+    'Standalone Villas by Emaar in Dubai',
+    'Waterfront Properties in Palm Jebel Ali',
+    'Exclusive Gated Community Homes in Dubai',
+   ],
   },
  };
 }
