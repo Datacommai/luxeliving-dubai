@@ -4,7 +4,7 @@ import { Suspense, useEffect, useState } from 'react';
 import { mockFetchPropertyHeroData } from '@/lib/mock-server/mockFetchPropertyHeroData';
 import { Skeleton } from '@/components/ui/skeleton';
 import { PrimaryButton } from '@/app/components/buttons/primary-button';
-import { getRandomMockServerDelay } from '@/lib/utils';
+import { getRandomMockServerDelay, sendEmail } from '@/lib/utils';
 import { getProperty } from '@/lib/firebase/firebase';
 
 export default function PropertyListingHeroServerComponent({
@@ -33,6 +33,10 @@ export default function PropertyListingHeroServerComponent({
       startingPrice: Number(res?.propertyPrice[0]),
       paymentPlan: res?.paymentPlan.onCompletion,
       handoverDate: res?.completionDate,
+      contact: {
+       fullname: res?.contactInfo.fullname || '',
+       email: res?.contactInfo.email || '',
+      },
      });
     })
     .finally(() => {
@@ -116,6 +120,10 @@ export type PropertyListingHeroProps = {
  handoverDate?: string;
  subDescription?: string;
  pdfUrl?: string;
+ contact: {
+  fullname: string;
+  email: string;
+ };
 };
 
 function PropertyListingHero(props: PropertyListingHeroProps) {
@@ -128,7 +136,16 @@ function PropertyListingHero(props: PropertyListingHeroProps) {
   handoverDate,
   subDescription,
   pdfUrl,
+  contact,
  } = props;
+
+ const handleBookingClick = () => {
+  sendEmail(
+   contact.email,
+   'Book a showing',
+   `I would like to book a showing for ${title}`
+  );
+ };
 
  return (
   <section className="w-full 2xl:px-28 xxs:px-4 xxs:py-8 md:py-14 lg:py-20 md:px-4 lg:px-6 xl:px-16 flex flex-col justify-center items-center">
@@ -163,6 +180,7 @@ function PropertyListingHero(props: PropertyListingHeroProps) {
       style="filled"
       text="Book a Showing"
       classname="flex w-full justify-center items-center text-sm px-8 py-3 h-[48px] lg:w-[214px]"
+      onClick={handleBookingClick}
      />
 
      {/* Details Section */}

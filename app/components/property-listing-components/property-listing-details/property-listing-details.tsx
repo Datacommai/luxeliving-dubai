@@ -5,7 +5,7 @@ import { Suspense, useEffect, useState } from 'react';
 import { mockFetchPropertyDetailsData } from '@/lib/mock-server/mockFetchPropertyDetailsData';
 import { Skeleton } from '@/components/ui/skeleton';
 import { SubHeader } from '../../sub-header/sub-header';
-import { getRandomMockServerDelay } from '@/lib/utils';
+import { getRandomMockServerDelay, sendEmail } from '@/lib/utils';
 import { PrimaryButton } from '../../buttons/primary-button';
 import { getProperty } from '@/lib/firebase/firebase';
 
@@ -37,6 +37,10 @@ export default function PropertyListingDetailsServerComponent({
       imgUrlTwo: res?.media.propertyImages[4] + '.jpg',
       requestPricing: res?.contactInfo.whatsapp || '',
       bookShowingUrl: res?.contactInfo.email || '',
+      contact: {
+       fullname: res?.contactInfo.fullname || '',
+       email: res?.contactInfo.email || '',
+      },
      });
     })
     .finally(() => {
@@ -111,6 +115,10 @@ export type PropertyListingDetailsProps = {
  imgUrlTwo: string;
  requestPricing: string;
  bookShowingUrl: string;
+ contact: {
+  fullname: string;
+  email: string;
+ };
 };
 
 function PropertyListingDetails(props: PropertyListingDetailsProps) {
@@ -122,7 +130,24 @@ function PropertyListingDetails(props: PropertyListingDetailsProps) {
   imgUrlTwo,
   requestPricing,
   bookShowingUrl,
+  contact,
  } = props;
+
+ const handleBookingClick = () => {
+  sendEmail(
+   contact.email,
+   'Book a showing',
+   `I would like to book a showing for ${title}`
+  );
+ };
+
+ const handleRequestUnitsPricingClick = () => {
+  sendEmail(
+   contact.email,
+   'Request units pricing',
+   `I would like to request units pricing for ${title}`
+  );
+ };
 
  return (
   <section className="w-full xxs:gap-8 md:gap-10 2xl:px-28 xxs:px-4 xxs:py-8 md:py-14 lg:py-20 md:px-10 lg:px-6 xl:px-10 flex flex-col justify-center items-center">
@@ -167,6 +192,7 @@ function PropertyListingDetails(props: PropertyListingDetailsProps) {
          classname="text-sm font-semibold px-8 py-3 lg:h-[52px] lg:w-[322px] xxs:h-[48px] xxs:w-full bg-transparent"
          style="outlined"
          rel="noopener noreferrer"
+         onClick={handleRequestUnitsPricingClick}
         />
        )}
 
@@ -176,6 +202,7 @@ function PropertyListingDetails(props: PropertyListingDetailsProps) {
          text=" Book a Showing"
          rel="noopener noreferrer"
          classname="text-sm font-semibold px-8 py-3 bg-[#1E3747] text-white lg:h-[52px] lg:w-[200px] xxs:h-[48px] xxs:w-full hover:bg-[#2c526a] rounded-md"
+         onClick={handleBookingClick}
         />
        )}
       </span>

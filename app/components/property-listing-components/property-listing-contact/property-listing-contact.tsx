@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { getProperty } from '@/lib/firebase/firebase';
 import { PropertyType } from '@/types';
+import { sendEmail } from '@/lib/utils';
 
 export default function PropertyListingContactServerComponent({
  useMockData,
@@ -35,6 +36,7 @@ export default function PropertyListingContactServerComponent({
       jobTitle: 'Real Estate Agent',
       phone: contactInfo.telephone,
       address: 'N/A',
+      email: contactInfo.email,
      });
     })
     .finally(() => {
@@ -79,10 +81,21 @@ export type PropertyListingContactProps = {
  jobTitle: string;
  phone: string;
  address: string;
+ email: string;
 };
 
 function PropertyListingContact(props: PropertyListingContactProps) {
- const { profileurl, fullname, jobTitle, phone, address } = props;
+ const { profileurl, fullname, jobTitle, phone, address, email } = props;
+ const [name, setFullname] = useState('');
+ const [tel, setTel] = useState('');
+
+ const handleRequestCallClick = () => {
+  sendEmail(
+   email,
+   'Request Call',
+   `I would like to request a call my name is ${name} and my phone number is ${tel}`
+  );
+ };
 
  return (
   <section className="w-full flex flex-col justify-start  xxs:items-center lg:items-start bg-[#EAC863] md:py-20 md:px-12 lg:px-20 2xl:px-32 xxs:py-10 md:gap-14 xxs:px-4 xxs:gap-4">
@@ -135,16 +148,20 @@ function PropertyListingContact(props: PropertyListingContactProps) {
 
     <section className="bg-white flex flex-col items-center justify-center rounded-[6px] xxs:p-4 lg:p-10 gap-10 lg:w-[340px] lg:h-[274px] xxs:w-[328px] xxs:h-[226px]">
      <Input
+      onChange={(e) => setFullname(e.target.value)}
       type="text"
       className="bg-transparent border-[0px] border-b-black border-b-[1px] rounded-none border-[#333333] shadow-none w-full text-lg placeholder:text-[#858585] focus-visible:ring-0 focus:ring-0 focus:outline-none"
       placeholder="Full Name *"
      />
      <Input
+      onChange={(e) => setTel(e.target.value)}
       type="tel"
       className="bg-transparent border-[0px] border-b-black border-b-[1px] rounded-none border-[#333333] shadow-none w-full text-lg placeholder:text-[#858585] focus-visible:ring-0 focus:ring-0 focus:outline-none"
       placeholder="Telephone Number *"
      />
-     <Button className="xxs:text-sm font-bold md:text-lg px-8 py-3 bg-[#1E3747] text-white lg:h-[52px] w-full xxs:h-[48px] hover:bg-[#2c526a] rounded-md">
+     <Button
+      onClick={handleRequestCallClick}
+      className="xxs:text-sm font-bold md:text-lg px-8 py-3 bg-[#1E3747] text-white lg:h-[52px] w-full xxs:h-[48px] hover:bg-[#2c526a] rounded-md">
       Request A Free Call
      </Button>
     </section>
