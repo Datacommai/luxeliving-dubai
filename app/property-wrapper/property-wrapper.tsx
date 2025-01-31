@@ -2,7 +2,7 @@ import PropertyListingHeroServerComponent from '../components/property-listing-c
 import PropertyListingGalleryServerComponent from '../components/property-listing-components/property-listing-gallery/property-listing-gallery';
 import PropertyAmenitiesServerComponent from '../components/property-listing-components/property-listing-amenities/property-listing-amenities';
 import PropertyListingDetailsServerComponent from '../components/property-listing-components/property-listing-details/property-listing-details';
-// import PropertyListingNearbyDestinationsServerComponent from '../components/property-listing-components/property-listing-nearby-destinations/property-listing-nearby-destinations';
+import PropertyListingNearbyDestinationsServerComponent from '../components/property-listing-components/property-listing-nearby-destinations/property-listing-nearby-destinations';
 import PropertyListingAboutServerComponent from '../components/property-listing-components/property-listing-about/property-listing-about';
 import { PropertyListingTabbedGalleryServerComponent } from '../components/property-listing-components/property-listing-tabbed-gallery/property-listing-tabbed-gallery';
 // import { PropertyListingFloorplanShowcaseServerComponent } from '../components/property-listing-components/property-listing-floorplan-showcase/property-listing-floorplan-showcase';
@@ -42,10 +42,10 @@ export const PropertyWrapper = (props: PropertyWrapperProps) => {
     useMockData={useMockData}
     queryId={queryId}
    />
-   {/* <PropertyListingNearbyDestinationsServerComponent
-    useMockData={useMockData}
+   <PropertyListingNearbyDestinationsServerComponent
+    useMockData={true}
     queryId={queryId}
-   /> */}
+   />
    <PropertyListingAboutServerComponent
     useMockData={useMockData}
     queryId={queryId}

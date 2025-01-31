@@ -1,5 +1,4 @@
 'use client';
-import { SecondaryButton } from '../../buttons/secondary-button';
 import {
  Dialog,
  DialogHeader,
@@ -138,7 +137,8 @@ function PropertyListingTabbedGallery(
       'Explore from a variety of living experiences that Dubai offers!'}
     </p>
    </section>
-   <section className="xxs:my-4 sm:my-14 xxs:w-full xs:w-fit flex justify-center items-center gap-4 lg:gap-10">
+   {/* TODO: Add buttons */}
+   {/* <section className="xxs:my-4 sm:my-14 xxs:w-full xs:w-fit flex justify-center items-center gap-4 lg:gap-10">
     <SecondaryButton
      title="Exteriors"
      variant="filled"
@@ -149,7 +149,7 @@ function PropertyListingTabbedGallery(
      variant="outlined"
      className="xxs:w-[130px] xs:w-[156px] xxs:h-[48px] sm:w-[200px] sm:h-[54px]"
     />
-   </section>
+   </section> */}
 
    {isMobile ? (
     <MobileImageGallery imageTabs={imageTabs} />
