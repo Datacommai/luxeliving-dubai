@@ -37,10 +37,10 @@ export const HeroSection = () => {
      All homes are for a lifetime. <br /> This one is once in a lifetime.
     </h1>
     <div className="lg:block lg:top-0 xxs:relative xs:relative xxs:bottom-0 xs:top-24"></div>
-    <section className="lg:flex lg:flex-col xs:grid xs:grid-cols-1 xxs:grid xxs:grid-cols-1 gap-3 items-center">
+    {/* TODO: Add social media links */}
+    {/* <section className="lg:flex lg:flex-col xs:grid xs:grid-cols-1 xxs:grid xxs:grid-cols-1 gap-3 items-center">
      <div className="bg-white w-1 h-20 lg:block xs:hidden xxs:hidden"></div>
-     {/* TODO: Add social media links */}
-     {/* {!isMobile && (
+     {!isMobile && (
             <>
               <IconButton
                 icon="/assets/icons/fb-icon.svg"
@@ -64,9 +64,9 @@ export const HeroSection = () => {
                 onClick={() => openLink(contacts.socials.instagram)}
               />
             </>
-          )} */}
+          )}
      <div className="bg-white w-1 h-20 lg:block xs:hidden xxs:hidden"></div>
-    </section>
+    </section> */}
    </div>
    <div>
     <PropertySelection />
