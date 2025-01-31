@@ -102,7 +102,7 @@ function PropertyListingContact(props: PropertyListingContactProps) {
        {/* avatar for xxs screens */}
        <Avatar className="rounded-full lg:hidden xxs:w-11 xxs:h-11 lg:w-[216px] lg:h-[216px]">
         <AvatarImage src={profileurl} alt={fullname} />
-        <AvatarFallback>{fullname}</AvatarFallback>
+        <AvatarFallback>{fullname.toUpperCase()}</AvatarFallback>
        </Avatar>
        <span className="flex flex-col xxs:gap-0 lg:gap-3">
         <h2 className="xxs:text-base font-bold text-[#222222] lg:text-4xl">
