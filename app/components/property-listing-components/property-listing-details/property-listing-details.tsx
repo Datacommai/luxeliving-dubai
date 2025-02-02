@@ -31,8 +31,8 @@ export default function PropertyListingDetailsServerComponent({
      setData({
       header: res?.name || '',
       title: res?.name || '',
-      descriptionTwo: res?.summaryDescription || '',
-      descriptionOne: res?.summaryDescription || '',
+      descriptionTwo: res?.information.mainDescription || '',
+      descriptionOne: res?.projectGeneralFacts || '',
       imgUrlOne: res?.media.propertyImages[2] + '.jpg',
       imgUrlTwo: res?.media.propertyImages[4] + '.jpg',
       requestPricing: res?.contactInfo.whatsapp || '',

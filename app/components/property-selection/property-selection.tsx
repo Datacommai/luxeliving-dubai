@@ -1,3 +1,4 @@
+'use client';
 import {
  Select,
  SelectContent,
@@ -11,8 +12,68 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { Skeleton } from '@/components/ui/skeleton';
+import { useEffect, useRef, useState } from 'react';
+import { getProperties } from '@/lib/firebase/firebase';
 
-export const PropertySelection = () => {
+export type FilterType = {
+ propertyType: string;
+ lifestyle: string;
+ city: string;
+ developer: string;
+};
+
+export const PropertySelection = ({
+ onFilter,
+}: {
+ onFilter: (filter: FilterType) => void;
+}) => {
+ const [data, setData] = useState<FilterType[]>();
+ const typeRef = useRef<HTMLElement>(null);
+ const lifestyleRef = useRef<HTMLElement>(null);
+ const cityRef = useRef<HTMLElement>(null);
+ const developerRef = useRef<HTMLElement>(null);
+
+ useEffect(() => {
+  getProperties().then((res) => {
+   const property = res as PropertyType[];
+
+   const filters = property.map((item) => {
+    return {
+     propertyType: item.filters.propertyType,
+     lifestyle: item.filters.lifestyle,
+     city: item.filters.city,
+     developer: item.filters.developer,
+    };
+   });
+
+   setData(filters);
+  });
+ }, [data]);
+
+ const handleFilterSearch = () => {
+  const propertyType = handleFilter(typeRef?.current as HTMLElement) as string;
+  const lifestyle = handleFilter(
+   lifestyleRef?.current as HTMLElement
+  ) as string;
+  const city = handleFilter(cityRef?.current as HTMLElement) as string;
+  const developer = handleFilter(
+   developerRef?.current as HTMLElement
+  ) as string;
+
+  const filters: Partial<FilterType> = {
+   propertyType,
+   lifestyle,
+   city,
+   developer,
+  };
+
+  onFilter(filters as FilterType);
+ };
+
+ const handleFilter = (filter: HTMLElement) => {
+  return filter?.textContent === 'Select' ? '' : filter?.textContent;
+ };
+
  return (
   <section className="flex justify-center">
    <Card className="mt-10 rounded-md w-5/6 justify-self-center md:min-h-[139px] xxs:grid xxs:grid-cols-2 sm:grid-cols-3 md:grid md:grid-cols-4 xxs:gap-4 lg:gap-1 lg:flex items-center justify-between xxs:p-4 md:p-6 shadow-md border-none">
@@ -21,22 +82,18 @@ export const PropertySelection = () => {
      <p className="font-medium">Property Type</p>
      <Select>
       <SelectTrigger className="drop-down-icon xxs:h-[48px] xxs:w-full lg:w-[150px] xl:w-[220px] border-[#434343] focus:ring-0 md:h-[56px] text-[#434343]">
-       <SelectValue placeholder="Select" />
+       <SelectValue placeholder="Select" ref={typeRef} />
       </SelectTrigger>
       <SelectContent>
        <SelectGroup>
-        <SelectItem className="capitalize" value="Single-Family Home">
-         Single-Family Home
-        </SelectItem>
-        <SelectItem className="capitalize" value="Multi-Family Home">
-         Multi-Family Home
-        </SelectItem>
-        <SelectItem className="capitalize" value="Condominium">
-         Condominium
-        </SelectItem>
-        <SelectItem className="capitalize" value="Apartment">
-         Apartment
-        </SelectItem>
+        {data?.map((item) => (
+         <SelectItem
+          key={item.propertyType}
+          className="capitalize"
+          value={item.propertyType}>
+          {item.propertyType}
+         </SelectItem>
+        ))}
        </SelectGroup>
       </SelectContent>
      </Select>
@@ -47,25 +104,18 @@ export const PropertySelection = () => {
      <p className="font-medium">Developers</p>
      <Select>
       <SelectTrigger className="drop-down-icon xxs:h-[48px] xxs:w-full lg:w-[150px] xl:w-[220px] border-[#434343] focus:ring-0 md:h-[56px] text-[#434343]">
-       <SelectValue placeholder="Select" />
+       <SelectValue placeholder="Select" ref={developerRef} />
       </SelectTrigger>
       <SelectContent>
        <SelectGroup>
-        <SelectItem className="capitalize" value="Emaar Properties">
-         Emaar Properties
-        </SelectItem>
-        <SelectItem className="capitalize" value="Nakheel Properties">
-         Nakheel Properties
-        </SelectItem>
-        <SelectItem className="capitalize" value="Meraas">
-         Meraas
-        </SelectItem>
-        <SelectItem className="capitalize" value="Select Group">
-         Select Group
-        </SelectItem>
-        <SelectItem className="capitalize" value="Azizi Developments">
-         Azizi Developments
-        </SelectItem>
+        {data?.map((item) => (
+         <SelectItem
+          key={item.developer}
+          className="capitalize"
+          value={item.developer}>
+          {item.developer}
+         </SelectItem>
+        ))}
        </SelectGroup>
       </SelectContent>
      </Select>
@@ -76,13 +126,15 @@ export const PropertySelection = () => {
      <p className="font-medium">City</p>
      <Select>
       <SelectTrigger className="drop-down-icon xxs:h-[48px] xxs:w-full lg:w-[150px] xl:w-[220px] border-[#434343] focus:ring-0 md:h-[56px] text-[#434343]">
-       <SelectValue placeholder="Select" />
+       <SelectValue placeholder="Select" ref={cityRef} />
       </SelectTrigger>
       <SelectContent>
        <SelectGroup>
-        <SelectItem className="capitalize" value="Dubai">
-         Dubai
-        </SelectItem>
+        {data?.map((item) => (
+         <SelectItem key={item.city} className="capitalize" value={item.city}>
+          {item.city}
+         </SelectItem>
+        ))}
        </SelectGroup>
       </SelectContent>
      </Select>
@@ -93,28 +145,26 @@ export const PropertySelection = () => {
      <p className="font-medium">Lifestyle</p>
      <Select>
       <SelectTrigger className="drop-down-icon xxs:h-[48px] xxs:w-full lg:w-[150px] xl:w-[220px] border-[#434343] focus:ring-0 md:h-[56px] text-[#434343]">
-       <SelectValue placeholder="Select" />
+       <SelectValue placeholder="Select" ref={lifestyleRef} />
       </SelectTrigger>
       <SelectContent>
        <SelectGroup>
-        <SelectItem className="capitalize" value="Minimalist">
-         Minimalist
-        </SelectItem>
-        <SelectItem className="capitalize" value="Family-Oriented">
-         Family-Oriented
-        </SelectItem>
-        <SelectItem className="capitalize" value="Luxury">
-         Luxury
-        </SelectItem>
-        <SelectItem className="capitalize" value="Urban">
-         Urban
-        </SelectItem>
+        {data?.map((item) => (
+         <SelectItem
+          key={item.lifestyle}
+          className="capitalize"
+          value={item.lifestyle}>
+          {item.lifestyle}
+         </SelectItem>
+        ))}
        </SelectGroup>
       </SelectContent>
      </Select>
     </span>
 
-    <Button className="text-sm xxs:col-span-2 md:col-span-4 lg:w-[152px] font-bold p-4 pr-6 sm:mt-10 md:mt-0 lg:mt-10 bg-[#1E3747] xxs:w-full xxs:h-[48px] md:h-[56px]  hover:bg-[#2c526a]">
+    <Button
+     onClick={handleFilterSearch}
+     className="text-sm xxs:col-span-2 md:col-span-4 lg:w-[152px] font-bold p-4 pr-6 sm:mt-10 md:mt-0 lg:mt-10 bg-[#1E3747] xxs:w-full xxs:h-[48px] md:h-[56px]  hover:bg-[#2c526a]">
      <Image
       width={17}
       height={17}

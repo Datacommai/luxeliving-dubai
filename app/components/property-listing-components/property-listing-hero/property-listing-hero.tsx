@@ -26,11 +26,13 @@ export default function PropertyListingHeroServerComponent({
   } else {
    getProperty(queryId)
     .then((res) => {
+     const price = Object.values(res?.propertyPrice)[0];
+     console.log(price);
      setData({
       title: res?.name || '',
-      description: res?.summaryDescription || '',
+      description: res?.information.summaryDescription || '',
       mainImageUrl: res?.media.propertyImages[0] || '' + '.jpg',
-      startingPrice: Number(res?.propertyPrice[0]),
+      startingPrice: price as number,
       paymentPlan: res?.paymentPlan.onCompletion,
       handoverDate: res?.completionDate,
       contact: {

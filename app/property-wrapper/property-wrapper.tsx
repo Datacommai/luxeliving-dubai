@@ -43,7 +43,7 @@ export const PropertyWrapper = (props: PropertyWrapperProps) => {
     queryId={queryId}
    />
    <PropertyListingNearbyDestinationsServerComponent
-    useMockData={true}
+    useMockData={useMockData}
     queryId={queryId}
    />
    <PropertyListingAboutServerComponent

@@ -1,8 +1,15 @@
 'use client';
-import { PropertySelection } from '../property-selection/property-selection';
+import {
+ FilterType,
+ PropertySelection,
+} from '../property-selection/property-selection';
 import { useEffect, useState } from 'react';
 
-export const HeroSection = () => {
+export const HeroSection = ({
+ selectedFilters,
+}: {
+ selectedFilters: (filters: FilterType) => void;
+}) => {
  const [, setIsMobile] = useState<boolean>(false);
 
  useEffect(() => {
@@ -69,7 +76,7 @@ export const HeroSection = () => {
     </section> */}
    </div>
    <div>
-    <PropertySelection />
+    <PropertySelection onFilter={selectedFilters} />
    </div>
   </section>
  );

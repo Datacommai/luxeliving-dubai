@@ -6,7 +6,6 @@ import { mockFetchPropertyAmenitiesData } from '@/lib/mock-server/mockFetchPrope
 import { Skeleton } from '@/components/ui/skeleton';
 import { getRandomMockServerDelay } from '@/lib/utils';
 import { getProperty } from '@/lib/firebase/firebase';
-import { PropertyType } from '@/types';
 
 export default function PropertyAmenitiesServerComponent({
  useMockData,
@@ -31,9 +30,9 @@ export default function PropertyAmenitiesServerComponent({
 
      const amenities = Object.values(facilities).map((amenity) => {
       return {
-       icon: '/assets/featured-properties-temp/club.svg',
-       title: amenity,
-       description: amenity,
+       icon: amenity.icon,
+       title: amenity.name,
+       description: amenity.name,
       };
      });
      setData(amenities);
