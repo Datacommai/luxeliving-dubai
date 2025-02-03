@@ -10,7 +10,6 @@ import PropertyListingPaymentServerComponent from '../components/property-listin
 import { PropertyListingDiscoverPropertiesServerComponent } from '../components/property-listing-components/property-listing-discover-properties/property-listing-discover-properties';
 import PropertyListingFaqServerComponent from '../components/property-listing-components/property-listing-faq/property-listing-faq';
 import PropertyListingContactServerComponent from '../components/property-listing-components/property-listing-contact/property-listing-contact';
-// import { TrustedSection } from '../components/trusted-section/trusted-section';
 import { Footer } from '../components/footer/footer';
 import { Navigation } from '../components/navigation/navigation';
 
@@ -74,7 +73,7 @@ export const PropertyWrapper = (props: PropertyWrapperProps) => {
     useMockData={useMockData}
     queryId={queryId}
    />
-   {/* <TrustedSection /> */}
+
    <Footer />
   </main>
  );

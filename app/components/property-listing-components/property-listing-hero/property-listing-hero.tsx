@@ -29,7 +29,6 @@ export default function PropertyListingHeroServerComponent({
     .then((res) => {
      const property = res as PropertyType;
      const price = Object.values(property.propertyPrice)[0];
-     console.log(price);
      setData({
       title: res?.name || '',
       description: res?.information.summaryDescription || '',

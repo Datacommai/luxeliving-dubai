@@ -37,7 +37,7 @@ export const PropertyListingFloorplanShowcaseServerComponent = ({
    getProperty(queryId)
     .then((res) => {
      // TODO: add floorplans
-     console.log(res);
+     //  console.log(res);
     })
     .finally(() => {
      setLoading(false);

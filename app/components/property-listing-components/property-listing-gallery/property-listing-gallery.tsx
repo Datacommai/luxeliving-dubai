@@ -86,6 +86,12 @@ function PropertyListingGallery({ imageUrls }: PropertyListingGalleryProps) {
        } md:col-span-1 w-full h-full`}
        key={index}>
        <Image
+        style={{
+         objectFit: 'cover',
+         objectPosition: 'center',
+         width: '100%',
+         height: '400px',
+        }}
         alt={`Image ${index + 1}`}
         src={url}
         width={100}
