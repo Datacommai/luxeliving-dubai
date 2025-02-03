@@ -6,6 +6,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { PrimaryButton } from '@/app/components/buttons/primary-button';
 import { getRandomMockServerDelay, sendEmail } from '@/lib/utils';
 import { getProperty } from '@/lib/firebase/firebase';
+import { PropertyType } from '@/types';
 
 export default function PropertyListingHeroServerComponent({
  useMockData,
@@ -26,11 +27,13 @@ export default function PropertyListingHeroServerComponent({
   } else {
    getProperty(queryId)
     .then((res) => {
+     const property = res as PropertyType;
+     const price = Object.values(property.propertyPrice)[0];
      setData({
       title: res?.name || '',
-      description: res?.summaryDescription || '',
+      description: res?.information.summaryDescription || '',
       mainImageUrl: res?.media.propertyImages[0] || '' + '.jpg',
-      startingPrice: Number(res?.propertyPrice[0]),
+      startingPrice: price as unknown as number,
       paymentPlan: res?.paymentPlan.onCompletion,
       handoverDate: res?.completionDate,
       contact: {
@@ -153,14 +156,20 @@ function PropertyListingHero(props: PropertyListingHeroProps) {
    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full lg:justify-items-center 2xl:justify-items-start items-start">
     {/* Left Side - Image */}
     <Suspense fallback={<PropertyHeroSkeleton />}>
-     <div className="w-full md:w-full md:h-full xl:w-[632px] xl:h-[356px] 2xl:w-full 2xl:h-full">
+     <div className="w-full max-w-[632px] h-auto xl:h-[156px] 2xl:w-full 2xl:h-auto">
       <Image
+       style={{
+        objectFit: 'cover',
+        objectPosition: 'center',
+        width: '100%',
+        height: '400px',
+       }}
        alt={title}
        src={mainImageUrl}
-       width={700}
-       height={400}
+       width={1000}
+       height={1000}
        priority
-       className="rounded-lg shadow-lg md:w-full lg:h-full xl:h-auto object-cover"
+       className="rounded-lg shadow-lg w-full h-auto object-cover"
       />
      </div>
     </Suspense>

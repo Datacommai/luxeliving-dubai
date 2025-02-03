@@ -8,9 +8,8 @@ import { PropertyListingTabbedGalleryServerComponent } from '../components/prope
 // import { PropertyListingFloorplanShowcaseServerComponent } from '../components/property-listing-components/property-listing-floorplan-showcase/property-listing-floorplan-showcase';
 import PropertyListingPaymentServerComponent from '../components/property-listing-components/property-listing-payment/property-listing-payment';
 import { PropertyListingDiscoverPropertiesServerComponent } from '../components/property-listing-components/property-listing-discover-properties/property-listing-discover-properties';
-// import PropertyListingFaqServerComponent from '../components/property-listing-components/property-listing-faq/property-listing-faq';
+import PropertyListingFaqServerComponent from '../components/property-listing-components/property-listing-faq/property-listing-faq';
 import PropertyListingContactServerComponent from '../components/property-listing-components/property-listing-contact/property-listing-contact';
-// import { TrustedSection } from '../components/trusted-section/trusted-section';
 import { Footer } from '../components/footer/footer';
 import { Navigation } from '../components/navigation/navigation';
 
@@ -43,7 +42,7 @@ export const PropertyWrapper = (props: PropertyWrapperProps) => {
     queryId={queryId}
    />
    <PropertyListingNearbyDestinationsServerComponent
-    useMockData={true}
+    useMockData={useMockData}
     queryId={queryId}
    />
    <PropertyListingAboutServerComponent
@@ -66,12 +65,15 @@ export const PropertyWrapper = (props: PropertyWrapperProps) => {
     useMockData={useMockData}
     queryId={queryId}
    />
-   {/* <PropertyListingFaqServerComponent useMockData={useMockData} /> */}
+   <PropertyListingFaqServerComponent
+    useMockData={useMockData}
+    queryId={queryId}
+   />
    <PropertyListingContactServerComponent
     useMockData={useMockData}
     queryId={queryId}
    />
-   {/* <TrustedSection /> */}
+
    <Footer />
   </main>
  );

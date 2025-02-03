@@ -7,6 +7,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Separator } from '@/components/ui/separator';
 import { getRandomMockServerDelay } from '@/lib/utils';
 import { getProperty } from '@/lib/firebase/firebase';
+import { PropertyType } from '@/types';
 
 export default function PropertyListingAboutServerComponent({
  useMockData,
@@ -27,14 +28,15 @@ export default function PropertyListingAboutServerComponent({
   } else {
    getProperty(queryId)
     .then((res) => {
+     const property = res as PropertyType;
      setData({
-      title: res?.name || '',
-      description: res?.summaryDescription || '',
+      title: property?.name || '',
+      description: res?.information.summaryDescription || '',
       imageUrls: [
-       res?.media.propertyImages[0] + '.jpg',
-       res?.media.propertyImages[1] + '.jpg',
-       res?.media.propertyImages[2] + '.jpg',
-       res?.media.propertyImages[3] + '.jpg',
+       property?.media.propertyImages[0] + '.jpg',
+       property?.media.propertyImages[1] + '.jpg',
+       property?.media.propertyImages[2] + '.jpg',
+       property?.media.propertyImages[3] + '.jpg',
       ],
      });
     })
@@ -130,6 +132,12 @@ function PropertyListingAbout({
       } w-full h-full`}
       key={index}>
       <Image
+       style={{
+        objectFit: 'cover',
+        objectPosition: 'center',
+        width: '100%',
+        height: '600px',
+       }}
        alt={`Image ${index + 1}`}
        src={url}
        width={100}

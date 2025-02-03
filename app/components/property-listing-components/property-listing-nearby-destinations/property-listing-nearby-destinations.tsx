@@ -5,8 +5,9 @@ import { Suspense, useEffect, useState } from 'react';
 import { mockFetchPropertyNearbyDestinationsData } from '@/lib/mock-server/mockFetchPropertyNearbyDestinationsData';
 import { Skeleton } from '@/components/ui/skeleton';
 import { SubHeader } from '../../sub-header/sub-header';
-import { getRandomMockServerDelay } from '@/lib/utils';
+import { getLocationIcon, getRandomMockServerDelay } from '@/lib/utils';
 import { getProperty } from '@/lib/firebase/firebase';
+import { PropertyType } from '@/types';
 
 export default function PropertyListingNearbyDestinationsServerComponent({
  useMockData,
@@ -30,7 +31,22 @@ export default function PropertyListingNearbyDestinationsServerComponent({
    getProperty(queryId)
     .then((res) => {
      // TODO: add nearby destinations
-     console.log(res);
+     const data = res as PropertyType;
+     const locations = Object.values(
+      data.nearByDestinations.keyNearByDestinations
+     ).map((destination) => {
+      return {
+       type: destination.name,
+       title: destination.name,
+       icon: getLocationIcon(destination.type),
+       duration: destination.minutesFromDestination,
+      };
+     });
+     setData({
+      keyBenefits: Object.values(data.nearByDestinations.keyBenefits),
+      locations: locations,
+      description: data.nearByDestinations.description,
+     });
     })
     .finally(() => {
      setLoading(false);
@@ -95,40 +111,41 @@ export enum LocationType {
 
 export type PropertyListingNearbyDestinationsProps = {
  keyBenefits: string[];
- locations: [
-  { type: LocationType; title: string; icon: string; duration: string }
- ];
+ description: string;
+ locations: { type: string; title: string; icon: string; duration: string }[];
 };
 
 function PropertyListingNearbyDestinations(
  props: PropertyListingNearbyDestinationsProps
 ) {
- const { keyBenefits, locations } = props;
+ const { keyBenefits, locations, description } = props;
 
- const iconTypes: Record<LocationType, string> = {
-  [LocationType.DOWN_TOWN]: '/assets/featured-properties-temp/downtown.svg',
-  [LocationType.MARINA]: '/assets/featured-properties-temp/marina.svg',
-  [LocationType.AIRPORT]: '/assets/featured-properties-temp/airport.svg',
- };
+ //  const iconTypes: Record<LocationType, string> = {
+ //   [LocationType.DOWN_TOWN]: '/assets/featured-properties-temp/downtown.svg',
+ //   [LocationType.MARINA]: '/assets/featured-properties-temp/marina.svg',
+ //   [LocationType.AIRPORT]: '/assets/featured-properties-temp/airport.svg',
+ //  };
 
- const validLocations = locations.filter(
-  (location) =>
-   location &&
-   location.type &&
-   location.title &&
-   location.duration &&
-   iconTypes[location.type]
- );
+ //  const validLocations = locations.filter(
+ //   (location) =>
+ //    location &&
+ //    location.type &&
+ //    location.title &&
+ //    location.duration &&
+ //    iconTypes[location.type as LocationType]
+ //  );
+
+ console.log(locations);
 
  return (
   <section className="w-full grid bg-[#EFEFEF] lg:grid-cols-2 xss:grid-cols-1 xxs:gap-4 md:gap-10 2xl:px-32 xl:px-24 lg:px-16 md:px-10 xxs:px-4 xxs:py-8 md:py-14 lg:py-20">
    <section className="grid-cols-2 lg:grid xxs:hidden justify-center justify-items-center items-center md:gap-6 xxs:gap-3">
-    {validLocations.map((location, index) => (
+    {locations.map((location, index) => (
      <CloseByCard
       key={index}
       cardTitle={location.title}
       cardDuration={location.duration}
-      iconUrl={iconTypes[location.type]}
+      iconUrl={location.icon}
      />
     ))}
    </section>
@@ -138,18 +155,15 @@ function PropertyListingNearbyDestinations(
      Nearby Destinations
     </h1>
     <p className="xxs:text-xs md:text-xl text-[#434343] tracking-wide">
-     Effortlessly plan trips with real-time travel estimates to key spots
-     nearby. See how many minutes it takes to reach the airport, city center,
-     and more, helping you stay on schedule and make the most of your time—all
-     at a quick glance.
+     {description}
     </p>
     <section className="grid-cols-2 lg:hidden xxs:grid justify-center justify-items-center items-center md:gap-6 xxs:gap-3">
-     {validLocations.map((location, index) => (
+     {locations.map((location, index) => (
       <CloseByCard
        key={index}
        cardTitle={location.title}
        cardDuration={location.duration}
-       iconUrl={iconTypes[location.type]}
+       iconUrl={location.icon}
       />
      ))}
     </section>
@@ -178,7 +192,7 @@ function CloseByCard({
  cardDuration: string;
 }) {
  return (
-  <div className="flex flex-col shadow-md items-start w-full h-full rounded-[6px] md:gap-6 xxs:p-3 md:py-6 md:px-4 2xl:px-8 xxs:gap-3 bg-white">
+  <div className="flex flex-col shadow-md items-start w-full h-2/3 rounded-[6px] md:gap-6 xxs:p-3 md:py-6 md:px-4 2xl:px-8 xxs:gap-3 bg-white">
    <Image
     className="xxs:w-7 xxs:h-7 md:w-12 md:h-12"
     width={48}

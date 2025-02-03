@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Suspense, useEffect, useState } from 'react';
 import { mockFetchPropertyAmenitiesData } from '@/lib/mock-server/mockFetchPropertyAmenitiesData';
 import { Skeleton } from '@/components/ui/skeleton';
-import { getRandomMockServerDelay } from '@/lib/utils';
+import { getAmenityIcon, getRandomMockServerDelay } from '@/lib/utils';
 import { getProperty } from '@/lib/firebase/firebase';
 import { PropertyType } from '@/types';
 
@@ -31,9 +31,9 @@ export default function PropertyAmenitiesServerComponent({
 
      const amenities = Object.values(facilities).map((amenity) => {
       return {
-       icon: '/assets/featured-properties-temp/club.svg',
-       title: amenity,
-       description: amenity,
+       icon: getAmenityIcon(amenity.type),
+       title: amenity.name,
+       description: amenity.name,
       };
      });
      setData(amenities);
@@ -96,7 +96,7 @@ function PropertyAmenities({
 
  return (
   <section className="w-full xxs:p-10 lg:py-20 relative 2xl:px-56 lg:px-18 xl:px-40 flex flex-col justify-center bg-[#EFEFEF] items-center">
-   <svg
+   {/* <svg
     className="absolute xxs:hidden lg:block p-0 w-full"
     width="1800"
     height="418"
@@ -107,7 +107,7 @@ function PropertyAmenities({
     <path d="M735 209V1" stroke="#C1C1C1" strokeLinecap="round" />
     <path d="M533 417V209" stroke="#C1C1C1" strokeLinecap="round" />
     <path d="M1 209H1035" stroke="#C1C1C1" strokeLinecap="round" />
-   </svg>
+   </svg> */}
    <div className="grid grid-cols-1 md:grid-cols-1 gap-10 w-full">
     {/* Large screens (lg and above): First row renders 0-3, second row renders 3-5 */}
     <div className="hidden lg:grid lg:grid-cols-3 lg:gap-10 lg:w-full relative">
