@@ -41,7 +41,12 @@ export const FeaturedProperty = (props: FeaturedPropertyProps) => {
      height: '282px', // Consistent height for image
     }}>
     <Image
-     style={{ objectFit: 'cover' }}
+     style={{
+      objectFit: 'cover',
+      objectPosition: 'center',
+      width: '100%',
+      height: '200px',
+     }}
      width={1000}
      height={1000}
      src={image}
