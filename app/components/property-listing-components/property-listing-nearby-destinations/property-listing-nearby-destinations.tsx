@@ -5,8 +5,9 @@ import { Suspense, useEffect, useState } from 'react';
 import { mockFetchPropertyNearbyDestinationsData } from '@/lib/mock-server/mockFetchPropertyNearbyDestinationsData';
 import { Skeleton } from '@/components/ui/skeleton';
 import { SubHeader } from '../../sub-header/sub-header';
-import { getRandomMockServerDelay } from '@/lib/utils';
+import { getLocationIcon, getRandomMockServerDelay } from '@/lib/utils';
 import { getProperty } from '@/lib/firebase/firebase';
+import { PropertyType } from '@/types';
 
 export default function PropertyListingNearbyDestinationsServerComponent({
  useMockData,
@@ -37,12 +38,12 @@ export default function PropertyListingNearbyDestinationsServerComponent({
       return {
        type: destination.name,
        title: destination.name,
-       icon: destination.icon,
+       icon: getLocationIcon(destination.type),
        duration: destination.minutesFromDestination,
       };
      });
      setData({
-      keyBenefits: Object.values(data.nearByDestinations.keyBenefis),
+      keyBenefits: Object.values(data.nearByDestinations.keyBenefits),
       locations: locations,
       description: data.nearByDestinations.description,
      });

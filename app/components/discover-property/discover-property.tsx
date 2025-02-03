@@ -32,9 +32,14 @@ export const DiscoverProperty = (props: DiscoverPropertyProps) => {
      height: 'fit-content', // Consistent height for image
     }}>
     <Image
-     style={{ objectFit: 'cover' }}
-     width={1000}
-     height={1000}
+     style={{
+      objectFit: 'cover',
+      objectPosition: 'center',
+      width: '100%',
+      height: '200px',
+     }}
+     width={200}
+     height={200}
      src={image}
      alt={title}
      quality={100}

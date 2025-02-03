@@ -8,6 +8,7 @@ import {
  FeaturedPropertiesSectionSkeleton,
  FilterType,
 } from '../property-selection/property-selection';
+import { PropertyType } from '@/types';
 
 export const FeaturedPropertiesSection = ({
  filters,
@@ -36,7 +37,9 @@ function FeaturedPorpetiesSection({
 
  useEffect(() => {
   getProperties().then((result) => {
-   const properties = result as PropertyType[];
+   const properties = Object.values(
+    result as unknown as PropertyType
+   ) as PropertyType[];
    setProperties(properties);
    setLoading(false);
   });

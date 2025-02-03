@@ -14,6 +14,7 @@ import Image from 'next/image';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useEffect, useRef, useState } from 'react';
 import { getProperties } from '@/lib/firebase/firebase';
+import { PropertyType } from '@/types';
 
 export type FilterType = {
  propertyType: string;
@@ -37,14 +38,12 @@ export const PropertySelection = ({
   getProperties().then((res) => {
    const property = res as PropertyType[];
 
-   const filters = property.map((item) => {
-    return {
-     propertyType: item.filters.propertyType,
-     lifestyle: item.filters.lifestyle,
-     city: item.filters.city,
-     developer: item.filters.developer,
-    };
-   });
+   const filters = property.map((item) => ({
+    propertyType: item.filters.propertyType,
+    lifestyle: item.filters.lifestyle,
+    city: item.filters.city,
+    developer: item.filters.developer,
+   }));
 
    setData(filters);
   });
@@ -74,6 +73,11 @@ export const PropertySelection = ({
   return filter?.textContent === 'Select' ? '' : filter?.textContent;
  };
 
+ const propertyTypes = [...new Set(data?.map((item) => item.propertyType))];
+ const lifestyles = [...new Set(data?.map((item) => item.lifestyle))];
+ const cities = [...new Set(data?.map((item) => item.city))];
+ const developers = [...new Set(data?.map((item) => item.developer))];
+
  return (
   <section className="flex justify-center">
    <Card className="mt-10 rounded-md w-5/6 justify-self-center md:min-h-[139px] xxs:grid xxs:grid-cols-2 sm:grid-cols-3 md:grid md:grid-cols-4 xxs:gap-4 lg:gap-1 lg:flex items-center justify-between xxs:p-4 md:p-6 shadow-md border-none">
@@ -86,12 +90,9 @@ export const PropertySelection = ({
       </SelectTrigger>
       <SelectContent>
        <SelectGroup>
-        {data?.map((item) => (
-         <SelectItem
-          key={item.propertyType}
-          className="capitalize"
-          value={item.propertyType}>
-          {item.propertyType}
+        {propertyTypes?.map((item) => (
+         <SelectItem key={item} className="capitalize" value={item}>
+          {item}
          </SelectItem>
         ))}
        </SelectGroup>
@@ -108,12 +109,9 @@ export const PropertySelection = ({
       </SelectTrigger>
       <SelectContent>
        <SelectGroup>
-        {data?.map((item) => (
-         <SelectItem
-          key={item.developer}
-          className="capitalize"
-          value={item.developer}>
-          {item.developer}
+        {developers?.map((item) => (
+         <SelectItem key={item} className="capitalize" value={item}>
+          {item}
          </SelectItem>
         ))}
        </SelectGroup>
@@ -130,9 +128,9 @@ export const PropertySelection = ({
       </SelectTrigger>
       <SelectContent>
        <SelectGroup>
-        {data?.map((item) => (
-         <SelectItem key={item.city} className="capitalize" value={item.city}>
-          {item.city}
+        {cities?.map((item) => (
+         <SelectItem key={item} className="capitalize" value={item}>
+          {item}
          </SelectItem>
         ))}
        </SelectGroup>
@@ -149,12 +147,9 @@ export const PropertySelection = ({
       </SelectTrigger>
       <SelectContent>
        <SelectGroup>
-        {data?.map((item) => (
-         <SelectItem
-          key={item.lifestyle}
-          className="capitalize"
-          value={item.lifestyle}>
-          {item.lifestyle}
+        {lifestyles?.map((item) => (
+         <SelectItem key={item} className="capitalize" value={item}>
+          {item}
          </SelectItem>
         ))}
        </SelectGroup>

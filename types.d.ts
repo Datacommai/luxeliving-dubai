@@ -17,6 +17,28 @@ enum Lifestyle {
  URBAN = 'Urban',
 }
 
+enum Amenity {
+ AIR_CONDITIONING = 'Air Conditioning',
+ POOL = 'Pool',
+ GYM = 'Gym',
+ PARKING = 'Parking',
+ ELEVATOR = 'Elevator',
+ SPA = 'Spa',
+ GARDEN = 'Garden',
+ CONCIERGE = 'Concierge',
+ SECURITY = 'Security',
+ DEFAULT = 'Default',
+}
+
+enum KeyDestinations {
+ MALL = 'Mall',
+ PARK = 'Park',
+ RESTAURANT = 'Restaurant',
+ SCHOOL = 'School',
+ AIRPORT = 'Airport',
+ DEFAULT = 'Default',
+}
+
 type FAQ = {
  question: string;
  answer: string;
@@ -24,22 +46,22 @@ type FAQ = {
 
 type Facelity = {
  name: string;
- icon: string;
+ type: Amenity;
 };
 
 type KeyNearByDestination = {
  minutesFromDestination: string;
  name: string;
- icon: string;
+ type: KeyDestinations;
 };
 
 type NearByDestinations = {
  description: string;
- keyBenefis: string[];
+ keyBenefits: string[];
  keyNearByDestinations: KeyNearByDestination[];
 };
 
-type PropertyType = {
+export interface PropertyType {
  name: string;
  deprecated: boolean;
  projectStatus: string;
@@ -83,4 +105,4 @@ type PropertyType = {
  };
  nearByDestinations: NearByDestinations;
  propertyFAQs?: FAQ[];
-};
+}

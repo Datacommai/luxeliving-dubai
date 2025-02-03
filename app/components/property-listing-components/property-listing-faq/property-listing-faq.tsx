@@ -13,6 +13,7 @@ import {
  AccordionTrigger,
 } from '@/components/ui/accordion';
 import { getProperty } from '@/lib/firebase/firebase';
+import { PropertyType } from '@/types';
 
 export default function PropertyListingFaqServerComponent({
  useMockData,

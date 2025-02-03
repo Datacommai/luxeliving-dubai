@@ -37,9 +37,9 @@ export const PropertyListingDiscoverPropertiesServerComponent = ({
        title: listing.name,
        image: listing.media.propertyImages[0],
        location: listing.location,
-       developer: '',
+       developer: listing.filters.developer,
        handover: listing.completionDate,
-       price: Number(listing.propertyPrice[0]),
+       price: Object.values(listing.propertyPrice)[0] as unknown as number,
       };
      });
 
