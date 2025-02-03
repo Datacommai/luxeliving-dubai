@@ -20,10 +20,10 @@ export async function generateMetadata({
 
  return {
   title: `Properties | ${id}`,
-  description: data?.summaryDescription,
+  description: data?.information.smallDescription,
   openGraph: {
    title: `Properties | ${id}`,
-   description: data?.summaryDescription,
+   description: data?.information.smallDescription,
    keywords: [
     data.name,
     'Dubai Luxury Real Estate',

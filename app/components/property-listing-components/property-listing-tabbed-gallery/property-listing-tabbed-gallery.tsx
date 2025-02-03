@@ -48,7 +48,7 @@ export const PropertyListingTabbedGalleryServerComponent = ({
 
      setData({
       title: res?.name || '',
-      description: res?.summaryDescription || '',
+      description: '',
       imageTabs: tabs,
      });
     })
