@@ -1,22 +1,42 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Send, X } from 'lucide-react';
 import { generateText } from '@/lib/gemini/gemini';
 
+type Message = {
+ text: string;
+ sender: 'user' | 'bot';
+};
+
+const SESSON_STORAGE_KEY = 'chatbot_messages';
+
 export default function ChatbotWidget({ onClose }: { onClose: () => void }) {
- const [messages, setMessages] = useState([
-  { text: 'Hello! How can I assist you today?', sender: 'bot' },
- ]);
+ const [messages, setMessages] = useState<Message[]>([]);
  const [input, setInput] = useState('');
  const [isOpen, setIsOpen] = useState(true);
+
+ useEffect(() => {
+  const storedMessages = sessionStorage.getItem(SESSON_STORAGE_KEY);
+
+  setMessages(
+   storedMessages
+    ? JSON.parse(storedMessages)
+    : [{ text: 'text: Hello! How can I help you today?', sender: 'bot' }]
+  );
+ }, []);
+
+ useEffect(() => {
+  if (messages.length === 0) return;
+  sessionStorage.setItem(SESSON_STORAGE_KEY, JSON.stringify(messages));
+ }, [messages]);
 
  const sendMessage = async () => {
   if (!input.trim()) return;
 
-  const userMessage = { text: input, sender: 'user' };
+  const userMessage = { text: input, sender: 'user' as const };
   setMessages((prev) => [...prev, userMessage]);
   setInput('');
 
@@ -25,7 +45,7 @@ export default function ChatbotWidget({ onClose }: { onClose: () => void }) {
 
   const botMessage = {
    text: response,
-   sender: 'bot',
+   sender: 'bot' as const,
   };
   setMessages((prev) => [...prev, botMessage]);
  };
