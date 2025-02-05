@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import { WhatsappComponent } from './components/whatsapp-component/whatsapp-component';
 import './globals.css';
 import { Firebase } from './firebase/firebase';
+import { ChatbotWrapper } from './components/ai-widget/chatbot-wrapper';
 
 const boska = localFont({
  src: [
@@ -88,7 +88,7 @@ export default function RootLayout({
    <body className={boska.className}>
     <Firebase />
     {children}
-    <WhatsappComponent />
+    <ChatbotWrapper />
    </body>
   </html>
  );
