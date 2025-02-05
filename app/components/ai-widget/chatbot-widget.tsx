@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Send, X } from 'lucide-react';
+import { generateText } from '@/lib/gemini/gemini';
 
 export default function ChatbotWidget({ onClose }: { onClose: () => void }) {
  const [messages, setMessages] = useState([
@@ -19,14 +20,14 @@ export default function ChatbotWidget({ onClose }: { onClose: () => void }) {
   setMessages((prev) => [...prev, userMessage]);
   setInput('');
 
-  // Simulating AI response
-  setTimeout(() => {
-   const botMessage = {
-    text: "I'm just a simple AI. Try asking me something else!",
-    sender: 'bot',
-   };
-   setMessages((prev) => [...prev, botMessage]);
-  }, 1000);
+  const response = await generateText(input);
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  const botMessage = {
+   text: response,
+   sender: 'bot',
+  };
+  setMessages((prev) => [...prev, botMessage]);
  };
 
  if (!isOpen) return null;
