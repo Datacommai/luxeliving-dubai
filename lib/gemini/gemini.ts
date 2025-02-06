@@ -1,4 +1,5 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { DEFAULT_GEMINI_PROMPT } from '../constants/contstants';
 
 const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY || '';
 const genAI = new GoogleGenerativeAI(apiKey);
@@ -14,14 +15,16 @@ const generationConfig = {
 model.generationConfig = generationConfig;
 
 export const generateText = async (prompt: string) => {
- const result = await model.generateContent({
-  systemInstruction: `
-   You are an AI assistant that provides helpful, concise, and accurate answers.
-   Keep responses friendly, informative, and to the point.
-   `,
-  contents: [{ role: 'user', parts: [{ text: prompt }] }],
- });
- const generatedText = result.response.text();
+ try {
+  const result = await model.generateContent({
+   systemInstruction: DEFAULT_GEMINI_PROMPT,
+   contents: [{ role: 'user', parts: [{ text: prompt }] }],
+  });
+  const generatedText = result.response.text();
 
- return generatedText;
+  return generatedText;
+ } catch (error) {
+  console.error('Error generating text:', error);
+  return '';
+ }
 };

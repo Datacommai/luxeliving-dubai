@@ -5,13 +5,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Send, X } from 'lucide-react';
 import { generateText } from '@/lib/gemini/gemini';
+import { SESSON_STORAGE_KEY } from '@/lib/constants/contstants';
 
 type Message = {
  text: string;
  sender: 'user' | 'bot';
 };
-
-const SESSON_STORAGE_KEY = 'chatbot_messages';
 
 export default function ChatbotWidget({ onClose }: { onClose: () => void }) {
  const [messages, setMessages] = useState<Message[]>([]);
@@ -24,7 +23,7 @@ export default function ChatbotWidget({ onClose }: { onClose: () => void }) {
   setMessages(
    storedMessages
     ? JSON.parse(storedMessages)
-    : [{ text: 'text: Hello! How can I help you today?', sender: 'bot' }]
+    : [{ text: 'Hello! How can I help you today?', sender: 'bot' }]
   );
  }, []);
 
