@@ -6,6 +6,7 @@ import { mockFetchPropertyGalleryData } from '@/lib/mock-server/mockFetchPropert
 import { Skeleton } from '@/components/ui/skeleton';
 import { getRandomMockServerDelay } from '@/lib/utils';
 import { getProperty } from '@/lib/firebase/firebase';
+import { PLACEHOLDER_IMAGE } from '@/lib/constants/contstants';
 
 export default function PropertyListingGalleryServerComponent({
  useMockData,
@@ -28,9 +29,15 @@ export default function PropertyListingGalleryServerComponent({
     .then((res) => {
      setData({
       imageUrls: [
-       res?.media.propertyImages[0] + '.jpg',
-       res?.media.propertyImages[1] + '.jpg',
-       res?.media.propertyImages[2] + '.jpg',
+       !res?.media.propertyImages[0]
+        ? PLACEHOLDER_IMAGE
+        : res?.media.propertyImages[0] + '.jpg',
+       !res?.media.propertyImages[1]
+        ? PLACEHOLDER_IMAGE
+        : res?.media.propertyImages[1] + '.jpg',
+       !res?.media.propertyImages[2]
+        ? PLACEHOLDER_IMAGE
+        : res?.media.propertyImages[2] + '.jpg',
       ],
      });
     })
@@ -76,7 +83,7 @@ function PropertyListingGallery({ imageUrls }: PropertyListingGalleryProps) {
  }
 
  return (
-  <section className="w-full xxs:py-8 md:py-10 lg:py-14 flex flex-col justify-center items-center">
+  <section className="w-full xxs:py-8 md:py-10 md:my-12 lg:py-14 flex flex-col justify-center items-center">
    <div className="grid grid-cols-2 md:grid-cols-3 xxs:gap-3 md:gap-6 justify-items-center items-center">
     <Suspense fallback={<PropertyGallerySkeleton count={imageUrls.length} />}>
      {imageUrls.map((url, index) => (

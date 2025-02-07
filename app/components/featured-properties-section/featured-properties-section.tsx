@@ -8,6 +8,7 @@ import {
  FilterType,
 } from '../property-selection/property-selection';
 import { PropertyType } from '@/types';
+import { PLACEHOLDER_IMAGE } from '@/lib/constants/contstants';
 
 export const FeaturedPropertiesSection = ({
  filters,
@@ -78,7 +79,11 @@ function FeaturedPorpetiesSection({
      title={property.name}
      description={property.projectGeneralFacts}
      price={Object.values(property?.propertyPrice)[0] as unknown as number}
-     image={property.media.propertyImages[0] + '.jpg'}
+     image={
+      !property.media.propertyImages[0]
+       ? PLACEHOLDER_IMAGE
+       : property.media.propertyImages[0] + '.jpg'
+     }
      beds={Number(property.generalInfo.numberOfBedrooms[0] ?? 0)}
      baths={Number(property.generalInfo.numberOfBathrooms[0] ?? 0)}
      sqft={Object.values(property?.propertySqFt)[0] as unknown as number}

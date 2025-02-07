@@ -8,6 +8,7 @@ import { SubHeader } from '../../sub-header/sub-header';
 import { getRandomMockServerDelay, sendEmail } from '@/lib/utils';
 import { PrimaryButton } from '../../buttons/primary-button';
 import { getProperty } from '@/lib/firebase/firebase';
+import { PLACEHOLDER_IMAGE } from '@/lib/constants/contstants';
 
 export default function PropertyListingDetailsServerComponent({
  useMockData,
@@ -33,8 +34,12 @@ export default function PropertyListingDetailsServerComponent({
       title: res?.name || '',
       descriptionTwo: res?.information.mainDescription || '',
       descriptionOne: res?.projectGeneralFacts || '',
-      imgUrlOne: res?.media.propertyImages[2] + '.jpg',
-      imgUrlTwo: res?.media.propertyImages[4] + '.jpg',
+      imgUrlOne: !res?.media.propertyImages[2]
+       ? PLACEHOLDER_IMAGE
+       : res?.media.propertyImages[2] + '.jpg',
+      imgUrlTwo: !res?.media.propertyImages[4]
+       ? PLACEHOLDER_IMAGE
+       : res?.media.propertyImages[4] + '.jpg',
       requestPricing: res?.contactInfo.whatsapp || '',
       bookShowingUrl: res?.contactInfo.email || '',
       contact: {
@@ -161,19 +166,25 @@ function PropertyListingDetails(props: PropertyListingDetailsProps) {
     </p>
    </section>
 
-   <section className="lg:grid xxs:flex flex-col lg:grid-cols-2 xxs:gap-8 lg:gap-10 mt-10">
+   <section className="lg:grid xxs:flex flex-col lg:grid-cols-2 xxs:gap-8 md:gap-10 lg:gap-10 mt-10">
     <div className="w-full md:w-full md:h-full xl:w-[632px] xl:h-[356px] 2xl:w-full 2xl:h-full">
      <Image
+      style={{
+       objectFit: 'cover',
+       objectPosition: 'center',
+       width: '90%',
+       height: '90%',
+      }}
       alt={title}
       src={imgUrlOne}
       width={700}
       height={400}
       priority
-      className="rounded-lg shadow-lg md:w-full lg:h-full xl:h-auto object-cover"
+      className="rounded-lg shadow-lg md:w-full lg:h-full xl:h-auto object-cover m-4"
      />
     </div>
 
-    <p className="text-[#434343] xxs:text-sm md:text-xl leading-5">
+    <p className="text-[#434343] xxs:text-sm md:text-xl leading-5 md:mx-8 w-fit">
      {descriptionOne}
     </p>
     <div className="flex flex-col md:justify-center gap-8 xxs:order-4 lg:justify-between">
@@ -210,12 +221,18 @@ function PropertyListingDetails(props: PropertyListingDetailsProps) {
     </div>
     <div className="w-full md:w-full md:h-full xl:w-[632px] lg:order-4 xl:h-[356px] 2xl:w-full 2xl:h-full">
      <Image
+      style={{
+       objectFit: 'cover',
+       objectPosition: 'center',
+       width: '90%',
+       height: '90%',
+      }}
       alt={title}
       src={imgUrlTwo}
       width={700}
       height={400}
       priority
-      className="rounded-lg shadow-lg md:w-full lg:h-full xl:h-auto object-cover"
+      className="rounded-lg shadow-lg md:w-full lg:h-full xl:h-auto object-cover m-4"
      />
     </div>
    </section>

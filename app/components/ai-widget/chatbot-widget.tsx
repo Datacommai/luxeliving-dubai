@@ -54,7 +54,7 @@ export default function ChatbotWidget({ onClose }: { onClose: () => void }) {
  return (
   <Card className="w-80 fixed bottom-5 right-5 shadow-lg rounded-xl">
    <div className="p-2 flex justify-between items-center border-b">
-    <span className="text-sm font-semibold">LuxeLiving AI</span>
+    <span className="text-sm font-semibold">LuxeLiving AI (Beta)</span>
     <Button
      onClick={() => {
       setIsOpen(false);

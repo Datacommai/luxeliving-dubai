@@ -15,6 +15,7 @@ import {
 import { getProperties } from '@/lib/firebase/firebase';
 import { PropertyType } from '@/types';
 import { useRouter } from 'next/navigation';
+import { PLACEHOLDER_IMAGE } from '@/lib/constants/contstants';
 
 export const PropertyListingDiscoverPropertiesServerComponent = ({
  useMockData,
@@ -39,7 +40,9 @@ export const PropertyListingDiscoverPropertiesServerComponent = ({
      const listings: DiscoverPropertyProps[] = properties.map((listing) => {
       return {
        title: listing.name,
-       image: listing.media.propertyImages[0],
+       image: !listing.media.propertyImages[0]
+        ? PLACEHOLDER_IMAGE
+        : listing.media.propertyImages[0] + '.jpg',
        location: listing.location,
        developer: listing.filters.developer,
        handover: listing.completionDate,
