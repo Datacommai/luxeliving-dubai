@@ -30,7 +30,6 @@ export default function PropertyListingNearbyDestinationsServerComponent({
   } else {
    getProperty(queryId)
     .then((res) => {
-     // TODO: add nearby destinations
      const data = res as PropertyType;
      const locations = Object.values(
       data.nearByDestinations.keyNearByDestinations
@@ -120,26 +119,9 @@ function PropertyListingNearbyDestinations(
 ) {
  const { keyBenefits, locations, description } = props;
 
- //  const iconTypes: Record<LocationType, string> = {
- //   [LocationType.DOWN_TOWN]: '/assets/featured-properties-temp/downtown.svg',
- //   [LocationType.MARINA]: '/assets/featured-properties-temp/marina.svg',
- //   [LocationType.AIRPORT]: '/assets/featured-properties-temp/airport.svg',
- //  };
-
- //  const validLocations = locations.filter(
- //   (location) =>
- //    location &&
- //    location.type &&
- //    location.title &&
- //    location.duration &&
- //    iconTypes[location.type as LocationType]
- //  );
-
- console.log(locations);
-
  return (
   <section className="w-full grid bg-[#EFEFEF] lg:grid-cols-2 xss:grid-cols-1 xxs:gap-4 md:gap-10 2xl:px-32 xl:px-24 lg:px-16 md:px-10 xxs:px-4 xxs:py-8 md:py-14 lg:py-20">
-   <section className="grid-cols-2 lg:grid xxs:hidden justify-center justify-items-center items-center md:gap-6 xxs:gap-3">
+   <section className="grid-cols-2 lg:grid xxs:hidden justify-center items-center md:gap-6 xxs:gap-3">
     {locations.map((location, index) => (
      <CloseByCard
       key={index}
@@ -185,14 +167,13 @@ function PropertyListingNearbyDestinations(
 function CloseByCard({
  iconUrl,
  cardTitle,
- cardDuration,
 }: {
  iconUrl: string;
  cardTitle: string;
  cardDuration: string;
 }) {
  return (
-  <div className="flex flex-col shadow-md items-start w-full h-2/3 rounded-[6px] md:gap-6 xxs:p-3 md:py-6 md:px-4 2xl:px-8 xxs:gap-3 bg-white">
+  <div className="flex flex-col shadow-md items-start w-full lg:h-1/2 h-fit rounded-[6px] xxs:p-3 md:py-6 md:px-4 2xl:px-8 xxs:gap-3 bg-white">
    <Image
     className="xxs:w-7 xxs:h-7 md:w-12 md:h-12"
     width={48}
@@ -201,9 +182,10 @@ function CloseByCard({
     alt={cardTitle}
    />
    <span className="flex flex-col items-start">
-    <span className="md:text-2xl font-medium xxs:text-sm capitalize text-[#222222]">
+    {/* TODO: Fix */}
+    {/* <span className="md:text-2xl font-medium xxs:text-sm capitalize text-[#222222]">
      {cardDuration}
-    </span>
+    </span> */}
     <span className="md:text-lg xxs:text-xs capitalize text-[#858585]">
      {cardTitle}
     </span>

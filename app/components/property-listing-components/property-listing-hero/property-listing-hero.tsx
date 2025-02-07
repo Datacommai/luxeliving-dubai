@@ -4,7 +4,7 @@ import { Suspense, useEffect, useState } from 'react';
 import { mockFetchPropertyHeroData } from '@/lib/mock-server/mockFetchPropertyHeroData';
 import { Skeleton } from '@/components/ui/skeleton';
 import { PrimaryButton } from '@/app/components/buttons/primary-button';
-import { getRandomMockServerDelay, sendEmail } from '@/lib/utils';
+import { formatPrice, getRandomMockServerDelay, sendEmail } from '@/lib/utils';
 import { getProperty } from '@/lib/firebase/firebase';
 import { PropertyType } from '@/types';
 
@@ -33,7 +33,7 @@ export default function PropertyListingHeroServerComponent({
       title: res?.name || '',
       description: res?.information.summaryDescription || '',
       mainImageUrl: res?.media.propertyImages[0] || '' + '.jpg',
-      startingPrice: price as unknown as number,
+      startingPrice: formatPrice(price as unknown as string),
       paymentPlan: res?.paymentPlan.onCompletion,
       handoverDate: res?.completionDate,
       contact: {
@@ -118,7 +118,7 @@ export type PropertyListingHeroProps = {
  title: string;
  description: string;
  mainImageUrl: string;
- startingPrice?: number;
+ startingPrice?: string;
  paymentPlan?: string;
  handoverDate?: string;
  subDescription?: string;
@@ -199,7 +199,7 @@ function PropertyListingHero(props: PropertyListingHeroProps) {
        <DetailItem
         iconUrl="/assets/icons/price-icon.svg"
         label="Starting Price"
-        value={`AED ${startingPrice}M`}
+        value={`AED ${startingPrice}`}
        />
       )}
 

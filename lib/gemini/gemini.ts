@@ -24,7 +24,6 @@ model.generationConfig = generationConfig;
 export const generateText = async (prompt: string) => {
  let properties;
 
- // Retrieve cached properties
  const cachedProperties = sessionStorage.getItem(CACHED_PROPERTIES_KEY);
  if (!cachedProperties) {
   properties = (await getProperties()) as PropertyType[];
@@ -49,8 +48,8 @@ export const generateText = async (prompt: string) => {
   const result = await model.generateContent({
    systemInstruction: combinedPrompt,
    contents: [
-    ...messageLogs.map((msg) => ({ role: 'user', parts: [{ text: msg }] })), // Include previous messages
-    { role: 'user', parts: [{ text: prompt }] }, // Add new prompt
+    ...messageLogs.map((msg) => ({ role: 'user', parts: [{ text: msg }] })),
+    { role: 'user', parts: [{ text: prompt }] },
    ],
   });
 

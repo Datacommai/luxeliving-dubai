@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { getProperty } from '@/lib/firebase/firebase';
 import { PropertyType } from '@/types';
-import { sendEmail } from '@/lib/utils';
+import { capitalizeFirstLetter, sendEmail } from '@/lib/utils';
 
 export default function PropertyListingContactServerComponent({
  useMockData,
@@ -32,7 +32,7 @@ export default function PropertyListingContactServerComponent({
      const { contactInfo } = res as PropertyType;
      setData({
       profileurl: '/assets/featured-properties-temp/agent.jpg',
-      fullname: contactInfo.fullname,
+      fullname: capitalizeFirstLetter(contactInfo.fullname),
       jobTitle: 'Real Estate Agent',
       phone: contactInfo.telephone,
       address: 'N/A',

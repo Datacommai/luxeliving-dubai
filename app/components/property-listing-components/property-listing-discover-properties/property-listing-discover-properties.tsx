@@ -7,7 +7,11 @@ import {
 } from '../../discover-property/discover-property';
 import { mockFetchDiscoverProperties } from '@/lib/mock-server/mockFetchDiscoverProperties';
 import { Skeleton } from '@/components/ui/skeleton';
-import { createRouteId, getRandomMockServerDelay } from '@/lib/utils';
+import {
+ createRouteId,
+ formatPrice,
+ getRandomMockServerDelay,
+} from '@/lib/utils';
 import { getProperties } from '@/lib/firebase/firebase';
 import { PropertyType } from '@/types';
 import { useRouter } from 'next/navigation';
@@ -39,7 +43,7 @@ export const PropertyListingDiscoverPropertiesServerComponent = ({
        location: listing.location,
        developer: listing.filters.developer,
        handover: listing.completionDate,
-       price: Object.values(listing.propertyPrice)[0] as unknown as number,
+       price: Object.values(listing.propertyPrice)[0] as unknown as string,
       };
      });
 
@@ -137,7 +141,7 @@ function PropertyListingDiscoverProperties(
      <DiscoverProperty
       key={key}
       title={property.title}
-      price={property.price}
+      price={formatPrice(property.price)}
       image={property.image}
       location={property.location}
       developer={property.developer}
