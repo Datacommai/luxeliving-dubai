@@ -6,20 +6,36 @@ export function cn(...inputs: ClassValue[]) {
  return twMerge(clsx(inputs));
 }
 
-export function openLink(url: string) {
+export const openLink = (url: string) => {
  window.open(url, '_blank');
-}
+};
 
-export function sendEmail(recipient: string, subject: string, body: string) {
+export const capitalizeFirstLetter = (str: string) => {
+ return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
+export const formatPrice = (price: string) => {
+ const cleanedPrice = price.replace(/,/g, '');
+ const value = Number(cleanedPrice);
+
+ if (value >= 1000000) {
+  return (value / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+ } else if (value >= 1000) {
+  return (value / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+ }
+ return value.toString();
+};
+
+export const sendEmail = (recipient: string, subject: string, body: string) => {
  window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(
   subject
  )}&body=${encodeURIComponent(body)}`;
-}
+};
 
-export function getRandomMockServerDelay() {
+export const getRandomMockServerDelay = () => {
  const maxDelay: number = 2500;
  return Math.floor(Math.random() * maxDelay);
-}
+};
 
 export const extractRouteId = (id: string) => {
  return id.split('-').join(' ');

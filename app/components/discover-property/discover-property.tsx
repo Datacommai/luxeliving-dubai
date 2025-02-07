@@ -16,7 +16,7 @@ export type DiscoverPropertyProps = {
  location: string;
  developer: string;
  handover: string;
- price: number;
+ price: string;
  onClick?: (id: string) => void;
 };
 

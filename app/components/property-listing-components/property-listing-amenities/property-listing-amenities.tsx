@@ -141,23 +141,7 @@ function PropertyAmenities({
     {/* Extra small screens (xxs and below lg): Render all items 0-5 in a single column */}
     <div className="lg:hidden grid grid-cols-2 ">
      {amenities.slice(0, 5).map((amenity, index) => (
-      <div
-       key={index}
-       className={`
-          
-            ${index >= amenities.length - 4 ? ' border-r-transparent ' : ''}
-            ${index >= amenities.length - 2 ? 'border-l-[1px] -ml-[1px]' : ''}
-            ${
-             index >= amenities.length - 5
-              ? 'border-r-[1px] border-b-[1px] xxs:p-6 md:p-8 border-[#C1C1C1]'
-              : ''
-            }
-            ${
-             index >= amenities.length - 1
-              ? 'col-span-2 pl-5  border-l-transparent border-b-transparent border-r-transparent border-b-[0px]'
-              : ''
-            }
-          `}>
+      <div className="m-3" key={index}>
        <AmenityItem
         amenityIconUrl={amenity.icon}
         amenityTitle={amenity.title}
@@ -196,9 +180,6 @@ function AmenityItem({
    </div>
    <span className="xxs:text-base lg:text-2xl  font-medium text-gray-800">
     {amenityTitle}
-   </span>
-   <span className="xxs:text-xs lg:text-lg w-4/6 text-gray-500">
-    {amenityDescription}
    </span>
   </div>
  );

@@ -8,7 +8,6 @@ import {
  CardHeader,
  CardTitle,
 } from '@/components/ui/card';
-import Link from 'next/link';
 
 export const AboutPurposeSection = () => {
  return (
@@ -53,9 +52,10 @@ export const AboutPurposeSection = () => {
        dynamic growth and vibrant culture.
       </CardDescription>
       <CardFooter className="text-[#333333] text-balance tracking-widest text-center">
-       <Link className="flex items-center gap-2" href="/">
+       {/* TODO: Add link */}
+       {/* <Link className="flex items-center gap-2" href="/">
         Know more
-       </Link>
+       </Link> */}
       </CardFooter>
      </CardContent>
     </Card>
@@ -79,9 +79,10 @@ export const AboutPurposeSection = () => {
        community living in Dubai&apos;s ever-evolving landscape.
       </CardDescription>
       <CardFooter className="text-[#333333] text-balance tracking-widest text-center">
-       <Link className="flex items-center gap-2" href="/">
+       {/* TODO: Add link */}
+       {/* <Link className="flex items-center gap-2" href="/">
         Know more
-       </Link>
+       </Link> */}
       </CardFooter>
      </CardContent>
     </Card>
