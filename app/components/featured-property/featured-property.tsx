@@ -7,7 +7,7 @@ import {
  CardTitle,
 } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { createRouteId } from '@/lib/utils';
+import { createRouteId, formatPrice } from '@/lib/utils';
 import Image from 'next/image';
 
 export type FeaturedPropertyProps = {
@@ -70,7 +70,7 @@ export const FeaturedProperty = (props: FeaturedPropertyProps) => {
     <ul className="flex justify-between items-center">
      <li className="flex gap-2">
       <Image width={20} height={20} src="/assets/icons/bed.svg" alt="beds" />
-      <p>{beds === 0 ? '-' : beds} beds</p>
+      <p>{beds === 0 || !beds ? '-' : beds} beds</p>
      </li>
      <li className="flex gap-2">
       <Image
@@ -79,11 +79,11 @@ export const FeaturedProperty = (props: FeaturedPropertyProps) => {
        src="/assets/icons/bath-tub.svg"
        alt="baths"
       />
-      <p>{baths === 0 ? '-' : baths} baths</p>
+      <p>{baths === 0 || !baths ? '-' : baths} baths</p>
      </li>
      <li className="flex gap-2">
       <Image width={20} height={20} src="/assets/icons/sqft.svg" alt="sqft" />
-      <p>{sqft === 0 ? '-' : sqft} sqft</p>
+      <p>{sqft === 0 || !sqft ? '-' : sqft} sqft</p>
      </li>
     </ul>
    </CardContent>
@@ -93,7 +93,7 @@ export const FeaturedProperty = (props: FeaturedPropertyProps) => {
    {/* Footer */}
    <CardFooter className="flex justify-between my-3" style={{ height: '50px' }}>
     <p className="font-normal capitalize">for sale</p>
-    <b>AED {price}</b>
+    <b>AED {formatPrice(String(price))}</b>
    </CardFooter>
   </Card>
  );
