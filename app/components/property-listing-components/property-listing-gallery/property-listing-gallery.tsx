@@ -76,7 +76,7 @@ function PropertyListingGallery({ imageUrls }: PropertyListingGalleryProps) {
  }
 
  return (
-  <section className="w-full xxs:py-8 md:py-10 lg:py-14 flex flex-col justify-center items-center">
+  <section className="w-full xxs:py-8 md:py-10 md:my-12 lg:py-14 flex flex-col justify-center items-center">
    <div className="grid grid-cols-2 md:grid-cols-3 xxs:gap-3 md:gap-6 justify-items-center items-center">
     <Suspense fallback={<PropertyGallerySkeleton count={imageUrls.length} />}>
      {imageUrls.map((url, index) => (
