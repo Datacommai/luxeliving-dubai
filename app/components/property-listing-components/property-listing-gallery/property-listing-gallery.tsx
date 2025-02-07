@@ -6,6 +6,7 @@ import { mockFetchPropertyGalleryData } from '@/lib/mock-server/mockFetchPropert
 import { Skeleton } from '@/components/ui/skeleton';
 import { getRandomMockServerDelay } from '@/lib/utils';
 import { getProperty } from '@/lib/firebase/firebase';
+import { PLACEHOLDER_IMAGE } from '@/lib/constants/contstants';
 
 export default function PropertyListingGalleryServerComponent({
  useMockData,
@@ -28,9 +29,15 @@ export default function PropertyListingGalleryServerComponent({
     .then((res) => {
      setData({
       imageUrls: [
-       res?.media.propertyImages[0] + '.jpg',
-       res?.media.propertyImages[1] + '.jpg',
-       res?.media.propertyImages[2] + '.jpg',
+       !res?.media.propertyImages[0]
+        ? PLACEHOLDER_IMAGE
+        : res?.media.propertyImages[0] + '.jpg',
+       !res?.media.propertyImages[1]
+        ? PLACEHOLDER_IMAGE
+        : res?.media.propertyImages[1] + '.jpg',
+       !res?.media.propertyImages[2]
+        ? PLACEHOLDER_IMAGE
+        : res?.media.propertyImages[2] + '.jpg',
       ],
      });
     })

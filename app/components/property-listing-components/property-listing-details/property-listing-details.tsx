@@ -8,6 +8,7 @@ import { SubHeader } from '../../sub-header/sub-header';
 import { getRandomMockServerDelay, sendEmail } from '@/lib/utils';
 import { PrimaryButton } from '../../buttons/primary-button';
 import { getProperty } from '@/lib/firebase/firebase';
+import { PLACEHOLDER_IMAGE } from '@/lib/constants/contstants';
 
 export default function PropertyListingDetailsServerComponent({
  useMockData,
@@ -33,8 +34,12 @@ export default function PropertyListingDetailsServerComponent({
       title: res?.name || '',
       descriptionTwo: res?.information.mainDescription || '',
       descriptionOne: res?.projectGeneralFacts || '',
-      imgUrlOne: res?.media.propertyImages[2] + '.jpg',
-      imgUrlTwo: res?.media.propertyImages[4] + '.jpg',
+      imgUrlOne: !res?.media.propertyImages[2]
+       ? PLACEHOLDER_IMAGE
+       : res?.media.propertyImages[2] + '.jpg',
+      imgUrlTwo: !res?.media.propertyImages[4]
+       ? PLACEHOLDER_IMAGE
+       : res?.media.propertyImages[4] + '.jpg',
       requestPricing: res?.contactInfo.whatsapp || '',
       bookShowingUrl: res?.contactInfo.email || '',
       contact: {

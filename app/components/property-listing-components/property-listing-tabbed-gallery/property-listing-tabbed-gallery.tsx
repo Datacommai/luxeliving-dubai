@@ -13,6 +13,7 @@ import { mockFetchPropertyTabbedGalleryData } from '@/lib/mock-server/mockFetchP
 import { SubHeader } from '../../sub-header/sub-header';
 import { getRandomMockServerDelay } from '@/lib/utils';
 import { getProperty } from '@/lib/firebase/firebase';
+import { PLACEHOLDER_IMAGE } from '@/lib/constants/contstants';
 
 export const PropertyListingTabbedGalleryServerComponent = ({
  useMockData,
@@ -40,7 +41,7 @@ export const PropertyListingTabbedGalleryServerComponent = ({
       : {};
      const tabs = Object.values(imageTabs).map((img) => {
       return {
-       src: img + '.jpg',
+       src: !img ? PLACEHOLDER_IMAGE : img + '.jpg',
        alt: res?.name || '',
        title: res?.name || '',
       };

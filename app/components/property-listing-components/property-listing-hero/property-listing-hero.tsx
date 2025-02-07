@@ -7,6 +7,7 @@ import { PrimaryButton } from '@/app/components/buttons/primary-button';
 import { formatPrice, getRandomMockServerDelay, sendEmail } from '@/lib/utils';
 import { getProperty } from '@/lib/firebase/firebase';
 import { PropertyType } from '@/types';
+import { PLACEHOLDER_IMAGE } from '@/lib/constants/contstants';
 
 export default function PropertyListingHeroServerComponent({
  useMockData,
@@ -32,7 +33,9 @@ export default function PropertyListingHeroServerComponent({
      setData({
       title: res?.name || '',
       description: res?.information.summaryDescription || '',
-      mainImageUrl: res?.media.propertyImages[0] || '' + '.jpg',
+      mainImageUrl: !res?.media.propertyImages[0]
+       ? PLACEHOLDER_IMAGE
+       : res?.media.propertyImages[0] + '.jpg',
       startingPrice: formatPrice(price as unknown as string),
       paymentPlan: res?.paymentPlan.onCompletion,
       handoverDate: res?.completionDate,

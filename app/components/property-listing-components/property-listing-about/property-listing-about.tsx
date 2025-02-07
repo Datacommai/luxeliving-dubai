@@ -8,6 +8,7 @@ import { Separator } from '@/components/ui/separator';
 import { getRandomMockServerDelay } from '@/lib/utils';
 import { getProperty } from '@/lib/firebase/firebase';
 import { PropertyType } from '@/types';
+import { PLACEHOLDER_IMAGE } from '@/lib/constants/contstants';
 
 export default function PropertyListingAboutServerComponent({
  useMockData,
@@ -33,10 +34,18 @@ export default function PropertyListingAboutServerComponent({
       title: property?.name || '',
       description: res?.information.summaryDescription || '',
       imageUrls: [
-       property?.media.propertyImages[0] + '.jpg',
-       property?.media.propertyImages[1] + '.jpg',
-       property?.media.propertyImages[2] + '.jpg',
-       property?.media.propertyImages[3] + '.jpg',
+       !property?.media.propertyImages[0]
+        ? PLACEHOLDER_IMAGE
+        : property?.media.propertyImages[0] + '.jpg',
+       !property?.media.propertyImages[1]
+        ? PLACEHOLDER_IMAGE
+        : property?.media.propertyImages[1] + '.jpg',
+       !property?.media.propertyImages[2]
+        ? PLACEHOLDER_IMAGE
+        : property?.media.propertyImages[2] + '.jpg',
+       !property?.media.propertyImages[3]
+        ? PLACEHOLDER_IMAGE
+        : property?.media.propertyImages[3] + '.jpg',
       ],
      });
     })
