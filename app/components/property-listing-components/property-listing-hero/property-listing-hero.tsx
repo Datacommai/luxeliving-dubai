@@ -30,6 +30,9 @@ export default function PropertyListingHeroServerComponent({
     .then((res) => {
      const property = res as PropertyType;
      const price = Object.values(property.propertyPrice)[0];
+     const onCompletion = `${
+      property.paymentPlan.onCompletion?.match(/\d+/)?.[0]
+     } %`;
      setData({
       title: res?.name || '',
       description: res?.information.summaryDescription || '',
@@ -37,7 +40,7 @@ export default function PropertyListingHeroServerComponent({
        ? PLACEHOLDER_IMAGE
        : res?.media.propertyImages[0] + '.jpg',
       startingPrice: formatPrice(price as unknown as string),
-      paymentPlan: res?.paymentPlan.onCompletion,
+      paymentPlan: onCompletion,
       handoverDate: res?.completionDate,
       contact: {
        fullname: res?.contactInfo.fullname || '',
