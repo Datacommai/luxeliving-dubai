@@ -1,5 +1,12 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { DEFAULT_GEMINI_PROMPT } from '../constants/contstants';
+import {
+ CACHED_PROPERTIES_KEY,
+ DEFAULT_GEMINI_PROMPT,
+ PROPERTY_PROMPT,
+ SESSION_CHAT_HISTORY_KEY,
+} from '../constants/contstants';
+import { getProperties } from '../firebase/firebase';
+import { PropertyType } from '@/types';
 
 const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY || '';
 const genAI = new GoogleGenerativeAI(apiKey);
@@ -15,12 +22,42 @@ const generationConfig = {
 model.generationConfig = generationConfig;
 
 export const generateText = async (prompt: string) => {
+ let properties;
+
+ // Retrieve cached properties
+ const cachedProperties = sessionStorage.getItem(CACHED_PROPERTIES_KEY);
+ if (!cachedProperties) {
+  properties = (await getProperties()) as PropertyType[];
+  properties = JSON.stringify(properties);
+  sessionStorage.setItem(CACHED_PROPERTIES_KEY, properties);
+ } else {
+  properties = cachedProperties;
+ }
+
+ const messageLogs: string[] = JSON.parse(
+  sessionStorage.getItem(SESSION_CHAT_HISTORY_KEY) || '[]'
+ );
+
+ const combinedPrompt =
+  DEFAULT_GEMINI_PROMPT +
+  ' ' +
+  PROPERTY_PROMPT +
+  ' There are available properties in this JSON object: ' +
+  properties;
+
  try {
   const result = await model.generateContent({
-   systemInstruction: DEFAULT_GEMINI_PROMPT,
-   contents: [{ role: 'user', parts: [{ text: prompt }] }],
+   systemInstruction: combinedPrompt,
+   contents: [
+    ...messageLogs.map((msg) => ({ role: 'user', parts: [{ text: msg }] })), // Include previous messages
+    { role: 'user', parts: [{ text: prompt }] }, // Add new prompt
+   ],
   });
+
   const generatedText = result.response.text();
+
+  messageLogs.push(prompt, generatedText);
+  sessionStorage.setItem(SESSION_CHAT_HISTORY_KEY, JSON.stringify(messageLogs));
 
   return generatedText;
  } catch (error) {
