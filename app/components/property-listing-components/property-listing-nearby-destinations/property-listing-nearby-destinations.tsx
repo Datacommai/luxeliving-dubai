@@ -173,7 +173,7 @@ function CloseByCard({
  cardDuration: string;
 }) {
  return (
-  <div className="flex flex-col shadow-md items-start w-full lg:h-1/2 h-fit rounded-[6px] xxs:p-3 md:py-6 md:px-4 2xl:px-8 xxs:gap-3 bg-white">
+  <div className="flex flex-col shadow-md items-start w-full  h-fit rounded-[6px] xxs:p-3 md:py-6 md:px-4 2xl:px-8 xxs:gap-3 bg-white">
    <Image
     className="xxs:w-7 xxs:h-7 md:w-12 md:h-12"
     width={48}

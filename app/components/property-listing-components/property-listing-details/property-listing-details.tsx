@@ -134,7 +134,6 @@ function PropertyListingDetails(props: PropertyListingDetailsProps) {
   imgUrlOne,
   imgUrlTwo,
   requestPricing,
-  bookShowingUrl,
   contact,
  } = props;
 
@@ -173,7 +172,7 @@ function PropertyListingDetails(props: PropertyListingDetailsProps) {
        objectFit: 'cover',
        objectPosition: 'center',
        width: '90%',
-       height: '90%',
+       height: 'fit-content',
       }}
       alt={title}
       src={imgUrlOne}
@@ -207,7 +206,7 @@ function PropertyListingDetails(props: PropertyListingDetailsProps) {
         />
        )}
 
-       {bookShowingUrl && (
+       {
         <PrimaryButton
          style="filled"
          text=" Book a Showing"
@@ -215,17 +214,17 @@ function PropertyListingDetails(props: PropertyListingDetailsProps) {
          classname="text-sm font-semibold px-8 py-3 bg-[#1E3747] text-white lg:h-[52px] lg:w-[200px] xxs:h-[48px] xxs:w-full hover:bg-[#2c526a] rounded-md"
          onClick={handleBookingClick}
         />
-       )}
+       }
       </span>
      </section>
     </div>
-    <div className="w-full md:w-full md:h-full xl:w-[632px] lg:order-4 xl:h-[356px] 2xl:w-full 2xl:h-full">
+    <div className="w-full md:w-full md:h-fit xl:w-[632px] lg:order-4 xl:h-[356px] 2xl:w-full 2xl:h-fit">
      <Image
       style={{
        objectFit: 'cover',
        objectPosition: 'center',
        width: '90%',
-       height: '90%',
+       height: 'fit-content',
       }}
       alt={title}
       src={imgUrlTwo}

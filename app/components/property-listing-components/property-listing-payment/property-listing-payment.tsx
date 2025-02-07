@@ -25,19 +25,25 @@ export default function PropertyListingPaymentServerComponent({
    getProperty(queryId)
     .then((res) => {
      const { paymentPlan } = res as PropertyType;
+     const onBooking = `${paymentPlan.onBooking?.match(/\d+/)?.[0]} %`;
+     const onCompletion = `${paymentPlan.onCompletion?.match(/\d+/)?.[0]} %`;
+     const uponHandover = `${
+      paymentPlan.uponHandover?.match(/\d+/)?.[0] || 0
+     } %`;
+
      const pamyents: PropertyListingPaymentProps = {
       title: 'Payment Plan',
       paymentPercentages: [
        {
-        percantage: paymentPlan.onBooking,
+        percantage: onBooking,
         label: 'On Booking',
        },
        {
-        percantage: paymentPlan.onCompletion,
+        percantage: onCompletion,
         label: 'On Completion',
        },
        {
-        percantage: paymentPlan.uponHandover,
+        percantage: uponHandover,
         label: 'Upon Handover',
        },
       ],
