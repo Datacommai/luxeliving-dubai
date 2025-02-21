@@ -6,9 +6,8 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import Image from 'next/image';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { getProperty } from '@/lib/firebase/firebase';
-import { PropertyType } from '@/types';
-import { capitalizeFirstLetter, sendEmail } from '@/lib/utils';
+import { sendEmail } from '@/lib/utils';
+import { contacts } from '@/lib/contacts/contacts';
 
 export default function PropertyListingContactServerComponent({
  useMockData,
@@ -27,6 +26,16 @@ export default function PropertyListingContactServerComponent({
     setLoading(false);
    });
   } else {
+   setData({
+    profileurl: '',
+    fullname: contacts.fullname,
+    jobTitle: 'Real Estate Agent',
+    phone: contacts.tel.toString(),
+    address: contacts.address,
+    email: contacts.email,
+   });
+   setLoading(false);
+   /*
    getProperty(queryId)
     .then((res) => {
      const { contactInfo } = res as PropertyType;
@@ -42,6 +51,7 @@ export default function PropertyListingContactServerComponent({
     .finally(() => {
      setLoading(false);
     });
+    */
   }
  }, [useMockData, queryId]);
 
