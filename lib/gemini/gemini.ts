@@ -4,6 +4,8 @@ import {
  DEFAULT_GEMINI_PROMPT,
  PROPERTY_PROMPT,
  SESSION_CHAT_HISTORY_KEY,
+ SESSION_DOC_ID_KEY,
+ SESSION_LOG_TIMER_KEY,
  userSessionId,
 } from '../constants/contstants';
 import { getProperties, storeChatbotLogs } from '../firebase/firebase';
@@ -22,15 +24,28 @@ const generationConfig = {
 
 model.generationConfig = generationConfig;
 
-let sessionKey = '';
+const TWO_MINUTES = 2 * 60 * 1000;
 
 const storeLogs = async (logs: string) => {
+ // check if user started a new session
  if (!userSessionId) {
   return;
  }
 
- const docId = await storeChatbotLogs(logs, sessionKey);
- sessionKey = docId;
+ const sessionId = sessionStorage.getItem(SESSION_DOC_ID_KEY) || '';
+ const lastLogTime = Number(sessionStorage.getItem(SESSION_LOG_TIMER_KEY)) || 0;
+
+ const currentTime = Date.now();
+
+ // check if it's been 2 minutes since the last log
+ if (currentTime - lastLogTime < TWO_MINUTES) {
+  return;
+ }
+
+ const docId = await storeChatbotLogs(logs, sessionId);
+
+ sessionStorage.setItem(SESSION_DOC_ID_KEY, docId);
+ sessionStorage.setItem(SESSION_LOG_TIMER_KEY, String(currentTime));
 };
 
 export const generateText = async (prompt: string) => {

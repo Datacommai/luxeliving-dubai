@@ -1,6 +1,8 @@
 export const SESSON_STORAGE_KEY = 'chatbot_messages';
 export const CACHED_PROPERTIES_KEY = 'cached_properties';
 export const SESSION_CHAT_HISTORY_KEY = 'chat_history';
+export const SESSION_DOC_ID_KEY = 'doc_id';
+export const SESSION_LOG_TIMER_KEY = 'log_timer';
 
 export const userSessionId = crypto.randomUUID();
 
