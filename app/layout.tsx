@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import { Firebase } from './firebase/firebase';
 import { ChatbotWrapper } from './components/ai-widget/chatbot-wrapper';
+import { HOST_URL, PREVIEW_LOGO_URL } from '@/lib/constants/contstants';
 
 const boska = localFont({
  src: [
@@ -40,25 +41,23 @@ export const metadata: Metadata = {
   title: 'Luxeliving Dubai',
   description:
    'Experience Luxury Living with Our Exclusive Property Selections. Discover Elegance, Sophisticated Design, and Unparalleled Amenities for the Discerning Buyer',
-  url: '',
+  url: HOST_URL,
   siteName: 'Luxeliving Dubai',
-  // TODO: Add open graph image
-  // images: [
-  //  {
-  //   url: PREVIEW_LOGO_URL,
-  //   width: 1200,
-  //   height: 630,
-  //   alt: 'Easebot logo',
-  //  },
-  // ],
+  images: [
+   {
+    url: PREVIEW_LOGO_URL,
+    width: 1200,
+    height: 630,
+    alt: 'Easebot logo',
+   },
+  ],
  },
  twitter: {
   title: 'Luxeliving Dubai',
   description:
    'Experience Luxury Living with Our Exclusive Property Selections. Discover Elegance, Sophisticated Design, and Unparalleled Amenities for the Discerning Buyer.',
   creator: '@luxelivingdubai',
-  // TODO: Add twitter card image
-  // images: [PREVIEW_LOGO_URL],
+  images: [PREVIEW_LOGO_URL],
  },
  robots: {
   index: true,

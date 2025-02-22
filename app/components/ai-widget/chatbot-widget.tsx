@@ -7,13 +7,13 @@ import { Send, X } from 'lucide-react';
 import { generateText } from '@/lib/gemini/gemini';
 import { SESSON_STORAGE_KEY } from '@/lib/constants/contstants';
 
-type Message = {
+export type ChatbotMessage = {
  text: string;
  sender: 'user' | 'bot';
 };
 
 export default function ChatbotWidget({ onClose }: { onClose: () => void }) {
- const [messages, setMessages] = useState<Message[]>([]);
+ const [messages, setMessages] = useState<ChatbotMessage[]>([]);
  const [input, setInput] = useState('');
  const [isOpen, setIsOpen] = useState(true);
 

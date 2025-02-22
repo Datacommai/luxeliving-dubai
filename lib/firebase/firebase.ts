@@ -1,8 +1,15 @@
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
-import { collection, getDocs, getFirestore } from 'firebase/firestore';
+import {
+ addDoc,
+ collection,
+ doc,
+ getDocs,
+ getFirestore,
+ updateDoc,
+} from 'firebase/firestore';
 import { PropertyType } from '@/types';
-import { PROPERTY_DB_ID } from './types';
+import { LOGS_DB_ID, PROPERTY_DB_ID } from './types';
 
 const firebaseConfig = {
  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -62,4 +69,30 @@ export const getProperty = async (id: string) => {
  } catch (error) {
   console.error('Error getting user data:', (error as Error).message);
  }
+};
+
+export const storeChatbotLogs = async (
+ logs: string,
+ docId?: string
+): Promise<string> => {
+ try {
+  const db = getFirestore();
+
+  if (!docId) {
+   const docRef = await addDoc(collection(db, LOGS_DB_ID), {
+    logs,
+    timestamp: new Date(),
+   });
+   return docRef.id;
+  } else {
+   await updateDoc(doc(db, LOGS_DB_ID, docId), {
+    logs,
+    timestamp: new Date(),
+   });
+  }
+  console.log('Document written...');
+ } catch (error) {
+  console.error('Error getting user data:', (error as Error).message);
+ }
+ return '';
 };

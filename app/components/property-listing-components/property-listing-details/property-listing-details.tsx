@@ -186,7 +186,7 @@ function PropertyListingDetails(props: PropertyListingDetailsProps) {
     <p className="text-[#434343] xxs:text-sm md:text-xl leading-5 md:mx-8 w-fit">
      {descriptionOne}
     </p>
-    <div className="flex flex-col md:justify-center gap-8 xxs:order-4 lg:justify-between">
+    <div className="flex flex-col md:relative md:top-16 md:justify-center gap-8 xxs:order-4 lg:justify-between">
      <p className="text-[#434343] xxs:text-sm md:text-xl leading-5">
       {descriptionTwo}
      </p>
