@@ -35,23 +35,6 @@ export default function PropertyListingContactServerComponent({
     email: contacts.email,
    });
    setLoading(false);
-   /*
-   getProperty(queryId)
-    .then((res) => {
-     const { contactInfo } = res as PropertyType;
-     setData({
-      profileurl: '/assets/featured-properties-temp/agent.jpg',
-      fullname: capitalizeFirstLetter(contactInfo.fullname),
-      jobTitle: 'Real Estate Agent',
-      phone: contactInfo.telephone,
-      address: 'N/A',
-      email: contactInfo.email,
-     });
-    })
-    .finally(() => {
-     setLoading(false);
-    });
-    */
   }
  }, [useMockData, queryId]);
 
