@@ -16,7 +16,6 @@ export const capitalizeFirstLetter = (str: string) => {
 
 export const formatPrice = (price: string) => {
  const cleanedPrice = price.replace(/,/g, '');
- console.log(cleanedPrice);
  if (cleanedPrice.endsWith('M') || cleanedPrice.endsWith('K')) {
   return cleanedPrice;
  }

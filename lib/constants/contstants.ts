@@ -2,6 +2,10 @@ export const SESSON_STORAGE_KEY = 'chatbot_messages';
 export const CACHED_PROPERTIES_KEY = 'cached_properties';
 export const SESSION_CHAT_HISTORY_KEY = 'chat_history';
 
+export const HOST_URL = 'https://luxelivingdubai.com/';
+export const PREVIEW_LOGO_URL =
+ 'https://firebasestorage.googleapis.com/v0/b/luxelivingdubai-9fb8b.firebasestorage.app/o/general%2FLogo%20v2.png?alt=media&token=91c33600-103c-4688-b110-0f89889b669b';
+
 export const PLACEHOLDER_IMAGE = '/assets/images/placeholder.svg';
 
 export const DEFAULT_GEMINI_PROMPT =
